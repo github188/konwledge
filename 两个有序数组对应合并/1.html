@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var arr1 = [1,2,3];
+    var arr2 = ['a','b','c'];
+    var newArr = [];
+
+    for(var i=0;i<arr1.length;i++){
+        for(var j=0;j<arr2.length;j++){
+            if(i==j){
+                var tempObj = {a1:arr1[i],a2:arr2[j]};
+                newArr.push(tempObj);
+            }
+        }
+    }
+    console.log(newArr)
+</script>
+</html>

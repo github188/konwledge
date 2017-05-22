@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="backToTop"></div>
+</body>
+<script></script>
+<script>
+    $("html,body").animate({scrollTop:0},600);
+    $(window).scroll(function ()
+    {
+        var st = $(this).scrollTop();
+        if(st>200){
+            $('.backtop').fadeIn();
+        }
+        else {
+            $('.backtop').fadeOut();
+        }
+    });
+</script>
+</html>

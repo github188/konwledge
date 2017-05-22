@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <select v-model="selected">
+        <option v-for="(val,idx) in dataList" :value="val.value" v-text="val.label">
+
+        </option>
+    </select>
+    <select v-model="selected2">
+        <option v-for="(val,idx) in citys" :value="val.value" :selected="idx==0?true:false">
+            {{val.label}}
+        </option>
+    </select>
+    <select v-model="selected3">
+        <option v-for="(val,idx) in country" :value="val.value">
+            {{val.label}}
+        </option>
+    </select>
+</div>
+
+</body>
+<script src="../libs/vue-2.3.js"></script>
+<script src="data/cities-data.js"></script>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            selected:dataList[0].value,
+            selected2:"未选择",
+            selected3:"未选择",
+            dataList:dataList,
+            citysAll:"",
+            countrysAll:"",
+            citysSelect:""
+        },
+        computed:{
+            citys:function (e) {
+                var that=this;
+                this.citysAll=this.dataList.filter(function (item) {
+                    return item.value == that.selected;
+                })[0].children;
+                this.selected2=this.citysAll[0].value;
+                return this.citysAll
+            },
+            country:function () {
+                var that=this;
+                this.countrysAll=this.citysAll.filter(function (item) {
+                    return item.value == that.selected2;
+                })[0].children;
+                this.selected3=this.countrysAll[0].value;
+                return this.countrysAll
+            }
+        }
+    })
+</script>
+</html>
