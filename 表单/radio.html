@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .show{display: block}
+        .hide{display: none}
+    </style>
+</head>
+<body>
+<div id="box">
+    <input type="radio" id="one" value="One" v-model="picked">
+    <label for="one">One</label>
+    <br>
+    <input type="radio" id="two" value="Two" v-model="picked">
+    <label for="two">Two</label>
+    <br>
+    <span>Picked: {{ picked }}</span>
+    <div :class="picked=='One'?'show':'hide'">show</div>
+
+</div>
+</body>
+<script src="../libs/vue-2.3.js"></script>
+<script>
+    var vm = new Vue({
+        el:"#box",
+        data(){
+            return {
+                picked:"One"
+            }
+        },
+        methods:{
+
+        }
+    })
+</script>
+</html>
