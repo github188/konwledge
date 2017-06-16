@@ -60,7 +60,7 @@
                 }
                 if(data=='tsina'){
                     let url = urlOrgin+image_id+shareSina;
-                    window.open("http://service.weibo.com/share/share.php"+
+                    window.open("http://service.weibo.com/分享功能/分享功能.php"+
                         "?url="+ url+"&title="+title+ "&appkey=1343713053"+"&pic="+ pic+"&searchPic=true")
                 }
                 if(data=='weixin'){

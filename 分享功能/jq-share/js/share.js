@@ -183,8 +183,8 @@
 	};
 	//分享地址
 	var qzone = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url={url}&title={title}&pics={pic}&summary={content}';
-	var sina = 'http://service.weibo.com/share/share.php?url={url}&title={title}&pic={pic}&searchPic=false';
-	var tqq = 'http://share.v.t.qq.com/index.php?c=share&a=index&url={url}&title={title}&appkey=801cf76d3cfc44ada52ec13114e84a96';
-	var douban = 'http://www.douban.com/share/service?href={url}&name={title}&text={content}&image={pic}';
+	var sina = 'http://service.weibo.com/分享功能/分享功能.php?url={url}&title={title}&pic={pic}&searchPic=false';
+	var tqq = 'http://分享功能.v.t.qq.com/index.php?c=分享功能&a=index&url={url}&title={title}&appkey=801cf76d3cfc44ada52ec13114e84a96';
+	var douban = 'http://www.douban.com/分享功能/service?href={url}&name={title}&text={content}&image={pic}';
 	var weixin = 'http://qr.liantu.com/api.php?text={url}';
 })(jQuery, window, document);

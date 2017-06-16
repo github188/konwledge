@@ -362,7 +362,7 @@ window._bd_share_main ? window._bd_share_is_recently_loaded = !0 : (window._bd_s
     }
 }), !window._bd_share_is_recently_loaded && function () {
     window._bd_share_main.F._setMod("api"), window._bd_share_main.F._fileMap({
-        "/js/share.js?v=da893e3e.js": ["conf/define", "base/fis", "base/tangrammin", "base/class.js", "conf/define.js", "conf/const.js", "config", "share/api_base.js", "view/view_base.js", "start/router.js", "component/comm_tools.js", "trans/trans.js"],
+        "/js/share.js?v=da893e3e.js": ["conf/define", "base/fis", "base/tangrammin", "base/class.js", "conf/define.js", "conf/const.js", "config", "分享功能/api_base.js", "view/view_base.js", "start/router.js", "component/comm_tools.js", "trans/trans.js"],
         "/js/base/tangram.js?v=37768233.js": ["base/tangram"],
         "/js/view/share_view.js?v=3ae6026d.js": ["view/share_view"],
         "/js/view/slide_view.js?v=08373964.js": ["view/slide_view"],
@@ -373,11 +373,11 @@ window._bd_share_main ? window._bd_share_is_recently_loaded = !0 : (window._bd_s
         "/js/trans/trans_bdxc.js?v=7ac21555.js": ["trans/trans_bdxc"],
         "/js/trans/trans_bdysc.js?v=fc21acaa.js": ["trans/trans_bdysc"],
         "/js/trans/trans_weixin.js?v=080be124.js": ["trans/trans_weixin"],
-        "/js/share/combine_api.js?v=8d37a7b3.js": ["share/combine_api"],
-        "/js/share/like_api.js?v=d3693f0a.js": ["share/like_api"],
-        "/js/share/likeshare.js?v=e1f4fbf1.js": ["share/likeshare"],
-        "/js/share/share_api.js?v=226108fe.js": ["share/share_api"],
-        "/js/share/slide_api.js?v=ec14f516.js": ["share/slide_api"],
+        "/js/share/combine_api.js?v=8d37a7b3.js": ["分享功能/combine_api"],
+        "/js/share/like_api.js?v=d3693f0a.js": ["分享功能/like_api"],
+        "/js/share/likeshare.js?v=e1f4fbf1.js": ["分享功能/likeshare"],
+        "/js/share/share_api.js?v=226108fe.js": ["分享功能/share_api"],
+        "/js/share/slide_api.js?v=ec14f516.js": ["分享功能/slide_api"],
         "/js/component/animate.js?v=5b737477.js": ["component/animate"],
         "/js/component/anticheat.js?v=44b9b245.js": ["component/anticheat"],
         "/js/component/partners.js?v=911c4302.js": ["component/partners"],
@@ -442,7 +442,7 @@ window._bd_share_main ? window._bd_share_is_recently_loaded = !0 : (window._bd_s
         e = e || window._bd_share_config || {share: {}};
         if (e) {
             var t = i(e);
-            t.like && r(["share/like_api", "view/like_view"], t.like), t.share && r(["share/share_api", "view/share_view"], t.share), t.slide && r(["share/slide_api", "view/slide_view"], t.slide), t.selectShare && r(["share/select_api", "view/select_view"], t.selectShare), t.image && r(["share/image_api", "view/image_view"], t.image)
+            t.like && r(["分享功能/like_api", "view/like_view"], t.like), t.share && r(["分享功能/share_api", "view/share_view"], t.share), t.slide && r(["分享功能/slide_api", "view/slide_view"], t.slide), t.selectShare && r(["分享功能/select_api", "view/select_view"], t.selectShare), t.image && r(["分享功能/image_api", "view/image_view"], t.image)
         }
     }, window._bd_share_main._LogPoolV2 = [], window._bd_share_main.n1 = (new Date).getTime(), t.domready(function () {
         window._bd_share_main.n2 = (new Date).getTime() + 1e3, _bd_share_main.init(), setTimeout(function () {

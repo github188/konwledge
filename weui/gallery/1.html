@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.0/weui.min.css">
+    <script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.1.1/weui.min.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+    var gallery = weui.gallery("../img/QQ截图20170510142811.png", {
+        className: 'custom-classname',
+        onDelete: function(){
+            if(confirm('确定删除该图片？')){ console.log('删除'); }
+            gallery.hide(function() {
+                console.log('`gallery` has been hidden');
+            });
+        }
+    });
+</script>
+</html>
