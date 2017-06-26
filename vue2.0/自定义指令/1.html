@@ -9,7 +9,7 @@
     <div>
         test
     </div>
-    <p v-focus:hello2.a.b="message"></p>
+    <p v-focus:hello3.a.b="bgColor"></p>
 </div>
 </body>
 <script src="../libs/vue-2.3.js"></script>
@@ -18,7 +18,8 @@
         el: "#app",
         data(){
             return {
-                message:"hello  world !"
+                message:"hello  world !",
+                bgColor:"red",
             }
         },
         computed: {},
