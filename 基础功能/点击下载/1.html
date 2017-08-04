@@ -1,26 +1,11 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
-    <title>JS实现下载文件</title>
-    <script language=JavaScript>
-        function download(obj){
-            if(document.all.ifrm==null){
-                objIframe=document.createElement("IFRAME");
-                document.body.insertBefore(objIframe);
-                objIframe.outerHTML="<iframe name=ifrm style='width:0;hieght:0' src="+obj.href+"></iframe>";
-                re=setTimeout("download()",1)
-            }
-            else{
-                clearTimeout(re)
-                files=window.open(obj.href,"ifrm")
-                files.document.execCommand("SaveAs")
-                document.all.ifrm.removeNode(true)
-            }}
-    </script>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
-<body >
-文档列表：请点出下载<br/>
-<a href="http://www.jubao56.com/static/images/All_01.jpg" id="filelist" onclick="download();return false;" style="cursor:hand">文件1</a>  <br/>
-<!--<a href="file02.pdf" id="filelist" onclick="download();return false;" style="cursor:hand">文件2</a>-->
+<body>
+<a href="http://www.jubao56.com/static/images/banner/banner14.jpg" target="_blank">鏂伴〉闈㈡墦寮�</a>
+<a href="http://www.jubao56.com/static/images/banner/banner14.jpg" download="鏂囦欢鍚嶇О">涓嬭浇2</a>
 </body>
 </html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //初始化信息
+    window.sessionStorage.setItem('jubao56',{});
+
+    //储存信息
+    function SETSTORAGE(state,message){ //{phbId:[]}  sessio保存，增加，修改 session
+        let key ="jubao56";
+        let jubaoStorage =  JSON.parse(window.sessionStorage.getItem(key));
+        jubaoStorage=jubaoStorage==null?{}:jubaoStorage;
+        for(let i in message){
+            jubaoStorage[i]=message[i]
+        }
+        window.sessionStorage.setItem(key,JSON.stringify(jubaoStorage));
+    }
+    //获取信息
+    let jubaoStorage =  JSON.parse(window.sessionStorage.getItem('jubao56'));
+</script>
+</html>

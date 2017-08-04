@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .demo1 h1{
+            width:20px;
+            font-size:20px;
+            word-wrap:break-word;
+        }
+        .demo2 h1{
+            width:50px;
+            font-size:20px;
+            word-wrap:break-word;
+            letter-spacing:20px;/* Set large letter-spacing as precaution */
+        }
+        .demo3 h1 {
+            width: 1em;
+            font-size: 40px;
+            letter-spacing: 40px; /* arbitrary large letter-spacing for safety */
+            background:#CCC;
+        }
+        .demo4 h1 {
+            white-space:pre;
+        }
+    </style>
+</head>
+<body>
+demo1
+<div class="demo1">
+    <h1>NETTUTS</h1>
+    &nbsp;
+    <h1>Nettuts</h1>
+</div>
+
+demo2
+<div class="demo2">
+    <h1>NETTUTS</h1>
+    <h1>Nettuts</h1>
+</div>
+
+demo3
+<div class="demo3">
+    <h1>N e t t u t s</h1>
+    <h1>N E T T U T S</h1>
+    <!--据我所知,到目前为止,这是最好的,最符合跨浏览器的解决方案。-->
+</div>
+
+demo4
+<div class="demo4">
+    <h1>N e t t u t s</h1>
+    <h1>N E T T U T S</h1>
+    <!--不爽的是，我们需要在编辑里所文字纵向排列；-->
+    <!--what???????-->
+</div>
+</body>
+</html>
