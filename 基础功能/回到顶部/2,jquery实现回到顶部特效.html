@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .backtop{
+            width:50px;height:100px;background: #f2f2f2;
+            text-align: center;font-size:10px;
+            position: fixed;right:50px;bottom:50px;
+        }
+    </style>
 </head>
 <body>
 1-------------------------------<br/>
@@ -94,13 +101,23 @@
 1-------------------------------<br/>
 1-------------------------------<br/>
 1-------------------------------<br/>
-<button onclick="goTop()">回到顶部</button>
+<button class="backtop" onclick="goTop()">回到顶部按钮</button>
 </body>
+<script src="../../libs/jquery-1.9.1.min.js"></script>
 <script>
     function goTop() {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
+        $("html,body").animate({scrollTop:0},600);
     }
+    $(window).scroll(function ()
+    {
+        var st = $(this).scrollTop();
+        if(st>200){
+            $('.backtop').fadeIn();
+        }
+        else {
+            $('.backtop').fadeOut();
+        }
+    });
 
 </script>
 </html>
