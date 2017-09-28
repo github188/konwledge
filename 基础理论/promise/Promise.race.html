@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Promise.race</title>
+</head>
+<body>
+
+</body>
+<script>
+    function step1(step1) {
+        let p = new Promise(function(resolve, reject){
+            setTimeout(function(){
+                console.log(step1);
+                resolve('随便什么数据1');
+            }, 1000);
+        });
+        return p;
+    }
+
+    function step2(step2) {
+        let p = new Promise(function(resolve, reject){
+            setTimeout(function(){
+                console.log(step2);
+                resolve('随便什么数据2');
+            }, 2000);
+        });
+        return p;
+    }
+    function step3(step3) {
+        let p = new Promise(function(resolve, reject){
+            setTimeout(function(){
+                console.log(step3);
+                resolve('随便什么数据3');
+            }, 3000);
+        });
+        return p;
+    }
+    Promise.race([step1("执行完成1"), step2("执行完成2"), step3("执行完成3")]).then((results)=>{
+        console.log(results,"result");
+    })
+</script>
+</html>
