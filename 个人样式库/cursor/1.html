@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width:200px;height:200px;border:1px solid #000000;
+            position: relative;
+        }
+        .box:hover{
+            cursor: pointer;
+        }
+
+        .box:hover .file-upload{
+            cursor: pointer;
+        }
+        .btn{
+            width:200px;height:100px;
+        }
+
+.file-upload{
+    position:absolute;
+    left:0;top:0;
+}
+
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <button type="button" class="btn">按钮</button>
+    <input type="file" class="file-upload"/>
+</div>
+</body>
+</html>

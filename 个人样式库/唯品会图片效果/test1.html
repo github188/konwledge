@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{margin:0;padding:0;}
+        .both-side{
+            width: 1000px;
+            height: 147px;
+            position: relative;
+            background: #eee;
+            text-align: center;
+            line-height: 30px;
+            margin:100px auto;
+        }
+        .both-side:before{
+            content:'';
+            display: block;
+            z-index: 1;
+            position: absolute;
+            top: -6%;
+            left: 40%;
+            height:120%;
+            width:8%;
+            transform: rotate(20deg);;
+            -webkit-transition: all .5s linear;
+            -moz-transition: all .5s linear;
+            -ms-transition: all .5s linear;
+            -o-transition: all .5s linear;
+            transition: all .5s linear;
+            background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0px, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%);
+            background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0px, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%);
+            background: linear-gradient(to right, rgba(255, 255, 255, 0) 0px, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%);
+        }
+        .both-side:after{
+            content:'';
+            display: block;
+            z-index: 1;
+            position: absolute;
+            top: -6%;
+            left: 80%;
+            height:120%;
+            width:8%;
+            transform: rotate(20deg);;
+            -webkit-transition: all .5s linear;
+            -moz-transition: all .5s linear;
+            -ms-transition: all .5s linear;
+            -o-transition: all .5s linear;
+            transition: all .5s linear;
+            background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0px, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%);
+            background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0px, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%);
+            background: linear-gradient(to right, rgba(255, 255, 255, 0) 0px, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%);
+        }
+        .both-side:hover:before{
+            left:-15%;
+            background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0px, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+            background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0px, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+            background: linear-gradient(to right, rgba(255, 255, 255, 0) 0px, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+        }
+        .both-side:hover:after{
+            left:130%;
+            background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0px, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+            background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0px, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+            background: linear-gradient(to right, rgba(255, 255, 255, 0) 0px, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+        }
+        .to-right{
+            width: 378px;
+            height: 180px;
+            position: relative;
+            background: #eee;
+            text-align: center;
+            line-height: 30px;
+            margin:100px auto;
+        }
+        .to-right:before{
+            content:'';
+            display: block;
+            z-index: 1;
+            position: absolute;
+            top: -6%;
+            left: -30%;
+            height:120%;
+            width:30%;
+            transform: rotate(20deg);;
+            -webkit-transition: all .5s linear;
+            -moz-transition: all .5s linear;
+            -ms-transition: all .5s linear;
+            -o-transition: all .5s linear;
+            transition: all .5s linear;
+            background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0px, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%);
+            background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0px, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%);
+            background: linear-gradient(to right, rgba(255, 255, 255, 0) 0px, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%);
+        }
+        .to-right:hover:before{
+            left:120%;
+            background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0px, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+            background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0px, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+            background: linear-gradient(to right, rgba(255, 255, 255, 0) 0px, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+        }
+    </style>
+</head>
+<body>
+<div class="both-side">
+    <img src="./images/img01.jpg" alt="">
+</div>
+<div class="to-right">
+    <img src="./images/img02.jpg" alt="">
+</div>
+</body>
+</html>

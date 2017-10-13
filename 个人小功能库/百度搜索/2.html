@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="../libs/jquery-1.9.1.min.js"></script>
+<script>
+    var qsData = {
+        'wd': "a",
+        'p': '3',
+        'cb': 'getData',
+        't': new Date().getMilliseconds().toString()
+    };
+    $.ajax({
+        async: false,
+        url: "http://suggestion.baidu.com/su",
+        type: "GET",
+        dataType: 'jsonp',
+        jsonp: 'jsoncallback',
+        data: qsData,
+        timeout: 5000,
+        success: function (json) {
+        },
+        error: function (xhr) {
+        }
+    });
+    function getData(data) {
+        var Info = data['s'];  //获取异步数据
+        console.log(Info);
+    }
+</script>
+</html>

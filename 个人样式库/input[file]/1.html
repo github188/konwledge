@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .el-upload{
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+        }
+        .el-button {
+            display: inline-block;
+            line-height: 1;
+            white-space: nowrap;
+            cursor: pointer;
+            background: #fff;
+            border: 1px solid #bfcbd9;
+            color: #1f2d3d;
+            margin: 0;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        .el-upload__input {
+            display: none;
+        }
+        input[type="file"] {
+            align-items: baseline;
+            color: inherit;
+            text-align: start;
+        }
+
+
+        .file-box {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            text-align: center;
+        }
+        .file-button{
+            display: inline-block;
+            margin: 0;
+            padding: 10px 15px;
+            line-height: 1;
+            white-space: nowrap;
+            background: #fff;
+            border: 1px solid #bfcbd9;
+            color: #1f2d3d;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .file-input {
+            position: absolute;
+            font-size: 100px;
+            right: 0;
+            top: 0;
+            opacity: 0;
+        }
+        .file-input:hover {
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+<div class="el-upload">
+    <button data-v-dea1308c="" type="button" class="el-button el-button--default"><!----><!---->
+        <span>点击上传
+            <i data-v-dea1308c="" class="el-icon-upload el-icon--right"></i>
+        </span>
+    </button>
+    <input type="file" name="fileVal" accept=".xls,.xlsx,.doc,.txt,.pdf,.jpg,.png,.jpeg" class="el-upload__input">
+</div>
+
+
+<div class="file-box">
+    <button type="button" class="file-button">
+        <span>点击上传<i class="icon-upload"></i></span>
+    </button>
+    <input type="file" name="fileVal" accept=".xls,.xlsx,.doc,.txt,.pdf,.jpg,.png,.jpeg" class="file-input">
+</div>
+
+</body>
+</html>

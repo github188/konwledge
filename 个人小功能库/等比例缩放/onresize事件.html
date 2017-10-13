@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    window.onresize = function(){
+        (function(){
+            var html = document.documentElement;
+            var windowWidth = html.clientWidth;
+            html.style.fontSize = windowWidth / 12.8 + 'px';
+        })();
+    }
+</script>
+</html>

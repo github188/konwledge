@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=" utf-8">
+    <meta name="author" content="http://www.softwhy.com/" />
+    <title>javascript的target事件属性-蚂蚁部落</title>
+    <style type="text/css">
+        div,p,span{
+            margin:0px auto;
+        }
+        div{
+            width:200px;
+            height:200px;
+            background-color:#639;
+        }
+        p{
+            width:150px;
+            height:150px;
+            background-color:#F60;
+        }
+        span{
+            width:100px;
+            height:100px;
+            display:block;
+            background-color:#030;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload=function(){
+            var mydiv=document.getElementById("mydiv");
+            mydiv.onclick=function(ev) {
+                var oEvent=ev||event;
+                alert(oEvent.target.id);
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="mydiv">
+    <p id="myp">
+        <span id="myspan"></span>
+    </p>
+</div>
+
+<div style="width:100px;height:100px;background: yellowgreen;" onclick="testClick(window.event)" id="testDiv">
+
+</div>
+<div style="width:100px;height:100px;background: blue;" onclick="testClick2()" id="testDiv2">
+
+</div>
+<div>
+    <input type="file" onchange="asyncXLSX()" id="myInputFile"/>
+</div>
+</body>
+<script>
+    function testClick(event) {
+        console.log(event.srcElement.id)
+    }
+
+    function testClick2(e) {
+        var e = e || window.event;
+        console.log(e.srcElement);
+    }
+
+    function asyncXLSX(e) {
+        var e = e || window.event;
+        console.log(e)
+//        console.log(e.target)
+//        alert(e.srcElement)
+        console.log(e.srcElement);
+//        console.log(e.srcElement.files)
+    }
+
+
+
+
+//    var a = document.querySelector("#testDiv");
+//    a.onclick=function (e) {
+//        var oEvent=e||event;
+//        alert(oEvent.target.id);
+//    }
+</script>
+</html>
