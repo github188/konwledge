@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="test">
+    <select v-model="selected">
+        <option v-for="yx in YX" :value="yx.text">
+            {{yx.text}}
+        </option>
+    </select>
+    <select>
+        <option v-for="(val,idx) in selection" :value="val.text2" :selected="idx == 0 ?true:false">
+            {{val.text2}}
+        </option>
+    </select>
+    <!--<select>-->
+        <!--<option v-for="(zy,idx) in selection" :value="zy.text" :selected="idx == 0 ? true : false">-->
+            <!--{{zy.text}}-->
+        <!--</option>-->
+    <!--</select>-->
+</div>
+</body>
+<script src="../libs/vue-2.3.js"></script>
+<script>
+    new Vue({
+        el: '#test',
+        data: {
+            selected: '计信院',
+            YX: [{
+                text: '计信院',
+                ZY: [{
+                    text2: '软件工程'
+                }, {
+                    text2: '计算机科学与技术'
+                }, {
+                    text2: "信息安全"
+                },]
+            }, {
+                text: '商学院',
+                ZY: [{
+                    text2: '旅游管理'
+                }, {
+                    text2: '工商管理'
+                }, {
+                    text2: "行政管理"
+                },]
+            },]
+        },
+        computed: {
+            selection: {
+                get: function () {
+//                    var that = this;
+//                    return this.YX.filter(function (item) {
+//                        return item.text == that.selected;
+//                    })[0].ZY;
+                    for(var i=0;i<this.YX.length;i++){
+                        if(this.YX[i].text === this.selected){
+                            return this.YX[i].ZY
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li v-for="(val,idx) in todos">
+            {{val}}
+            <button type="button" @click="deleteList(idx)">删除</button>
+        </li>
+    </ul>
+</div>
+</body>
+<script src="../libs/vue-2.3.js"></script>
+<script>
+    var vm = new Vue({
+        el:"#box",
+        data(){
+            return {
+                todos: [
+                    'Do the dishes',
+                    'Take out the trash',
+                    'Mow the lawn'
+                ]
+            }
+        },
+        methods:{
+            deleteList(idx){
+                console.log(idx)
+                this.todos.splice(idx,1)
+            }
+        }
+    })
+</script>
+</html>

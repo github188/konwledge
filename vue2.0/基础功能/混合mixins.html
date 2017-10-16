@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+</div>
+</body>
+<script src="../libs/vue-2.3.js"></script>
+<script>
+    var mixin = {
+        created: function () {
+            console.log('混合对象的钩子被调用')
+        }
+    }
+    let vm = new Vue({
+        el:"#app",
+        data(){
+            return {
+
+            }
+        },
+        methods:{
+
+        },
+        mixins: [mixin],
+        created: function () {
+            console.log('组件钩子被调用')
+        }
+    })
+</script>
+</html>

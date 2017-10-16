@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .show{display: block}
+        .hide{display: none}
+    </style>
+</head>
+<body>
+<div id="box">
+    <label>
+        <input type="checkbox" value="One" v-model="picked">One
+    </label>
+    <label>
+        <input type="checkbox" value="Two" v-model="picked">Two
+    </label>
+    <label>
+        <input type="checkbox" value="Three" v-model="picked">Three
+    </label>
+
+    <p>{{picked}}</p>
+</div>
+</body>
+<script src="../libs/vue-2.3.js"></script>
+<script>
+    var vm = new Vue({
+        el:"#box",
+        data(){
+            return {
+                picked:[]
+            }
+        },
+        methods:{
+
+        }
+    })
+</script>
+</html>
