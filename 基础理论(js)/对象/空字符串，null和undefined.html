@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>空字符串，null和undefined</title>
+</head>
+<body>
+
+</body>
+<script>
+    let a= {a:"",b:null};
+    console.log(a.a,"a.a");
+    console.log(a.b,"a.b");
+    console.log(a.c,"a.c");
+    console.log("=========对象a的属性判断==============");
+
+    console.log(typeof(a.a),"a.a的typeof");
+    console.log(typeof(a.b),"a.b的typeof");
+    console.log(typeof(a.c),"a.c的typeof");
+    console.log("========typeof   end===============");
+    if(a.a){
+        console.log(a.a,"a.a的Boolean判断为true");
+    }
+    if(a.b){
+        console.log(a.b,"a.b的Boolean判断为true");
+    }
+    if(a.c){
+        console.log(a.c,"a.c的Boolean判断为true");
+    }
+    console.log("=======Boolean判断  end================");
+    if(typeof (a.a)){
+        console.log(typeof (a.a),"a.a的typeof为true")
+    }
+    if(typeof (a.b)){
+        console.log(typeof (a.b),"a.b的typeof为true")
+    }
+    if(typeof (a.c)){
+        console.log(typeof (a.c),"a.c的typeof为true")
+    }
+    console.log("===typeof XXX 的Boolean判断====(当然都是String类型，全都为true)====");
+    if(typeof (a.a)=="string"){
+        console.log("a的typeof为string字符串   注意这里为小写string")
+    }
+    if(typeof (a.b)=="object"){
+        console.log("b的typeof为object字符串   注意这里为小写object")
+    }
+    if(typeof (a.c)=="undefined"){
+        console.log("c的typeof为undefined字符串")
+    }
+    console.log("======typeof的字符串判断=================");
+</script>
+</html>
