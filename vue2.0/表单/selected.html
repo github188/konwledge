@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+    <div id="example-5">
+        <select v-model="selected" >
+        <!--<select v-model="selected" multiple style="width: 50px;">-->
+            <option disabled value="">请选择</option>
+            <option v-for="(val,idx) in data2" :value="val.name">{{val.txt}}</option>
+        </select>
+        <span>Selected: {{ selected }}</span>
+    </div>
+
+        <!--如果 v-model 表达初始的值不匹配任何的选项，'<select>' 元素就会以”未选中”的状态渲染。在 iOS 中，这会使用户无法选择第一个选项，因为这样的情况下，iOS 不会引发 change 事件。因此，像以上提供 disabled 选项是建议的做法。-->
+
+</div>
+</body>
+<script src="../libs/vue-2.3.js"></script>
+<script>
+    var vm = new Vue({
+        el:"#box",
+        data(){
+            return {
+                selected:"", //与value值对应
+                data2:[{name:"a",txt:"1"},{name:"b",txt:"2"},{name:"c",txt:"3"}]
+            }
+        },
+        methods:{
+
+        }
+    })
+</script>
+</html>
