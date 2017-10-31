@@ -20,7 +20,12 @@
     let b = arr.every((value)=>{
         return value>4
     })
+    //filter 通过对元素进行筛选，返回一个新的数组
+    let c=arr.filter((val,idx,arr)=>{
+        return val>4
+    })
     console.log(a);
     console.log(b);
+    console.log(c);
 </script>
 </html>
