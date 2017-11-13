@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    Object.prototype.clickEvent=function (type, fn, boolean) {
+        boolean=boolean?boolean:"false";
+        if (typeof window.addEventListener != "undefined") {
+            videoStart.addEventListener(type,fn,boolean)
+        }else{
+            videoStart.attachEvent(type,fn)
+        }
+    };
+</script>
+</html>

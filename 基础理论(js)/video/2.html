@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var arr=[10,20,20,30,10];
+    Array.prototype.n=function(){
+        console.log(this);
+        var tamp=this;
+        var noarray=new Array();
+        this.forEach(function(v,i,array){
+            if(noarray.indexOf(array[i])===-1){
+                noarray.push(array[i]);
+            }
+        });
+        return noarray;
+    }
+    console.log(arr.n());
+</script>
+</html>
