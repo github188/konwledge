@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="flexible/flexible.css">
+    <link rel="stylesheet" href="css/marketing.css">
+</head>
+<body>
+
+</body>
+<script>
+	var cmn = "http://test.jubao56.com";
+	var vm = new Vue({
+		el:"#article",
+		data:{
+
+		},
+		methods:{
+
+		},
+		created(){
+			Ajax{
+			 	url: cmn+'/v1/cmn/article/info',
+	            type: 'GET',
+	            data: {id:1},
+	            success: function (res) {
+	                console.log(res);
+	                if(res.err_code == 0){
+	                	debugger;
+	                    
+	                }else{
+	                	alert("网络异常")
+	                }
+	            },
+	            fail: function (err) {
+	                console.log(err)
+	            }
+			}
+		}
+	})
+</script>
