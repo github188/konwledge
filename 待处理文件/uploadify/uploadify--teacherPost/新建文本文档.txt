@@ -1,0 +1,1 @@
+handle.php 和upload.html是对原版的增加文件，和Huploadify文件无关

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则表达式</title>
+</head>
+<body>
+用户名:<input id="username" type="text"/>
+<button id="btn">点击效验</button>
+</body>
+<script>
+    var usernameInput = document.getElementById("username");
+    var btn = document.getElementById("btn");
+
+    //点击后开始效验
+    btn.onclick = function () {
+      var content = usernameInput.value;
+        //以字母数字下划线$开头 然后由字母下划线$数字组成  长度6到10;
+      var  req = /^[a-zA-Z_$]{1}[\w|$]{5,9}$/;
+        if(req.test(content)){
+            alert("输入合法")
+        }else{
+            alert("字母数字下划线$开头 然后由字母下划线$数字组成  长度6到10");
+        }
+    }
+
+</script>
+</html>

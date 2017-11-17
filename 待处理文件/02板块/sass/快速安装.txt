@@ -1,0 +1,8 @@
+1，配置环境
+2，输入 gem install E:\q千峰\js课程\第七周课程\安装文件夹\sass-3.4.22.gem\sass-3.4.22.gem
+3,sassv-v
+4，创建文件夹，css，css.scss
+5,输入  D:\WWW\webstom\css\base.scss:D:\WWW\webstom\css\common.css
+[每次更新都要手动输入一遍]
+6，监听  sass --watch D:\WWW\webstom\css\base.scss:D:\WWW\webstom\css\common.css
+
