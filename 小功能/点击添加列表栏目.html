@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul,li{list-style: none}
+        #vueEle{overflow: hidden}
+        .topList li,.leftList li:hover{
+            cursor: pointer;
+        }
+        .topList{
+            height:50px;background: #f2f2f2;
+        }
+        .topList li{
+            float:left;
+            width:100px;height:40px;background: #0c8ec3;position: relative;border-radius:5px;
+            text-align: center;line-height: 40px;margin:5px;
+        }
+        .topList li i{
+            content:"x";position: absolute;top:0;right:0;font-size:4px;width:20px;height:20px;background: #fff;color:#000;
+            line-height: 20px;text-align: center;
+        }
+        .leftList li{
+            height:40px;margin:5px 0; width:100px;background: #0c8ec3;text-align: center;line-height: 40px;font-size:16px;
+        }
+    </style>
+</head>
+<body>
+<div id="vueEle">
+    <ul class="topList">
+        <li v-for="(val,idx) in topList" :key="val.id" v-cloak>{{val.txt}}<i @click="del(idx)">x</i></li>
+    </ul>
+    <ul class="leftList">
+        <li v-for="(val,idx) in leftList" :key="val.id" @click="chose(val.id,val.txt)" v-cloak>{{val.txt}}</li>
+    </ul>
+</div>
+</body>
+<script src="libs/vue-2.3.js"></script>
+<script>
+ var vm=new Vue({
+     el:"#vueEle",
+     data:function () {
+         return {
+             topList:[],
+             leftList:[{id:1,txt:"列表一"},{id:2,txt:"列表二"},{id:3,txt:"列表三"},{id:4,txt:"列表四"}]
+         }
+     },
+     methods:{
+         chose:function (id,txt) {
+             if(this.topList.lenght==0){
+                 this.topList.push({id:id,txt:txt})
+             }else{
+//                 var flag=false;
+//                 for(var i=0;i<this.topList.length;i++){
+//                     if(this.topList[i].id==id){
+//                         flag=true;break;
+//                     }
+//                 }
+                 var flag=this.topList.some(function(value){return value.id==id;});
+                 if(!flag){
+                     //如果topList里面不存在这个id，则进行相应操作
+                     this.topList.push({id:id,txt:txt})
+                 }
+             }
+         },
+         del:function (idx) {
+             this.topList.splice(idx,1)
+         }
+     }
+ })
+</script>
+</html>

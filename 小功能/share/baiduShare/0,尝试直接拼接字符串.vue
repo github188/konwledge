@@ -68,7 +68,7 @@
                 }
                 if(data=='sqq'){
                     let url = urlOrgin+image_id+shareQQ;
-                    window.open("http://connect.qq.com/widget/shareqq/index.html"+
+                    window.open("http://connect.qq.com/widget/shareqq/点击添加列表栏目.html"+
                         "?url="+ url+"&title="+title+ "&desc=&summary=&site=baidu&pics"+ pic)
                 }
 
