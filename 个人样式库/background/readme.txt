@@ -1,1 +1,0 @@
-http://lea.verou.me/css3patterns/
