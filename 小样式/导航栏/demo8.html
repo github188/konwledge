@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,	abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,	legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details, embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section, summary,time,mark,audio,
+			
+			video {
+				margin: 0;
+				padding: 0;
+				border: 0;
+				font-size: 100%;
+				font: inherit;
+				vertical-align: baseline
+			}
+			
+			article,
+			aside,
+			details,
+			figcaption,
+			figure,
+			footer,
+			header,
+			hgroup,
+			menu,
+			nav,
+			section {
+				display: block
+			}
+			
+			body {
+				line-height: 1
+			}
+			
+			ol,
+			ul {
+				list-style: none
+			}
+			
+			blockquote,
+			q {
+				quotes: none
+			}
+			
+			blockquote:before,
+			blockquote:after,
+			q:before,
+			q:after {
+				content: '';
+				content: none
+			}
+			
+			table {
+				border-collapse: collapse;
+				border-spacing: 0
+			}
+<!-----------------才开始写---------------------------------------------->			
+			html{
+				height: 100%;
+			}
+			body{height:100%;background: url(img/bg.jpg) repeat scroll top left/cover;}
+			#menu{height:135px;width: 80%;margin:50px auto;position: relative;}
+			#menu ul{margin-top:20px;}
+			#menu ul:after{content:"";display:block;clear:both;}
+			#menu li{width: 15%;height:135px;float: left;position: relative;
+				z-index: 2;margin-right:1.482%;
+				background: url(img/rocket-large.png) no-repeat center;}
+			#menu li:after{content:"";width:10%;height:100%;background: 		  			url(img/menu-bg.png);position: absolute;top: 0;right:-10%;}
+			
+			#menu li a{height: 100%;width: 100%;line-height:220px;
+			text-align:center;color:#fff;text-decoration:none;display:block;}
+			#box{width:95px;height:165px;background:#c39449;
+			position:absolute;top:-13px;left:7.5%;margin-left:-49px;
+				transition:all 400ms ease-in-out;border-radius:10px;}
+			li:nth-child(1):hover~#box{left:7.5%;}
+			li:nth-child(1):before{content:"";width:10%;height:100%;
+			background: url(img/menu-bg.png);position:absolute;top:0;left:-10%;		 				border-radius:10px 0 0 10px;}
+			li:nth-child(2):hover~#box{left:24%;}
+			li:nth-child(3):hover~#box{left:40.5%;}
+			li:nth-child(4):hover~#box{left:57%;}
+			li:nth-child(5):hover~#box{left:73%;}
+			li:nth-child(6):hover~#box{left:89.5%;}
+			li:nth-child(6):after{border-radius:0 10px 10px 0;}
+		</style>
+	</head>
+	<body>
+		<nav id="menu">
+			<div style="text-align:center;clear:both;margin-top: 100px;">
+
+			</div>
+			<ul>
+				<li class="list1"><a href="">123</a></li>
+				<li><a href="">123</a></li>
+				<li><a href="">123</a></li>
+				<li><a href="">123</a></li>
+				<li><a href="">123</a></li>
+				<li><a href="">123</a></li>
+				<div id="box">
+                    <div class="div1"></div>
+                    <div class="div2"></div>
+                    <div class="div2"></div>
+				</div>
+			</ul>
+			
+		</nav>
+	</body>
+</html>
