@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="file" id="uploadFile" onchange="upload(this)">
+<button type="button" onclick="getData()">发送请求</button>
+</body>
+<script>
+    var $$={};
+    $$.ajax=function (obj) {
+        var props={
+            el:null,
+            type:"GET",
+            url:"",
+            dataType:"JSON",
+            fileName:null,
+            file:null,
+            async:true,
+            success:function (response) {
+                console.log(response);
+            },
+            compvare:null,
+            error:function (err) {
+                console.log(err)
+            },
+        };
+        for(var i in obj){
+            props[i]=obj[i]
+        }
+
+        var xhr = null;
+        if (window.XMLHttpRequest) {//兼容ie6
+            xhr=new XMLHttpRequest();
+        } else if (window.ActiveXObject) {
+            xhr=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        if(props.fileName){
+            var formData = new FormData();
+            for(var i=0;i<props.el.files.length;i++){
+                formData.append(props.fileName,props.el.files[i]);
+            }
+            props.file=formData;
+        }//如果上传的是form表单，则启用
+        xhr.open(props.type,props.url,props.async);
+        xhr.send(props.file);
+        xhr.onreadystatechange = function(){
+            if (xhr.readyState == 4 && xhr.status==200){
+                if(props.dataType == "JSON"){
+                    props.success(JSON.parse(xhr.responseText));
+                }else{
+                    props.success(xhr.responseText);
+                }
+            }else {
+                props.error(xhr.status);
+                // console.log("Request was unsuccessful: " + xhr.status);
+            }
+        };
+    };
+</script>
+<script src="jquery-1.9.1.min.js"></script>
+<script>
+    function upload(e) {
+        //用法
+        var  data={
+            el:e,
+            fileName:"fileVal",
+            type:"POST",
+            url:"http://test.jubao56.com"+"/res/file/upload",
+            success:function (res) {
+                console.log(res)
+            },
+            error:function (err) {
+
+            }
+        };
+        $$.ajax(data);//上传文件,四个参数
+    }
+
+    function getData(e) {
+        //用法
+//        var  data={
+//            type:"POST",
+//            url:"http://test.jubao56.com"+"/res/file/upload",
+//            headers:{},
+//            success:function (res) {
+//                console.log(res)
+//            },
+//            error:function (err) {
+//                console.log(err)
+//
+//            }
+//        };
+//        $$.ajax(data);//上传文件,四个参数
+        $({
+            type:"POST",
+            url:"http://test.jubao56.com/v1/cmn/user/info",
+            success:function (res) {
+                console.log(res)
+            },
+            error:function (err) {
+                console.log(err)
+            }
+        })
+    }
+</script>
+</html>
