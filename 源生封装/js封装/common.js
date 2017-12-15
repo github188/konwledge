@@ -41,3 +41,17 @@ function isArray(arg) {
     }
     return false;
 }
+
+/**
+ * 获取location上？后面以&和=形式传过来的参数；返回值为一个包含各类属性的对象
+ * @returns {{}}
+ */
+function getQuery() {
+    var msgArr = window.location.href.substring(window.location.href.indexOf("?")+1).split("&");
+    var query = {};
+    for(var i=0;i<msgArr.length;i++){
+        var tempArr = msgArr[i].split("=");
+        query[tempArr[0]]=tempArr[1]
+    }
+    return query
+}
