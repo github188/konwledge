@@ -15,6 +15,7 @@
     function isApp() {
         var flag = false; //设置初始值
         var userAgent = window.navigator.userAgent;//获取用户代理信息
+        // "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.76 Mobile Safari/537.36"
         var app = ["Android", "iPhone", "iPad", "Windows Phone", "BB"]; //app的种类
         //判断app的种类 是否在userAgent中出现过
         for (var i = 0; i < app.length; i++) {
