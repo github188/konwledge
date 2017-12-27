@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button type="button" onclick="submit()">按钮</button>
+</body>
+<script src="jquery-1.9.1.min.js"></script>
+<script src="json2Excel.js"></script>
+<script>
+    function translateName(name) {
+        return name+"帅哥"
+    }
+
+function submit() {
+    $.ajax({
+        url: "2.json",
+        type: "get",
+        dataType:"text",
+        success: function(res) {
+            res=JSON.parse(res);
+            JtoExcel(res.rows, '用户列表', 'sheet', [
+                ['用户名', 'txt',translateName],
+            ])
+        }
+    })
+
+    function JtoExcel(data, filename, sheetname, convert){
+        var tables = [];
+        data.forEach(function(elem, index){
+            var table = {};
+            convert.forEach(function(item, inx){
+                table[convert[inx][1]] = data[index][convert[inx][1]];
+                if(typeof convert[inx][2] == 'function') table[convert[inx][1]] = convert[inx][2](table[convert[inx][1]],elem,index)
+            })
+            tables.push(table);
+        });
+        var sheetheader = [];
+        convert.forEach(function(elem,index){
+            sheetheader.push(elem[0])
+        });
+        var option={};
+        option.fileName = filename;
+        option.datas=[
+            {
+                sheetData:tables,//数据
+                sheetName: sheetname,
+                sheetHeader:sheetheader,//设置表头
+            }];
+        var toExcel=new ExportJsonExcel(option);
+        toExcel.saveExcel();
+
+    }
+}
+</script>
+</html>
