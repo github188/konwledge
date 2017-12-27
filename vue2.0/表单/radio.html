@@ -6,6 +6,9 @@
     <style>
         .show{display: block}
         .hide{display: none}
+        #two{
+            width:100px;height:20px;
+        }
     </style>
 </head>
 <body>
@@ -18,7 +21,6 @@
     <br>
     <span>Picked: {{ picked }}</span>
     <div :class="picked=='One'?'show':'hide'">show</div>
-
 </div>
 </body>
 <script src="../libs/vue-2.3.js"></script>

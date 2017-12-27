@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <span>{{message}}</span>
+ <button @click="changeMsg">change</button>
+</div>
+</body>
+<script src="../libs/vue-2.3.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue!',
+        },
+        watch:{
+//            message(val,newVal){
+//                console.log(1)
+//            },
+            message:{
+                immediate:true,//为true时，初始化时就会触发wath;   默认为false,初始化时不触发
+                handler:function(val,oldVal){
+                    console.log(1)
+                }
+            }
+        },
+        methods:{
+            changeMsg(){
+                this.message="hello change !"
+            }
+        }
+    });
+</script>
+</html>

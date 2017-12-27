@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,body{margin:0;padding:0;}
+    </style>
+</head>
+<body>
+<div style="height:100px;width:100px;background: #000;"> </div>
+<div class="box" style="height:100px;width:100px;background: red;"></div>
+<div id="test" style="width: 100px; height: 100px; background: #ddd;"></div>
+</body>
+<script src="libs/jquery-1.9.1.min.js"></script>
+<script>
+    console.log($('.box').offset().top) //jquery方法
+    var box =document.querySelector(".box");
+    console.log(box.getBoundingClientRect().top); //源生方法，ie5以上都能支持，但是又一点点地方需要修正一下，IE67的left、top会少2px,并且没有width、height属性。
+    //源生封装----利用getBoundingClientRect来写一个获取html元素相对于视窗的位置集合的方法
+    function getObjXy(obj){
+        var xy = obj.getBoundingClientRect();
+        var top = xy.top-document.documentElement.clientTop+document.documentElement.scrollTop,//document.documentElement.clientTop 在IE67中始终为2，其他高级点的浏览器为0
+            bottom = xy.bottom,
+            left = xy.left-document.documentElement.clientLeft+document.documentElement.scrollLeft,//document.documentElement.clientLeft 在IE67中始终为2，其他高级点的浏览器为0
+            right = xy.right,
+            width = xy.width||right - left, //IE67不存在width 使用right - left获得
+            height = xy.height||bottom - top;
+
+        return {
+            top:top,
+            right:right,
+            bottom:bottom,
+            left:left,
+            width:width,
+            height:height
+        }
+    }
+
+    var test = getObjXy(document.getElementById('test'));
+    alert("top:" + test.top + ", right:" + test.right + ", bottom:" + test.bottom + ", left:" + test.left);
+</script>
+</html>
