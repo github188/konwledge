@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
+    <title>Title</title>
+    <style>
+        ul,li{list-style: none}
+        header{font-size:30px;background: #0bb20c;width:100%;height:50px;line-height: 50px;text-align: center}
+        header:hover{cursor: pointer;background: blue;}
+        .ul{background: #aaa;  width:100%;overflow: hidden}
+        .li{height:50px;margin:20px 0;text-align: center;line-height: 50px;font-size:30px;background: yellowgreen;width:100%;}
+        .li:hover{cursor: pointer;background: yellow}
+
+        .ul{transition:all .3s }
+
+    </style>
+</head>
+<body>
+<div id="vue">
+    <header @click="flag=!flag ">顶部</header>
+    <div class="ul" v-show="flag" ref="ul">
+        <div class="li" v-for="(val,idx) in list" v-text="val.text"></div>
+    </div>
+</div>
+</body>
+<script src="../libs/vue.min.js"></script>
+<script>
+    let vm = new Vue({
+        el:"#vue",
+        data(){
+            return {
+                list:[
+                    {id:1,text:"第一项"},
+                    {id:2,text:"第二项"},
+                    {id:3,text:"第三项"}
+                ],
+                flag:false
+            }
+        },
+        computed(){
+
+        },
+        created(){
+
+        },
+        mounted(){
+            this.$refs.ul.style.transition="height .3s";
+            this.$refs.ul.style.webkitTransition = 'height .3s';
+            this.$refs.ul.style.mozTransition = 'height .3s';
+            this.$refs.ul.style.overflow = 'hidden';
+            this.$watch("flag",function (val,oldVal) {
+                if(val){
+                    //设置元素的属性时，一定要注意带单位px
+                    let height=this.$refs.ul.getBoundingClientRect().height; //获取原来的高度
+                    this.$refs.ul.style.height="auto";//将高度设置为auto;
+                    let newHeight = this.$refs.ul.getBoundingClientRect().height; //获取展开后的高度
+                    this.$refs.ul.style.height=height+"px";  //将元素的高度还原
+                    let f = document.body.offsetHeight; //触发过渡
+                    this.$refs.ul.style.height=newHeight+"px";      //将原来的高度设定为展开后的高度
+//                    let _this=this;
+//                    setTimeout(function () {
+//                        _this.$refs.ul.style.height="0px";
+//                    },1000)
+                }else{
+                    //为false的时候关闭显示
+                    this.$refs.ul.style.height="0px";
+                }
+            },{immediate:true})
+        }
+    })
+</script>
+</html>

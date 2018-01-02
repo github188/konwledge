@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
+    <title>Title</title>
+    <style>
+        ul,li{list-style: none}
+        header{font-size:30px;background: #0bb20c;width:100%;height:50px;line-height: 50px;text-align: center}
+        header:hover{cursor: pointer;background: blue;}
+        .ul{background: #aaa;  width:100%;overflow: hidden}
+        .li{height:50px;margin:20px 0;text-align: center;line-height: 50px;font-size:30px;background: yellowgreen;width:100%;}
+        .li:hover{cursor: pointer;background: yellow}
+
+        .ul{transition:all .3s }
+
+    </style>
+</head>
+<body>
+<div id="vue">
+    <header @click="flag=!flag ">顶部</header>
+    <div class="ul" v-show="flag" ref="panel">
+        <div class="li" v-for="(val,idx) in list" v-text="val.text"></div>
+    </div>
+</div>
+</body>
+<script src="../libs/vue.min.js"></script>
+<script>
+    let vm = new Vue({
+        el:"#vue",
+        data(){
+            return {
+                list:[
+                    {id:1,text:"第一项"},
+                    {id:2,text:"第二项"},
+                    {id:3,text:"第三项"}
+                ],
+                flag:false
+            }
+        },
+        mounted(){
+            this.$refs.panel.style.transition = 'height .3s';
+            this.$refs.panel.style.webkitTransition = 'height .3s';
+            this.$refs.panel.style.mozTransition = 'height .3s';
+            this.$refs.panel.style.overflow = 'hidden';
+            this.$watch('flag',(newVal)=>{
+                if (!newVal) {
+                    this.$refs.panel.style.height = '0px';
+                } else {
+                    this.changeH();
+                }
+            },{immediate: true});
+        },
+        methods:{
+            changeH(){
+                let oldHeight = this.$refs.panel.getBoundingClientRect().height;
+                this.$refs.panel.style.height = 'auto';
+                let height = this.$refs.panel.getBoundingClientRect().height;
+                this.$refs.panel.style.height = oldHeight + 'px';
+                let f = document.body.offsetHeight; //触发过渡
+                this.$refs.panel.style.height = height + 'px';
+            }
+        }
+    })
+</script>
+</html>
