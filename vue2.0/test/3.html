@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{width:200px;height:200px;border:1px solid #000000;border-top-color: blue;}
+        .rotate{transform: rotate(90deg);transition: all .3s ease;}
+    </style>
+</head>
+<body>
+<div id="vue">
+    <button type="button" @click="flag=!flag">按钮</button>
+    <div class="box" :class="{rotate:flag}"></div>
+</div>
+</body>
+<script src="../libs/vue.min.js"></script>
+<script>
+    let vm = new Vue({
+        el:"#vue",
+        data(){
+            return {
+                flag:false
+            }
+        },
+    })
+</script>
+</html>

@@ -19,7 +19,7 @@
 <body>
 <div id="vue">
     <header @click="flag=!flag ">顶部</header>
-    <div class="ul" v-show="flag" ref="panel">
+    <div class="ul" ref="panel">
         <div class="li" v-for="(val,idx) in list" v-text="val.text"></div>
     </div>
 </div>
