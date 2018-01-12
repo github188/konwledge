@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="vue">
+    <transition name="fade" mode="out-in">
+        <!-- ... the buttons ... -->
+
+    </transition>
+</div>
+</body>
+<script src="../libs/vue.min.js"></script>
+<script>
+    var vm = new Vue({
+        el: "#vue",
+        data(){
+            return {
+                animationCls:""
+            }
+        },
+        methods: {
+            move() {
+                console.log(1);
+                this.animationCls="move";
+            }
+        }
+    })
+</script>
+</html>
