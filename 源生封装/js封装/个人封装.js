@@ -1,7 +1,11 @@
 /**
- * 批量阻止各个元素上的事件冒泡
- * @param elArr  这里是多个元素所组成的数组集合
+ * 1，批量阻止各个元素上的事件冒泡
+ * 2，将body的高度设置屏幕高度，自带属性：position:relative；
+ *
  */
+
+
+//批量阻止各个元素上的事件冒泡
 function preventBubble(elArr) {
     if(isArray(elArr)){
         for(var i=0;i<elArr.length;i++){
@@ -9,5 +13,14 @@ function preventBubble(elArr) {
                 window.event? window.event.cancelBubble = true : e.stopPropagation();
             }
         }
+    }
+}
+//将body的高度设置屏幕高度，自带属性：position:relative；
+function bodyRelative() {
+    var body = document.querySelector("body");
+    body.style.height= document.documentElement.clientHeight+"px";
+    body.style.position='relative';
+    window.onresize=function () {
+        body.style.height= document.documentElement.clientHeight+"px"
     }
 }
