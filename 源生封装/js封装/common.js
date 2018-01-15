@@ -1,40 +1,9 @@
-//小方法 start------------------------------------------------------
-/**(
- * 将 "39px" 转化为39 的形式
- * @param val
- * @param isPlus  时候取绝对值
- * @returns {number}
+/*
+1，判断是否为数组
+2，重新定义toFixed
  */
-function pxToNum(val,isPlus) {
-    if(typeof val=="string"){
-        if(!isPlus){
-            return val.substring(0,val.lastIndexOf("px"))*1
-        }else{
-            return Math.abs(val.substring(0,val.lastIndexOf("px"))*1)
-        }
-    }
-}
 
-//将9变成09 的形式
-function numToTwo(num) {
-    if(typeof num == "number"){
-        return num=num<10?("0"+num):num;
-    }
-}
-/**
- * 将 秒 转化为01:19:28 这种形式
- * @param allTime
- * @returns {string}
- */
-function changeTimeFormat(allTime) {
-    var hours =numToTwo(Math.floor(allTime/(60*60)));   var hourOvermuch=allTime%(60*60); //时
-    var minute = numToTwo(Math.floor(hourOvermuch/60));      var minuteOvermuch = hourOvermuch%60; //分
-    var second = numToTwo(Math.floor(minuteOvermuch));
-    // return hours+":"+minute+":"+second;
-    return minute+":"+second;
-}
-
-//数组的自定义方法
+//判断是否为数组
 function isArray(arg) {
     if (typeof arg === 'object') {
         return Object.prototype.toString.call(arg) === '[object Array]';
@@ -42,16 +11,53 @@ function isArray(arg) {
     return false;
 }
 
-/**
- * 获取location上？后面以&和=形式传过来的参数；返回值为一个包含各类属性的对象
- * @returns {{}}
- */
-function getQuery() {
-    var msgArr = window.location.href.substring(window.location.href.indexOf("?")+1).split("&");
-    var query = {};
-    for(var i=0;i<msgArr.length;i++){
-        var tempArr = msgArr[i].split("=");
-        query[tempArr[0]]=tempArr[1]
-    }
-    return query
-}
+//重新定义toFixed
+function redefinitionToFixed (){
+    Number.prototype.toFixed = function (n) {
+        if (n > 20 || n < 0) {
+            throw new RangeError('toFixed() digits argument must be between 0 and 20');
+        }
+        const number = this;
+        if (isNaN(number) || number >= Math.pow(10, 21)) {
+            return number.toString();
+        }
+        if (typeof (n) == 'undefined' || n == 0) {
+            return (Math.round(number)).toString();
+        }
+
+        let result = number.toString();
+        const arr = result.split('.');
+
+        // 整数的情况
+        if (arr.length < 2) {
+            result += '.';
+            for (let i = 0; i < n; i += 1) {
+                result += '0';
+            }
+            return result;
+        }
+
+        const integer = arr[0];
+        const decimal = arr[1];
+        if (decimal.length == n) {
+            return result;
+        }
+        if (decimal.length < n) {
+            for (let i = 0; i < n - decimal.length; i += 1) {
+                result += '0';
+            }
+            return result;
+        }
+        result = integer + '.' + decimal.substr(0, n);
+        const last = decimal.substr(n, 1);
+
+        // 四舍五入，转换为整数再处理，避免浮点数精度的损失
+        if (parseInt(last, 10) >= 5) {
+            const x = Math.pow(10, n);
+            result = (Math.round((parseFloat(result) * x)) + 1) / x;
+            result = result.toFixed(n);
+        }
+
+        return result;
+    };
+};

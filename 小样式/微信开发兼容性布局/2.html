@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
+    <title>微信页面布局</title>
+    <style>
+        body{
+            margin:0;padding:0;
+        }
+        .header{
+            position: absolute;left:0;top:0;
+            width:100%;height:50px;
+            background: #0bb20c;
+        }
+        .content{
+            position: absolute;left:0;right:0;top:50px;bottom:50px;
+            background: yellowgreen;
+        }
+        .bottom{
+            width:100%;height:50px;
+            background: #06acf9;
+            position: absolute;bottom:0;left:0;
+        }
+    </style>
+</head>
+<body>
+<div class="header"></div>
+<div class="content">
+<input type="text"/>
+</div>
+<div class="bottom"></div>
+</body>
+<script>
+    bodyRelative();
+
+
+    function bodyRelative() {
+        var body = document.querySelector("body");
+        body.style.height= document.documentElement.clientHeight+"px";
+        body.style.position='relative';
+        window.onresize=function () {
+            body.style.height= document.documentElement.clientHeight+"px"
+        }
+    }
+
+    function $nextTick(fn) {
+        setTimeout(function () {
+            fn
+        },1000)
+    }
+
+</script>
+</html>
