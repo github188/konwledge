@@ -12,6 +12,12 @@
             <button type="button" @click="repeat(idx)">点击触发</button>
         </li>
     </ul>
+    <ul>
+        <li v-for="(val,idx) in arr2">
+            {{val}}
+            <button type="button" @click="repeat(idx)">点击触发2222222</button>
+        </li>
+    </ul>
 
 </div>
 </body>
@@ -22,14 +28,18 @@
         el:"#app",
         data(){
             return {
-                arr:[1,2,3,4]
+                arr:[1,2,3,4],
+                arr2:['aaa','bbb','ccc']
             }
         },
         methods:{
             repeat(idx){
-                this.arr[idx]="repeated=="+idx;
-                console.log(this.arr,"arr数组")
+                this.arr2[2]=666;
+//                this.arr[idx]="repeated=="+idx;
+//                console.log(this.arr,"arr数组")
                 this.$set(this.arr,idx,"repeated=="+idx)
+
+                //$set()方法调用时，页面会全部更新一遍-----就是说：之前的赋值虽然没有改变页面布局。但是，如果后面有$set方法，不管是对谁使用，都会刷新全部页面的赋值。
             }
         }
     })
