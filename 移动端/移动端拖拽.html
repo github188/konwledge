@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="width:200px;height:200px;background:red;position: absolute;" class="testDiv">
+
+</div>
+</body>
+<script>
+    //阻止浏览器的默认事件
+    function defaultEvent(e) {
+        e.preventDefault()
+    }
+
+
+    var testDiv=document.getElementsByClassName("testDiv")[0];
+    //3,testDiv=====================
+    testDiv.addEventListener("touchstart",function (e) {
+        var touches = e.touches[0];
+        distX=touches.clientX-testDiv.offsetLeft;   //获取点击的位置距离滑块左边和上边的距离 + 父元素距离左边和上边的距离
+        distY=touches.clientY-testDiv.offsetTop;
+        //阻止页面的滑动默认事件
+        document.addEventListener("touchmove",defaultEvent(e),false);
+    },false)
+
+    testDiv.addEventListener("touchmove",function (ev) {
+        var touches = ev.touches[0];
+        var x=touches.clientX-distX;     //滑块应该在的位置
+        var y=touches.clientY-distY;
+        if(x<0){x=0;}
+        if(y<0){y=0;}
+        if(x>(document.documentElement.clientWidth-testDiv.offsetWidth))
+        {
+            x=document.documentElement.clientWidth-testDiv.offsetWidth;
+        }
+        testDiv.style.left=x+'px';    //根据鼠标位置相对定位，得到left，top值
+        testDiv.style.top=y+'px';
+    },false)
+
+    testDiv.addEventListener("touchend",function(e) {
+        document.removeEventListener("touchmove",defaultEvent(e),false);
+    },false);
+</script>
+</html>
