@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <style>
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color:#000;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <style>
+        .swiper-container{
+            width:300px;height:200px;
+            margin:0;
+        }
+        .swiper-container .swiper-slide{
+            background: yellowgreen;
+        }
+        #swiper-container1{
+            width:150px;overflow: visible;border:0;
+        }
+        #swiper-container1 .swiper-slide{
+            background: orangered;
+        }
+
+        .wrapper{
+            width:300px;height:500px;background: #0bb20c;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="swiper-container" id="swiper-container1">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">Slide 1</div>
+            <div class="swiper-slide">Slide 2</div>
+        </div>
+    </div>
+    <div class="swiper-container" id="swiper-container2">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">Slide 1</div>
+            <div class="swiper-slide">Slide 2</div>
+        </div>
+    </div>
+
+</div>
+</body>
+<script src="js/swiper.min.js"></script>
+<script>
+    var Swiper1 = new Swiper('#swiper-container1',{
+        slidesPerView:2
+    });
+    var Swiper2 = new Swiper('#swiper-container2',{
+        controller: {
+            control: Swiper1, //控制Swiper1
+            inverse:true,
+        },
+    })
+
+    Swiper1.controller.control = Swiper2;//Swiper1控制Swiper2，需要在Swiper2初始化后
+    Swiper2.controller.control = Swiper1;//Swiper2控制Swiper1，需要在Swiper1初始化后
+
+
+</script>
+</html>
