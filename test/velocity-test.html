@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #dummy{
+            width:500px;height:300px;border:1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<div id="dummy">
+
+</div>
+<button type="button" onclick="animationTest()">按钮</button>
+</body>
+<script src="velocity.min.js"></script>
+<script>
+    Velocity(document.getElementById("dummy"), {
+        opacity: 0.5
+    }, {
+        duration: 1000
+    });
+
+    function animationTest() {
+        var a = document.getElementById("dummy");
+        a.style.height="700px"
+    }
+</script>
+</html>
