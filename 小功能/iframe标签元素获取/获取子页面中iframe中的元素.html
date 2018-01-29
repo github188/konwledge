@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>父级ifram页面</title>
+</head>
+<body>
+<iframe src="获取父级ifame下的元素.html" name="child"></iframe>
+<div class="parent">
+    parent内容
+</div>
+</body>
+<script>
+    var a = window.frames['child'].document.querySelector('.all');
+    console.log(a,'父级ifram页面')
+    setTimeout(function () {
+        var a = window.frames['child'].document.querySelector('.all');
+        console.log(a,'父级ifram页面')
+    },200)
+</script>
+</html>
