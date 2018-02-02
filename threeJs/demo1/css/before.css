@@ -1,0 +1,49 @@
+*{-webkit-backface-visibility: hidden;backface-visibility: hidden;}
+html, body, div, span, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,abbr, address, cite, code,del, dfn, em, img, ins, kbd, q, samp,small, strong, sub, sup, var,b,
+i,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, dialog, figure, footer, header,hgroup, menu, nav, section,time,
+mark, audio, video,input,button{margin:0;padding:0;border:none;outline:0;font-size:100%;vertical-align:baseline;background:transparent;}
+article, aside, dialog, figure, footer, header,hgroup, nav, section {display:block;}
+ul,ol,li{list-style:none;}
+i,em{font-style:normal;}
+blockquote, q {quotes:none;}
+blockquote:before, blockquote:after,q:before, q:after {content:'';content:none;}
+table {border-collapse:collapse; border-spacing:0;}
+input, select {vertical-align:middle;}
+a{text-decoration:none;}
+em{font-style:normal;}
+body{background:#fff;}
+input[type="text"]{-webkit-appearance:none;background:none;}
+input[type="submit"]{-webkit-appearance:none;}
+input[type="checkbox"]{border:1px solid #ccc;border-radius:0;}
+input[type="password"]{-webkit-appearance:none;}
+input[type="button"]{-webkit-appearance:none;}
+input[type="tel"]{-webkit-appearance:none;background:none;}
+body{font-family:微软雅黑,Helvetica,Arial,sans-serif;}
+td,th{vertical-align:middle; }
+.clear{clear:both;}
+.clearfix:after{clear:both;height:0;font-size:0;display:block;content:"";visibility:hidden;}
+h1,h2,h3{  font-weight:normal;}
+
+*, :after, :before {  box-sizing: border-box;  }
+.ivu-col{position:relative;display:block}
+.ivu-col-span-1,.ivu-col-span-10,.ivu-col-span-11,.ivu-col-span-12,.ivu-col-span-13,.ivu-col-span-14,.ivu-col-span-15,.ivu-col-span-16,.ivu-col-span-17,.ivu-col-span-18,.ivu-col-span-19,.ivu-col-span-2,.ivu-col-span-20,.ivu-col-span-21,.ivu-col-span-22,.ivu-col-span-23,.ivu-col-span-24,.ivu-col-span-3,.ivu-col-span-4,.ivu-col-span-5,.ivu-col-span-6,.ivu-col-span-7,.ivu-col-span-8,.ivu-col-span-9{float:left;-ms-flex:0 0 auto;flex:0 0 auto}
+.ivu-col-span-24{display:block;width:100%}
+.ivu-row-flex, .ivu-row-flex:after, .ivu-row-flex:before {  display: -ms-flexbox;  display: flex;  }
+.ivu-row-flex-middle {
+    -ms-flex-align: center;
+    align-items: center;
+}
+.ivu-row-flex-center {
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+.ivu-row-flex {
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.ivu-row-flex, .ivu-row-flex:after, .ivu-row-flex:before {
+    display: -ms-flexbox;
+    display: flex;
+}
