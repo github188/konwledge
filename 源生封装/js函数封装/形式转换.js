@@ -3,9 +3,9 @@
 2,
  */
 
-//获取location上？后面以&和=形式传过来的参数；返回一个带属性属性的对象{id:7,text:"g"}
-function getQuery() {
-    var msgArr = window.location.href.substring(window.location.href.indexOf("?")+1).split("&");
+//将字符串?id=7&text=g，转化为{id:7,text:"g"}
+function getQuery(str) {
+    var msgArr = str.substring(str.indexOf("?")+1).split("&");
     var query = {};
     for(var i=0;i<msgArr.length;i++){
         var tempArr = msgArr[i].split("=");
