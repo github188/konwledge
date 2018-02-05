@@ -1,0 +1,896 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0055)http://blog.csdn.net/leaderqiu/article/details/51955956 -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="canonical" href="http://blog.csdn.net/leaderqiu/article/details/51955956">
+
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <link rel="alternate" media="handheld" href="http://blog.csdn.net/leaderqiu/article/details/51955956#">
+
+    <meta name="shenma-site-verification" content="5a59773ab8077d4a62bf469ab966a63b_1497598848">
+
+    <title>iOS与网页JS交互，看我就够了 - LeaderQiu的专栏 - CSDN博客</title>
+
+    <meta name="description"
+          content="随着移动APP的快速迭代开发趋势，越来越多的APP中嵌入了html网页，但在一些大中型APP中，尤其是电商类APP，html页面已经不仅仅满足展示功能，这时html要求能与原生语言进行交互、相互传值。比如携程APP中一个热门景点的网页中，点击某个景点，可以跳转到原生中的该景点详情页控制器。    为此，我整理了三种最常用最便捷有效的OC与JS交互的方式，供大家学习交流。第一种：JS给OC传值。">
+
+    <meta name="keywords" content="iOS,JS,OC与JS交互">
+
+    <link rel="Stylesheet" type="text/css" href="./iOS与网页JS交互，看我就够了 - LeaderQiu的专栏 - CSDN博客_files/style.css">
+
+
+    <link id="RSSLink" title="RSS" type="application/rss+xml" rel="alternate"
+          href="http://blog.csdn.net/LeaderQiu/rss/list">
+    <link rel="shortcut icon" href="http://c.csdnimg.cn/public/favicon.ico">
+    <link type="text/css" rel="stylesheet" href="./iOS与网页JS交互，看我就够了 - LeaderQiu的专栏 - CSDN博客_files/default.css">
+
+
+    <link href="./iOS与网页JS交互，看我就够了 - LeaderQiu的专栏 - CSDN博客_files/csdn_public_blog_detail.min.css" type="text/css"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="./iOS与网页JS交互，看我就够了 - LeaderQiu的专栏 - CSDN博客_files/csdn_blog_detail.min.css">
+
+
+
+</head>
+
+
+<body>
+<div class="csdn-tracking-statistics" data-pid="blog" data-view="true" data-mod="ad_popu_72" data-mtp="62"
+     data-order="40" data-con="ad_content_2072">
+
+
+
+</div>
+
+
+
+<link rel="stylesheet" href="./iOS与网页JS交互，看我就够了 - LeaderQiu的专栏 - CSDN博客_files/content_toolbar.css">
+<!--new top-->
+<div id="container">
+
+    <div id="header">
+        <div class="header">
+            <div id="blog_title">
+                <h2>
+                    <a href="http://blog.csdn.net/leaderqiu">LeaderQiu的专栏</a></h2>
+                <h3>分享，交流，合作，共赢</h3>
+                <div class="clear">
+                </div>
+            </div>
+            <div class="clear">
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+    <div id="body">
+        <div id="main">
+            <div class="main">
+                <div class="ad_class">
+
+
+                </div>
+
+
+
+                <style>
+                    .texCommend {
+                        position: absolute;
+                        background-color: #fff;
+                        color: #000;
+                        padding: 5px;
+                        border: 1px solid #ccc;
+                        cursor: default;
+                        text-align: left;
+                        z-index: 201;
+                        border-radius: 5px;
+                        box-shadow: 0 10px 20px #808080;
+                        font-size: 12px;
+                        line-height: 1.5;
+                    }
+
+                    .MJX_Assistive_MathML {
+                        display: none;
+                    }
+
+                    span.MathJax {
+                        outline: none
+                    }
+                </style>
+                <div id="article_details" class="details">
+
+                    <div class="article_title">
+                        <span class="ico ico_type_Original"></span>
+
+                        <h1>
+        <span class="link_title"><a href="http://blog.csdn.net/leaderqiu/article/details/51955956">
+        iOS与网页JS交互，看我就够了        
+           
+        </a>
+        </span>
+
+
+                        </h1>
+                    </div>
+
+
+                    <style type="text/css">
+                        .embody {
+                            padding: 10px 10px 10px;
+                            margin: 0 -20px;
+                            border-bottom: solid 1px #ededed;
+                        }
+
+                        .embody_b {
+                            margin: 0;
+                            padding: 10px 0;
+                        }
+
+                        .embody .embody_t, .embody .embody_c {
+                            display: inline-block;
+                            margin-right: 10px;
+                        }
+
+                        .embody_t {
+                            font-size: 12px;
+                            color: #999;
+                        }
+
+                        .embody_c {
+                            font-size: 12px;
+                        }
+
+                        .embody_c img, .embody_c em {
+                            display: inline-block;
+                            vertical-align: middle;
+                        }
+
+                        .embody_c img {
+                            width: 30px;
+                            height: 30px;
+                        }
+
+                        .embody_c em {
+                            margin: 0 20px 0 10px;
+                            color: #333;
+                            font-style: normal;
+                        }
+                    </style>
+
+                    <div class="category clearfix">
+                        <div class="category_l">
+                            <img src="./iOS与网页JS交互，看我就够了 - LeaderQiu的专栏 - CSDN博客_files/category_icon.jpg">
+                            <span>分类：</span>
+                        </div>
+
+                    </div>
+
+
+                    <div id="article_content" class="article_content csdn-tracking-statistics" data-pid="blog"
+                         data-mod="popu_307" data-dsm="post">
+                        <div class="markdown_views">
+                            <hr>
+
+                            <blockquote>
+                                <p>
+                                    随着移动APP的快速迭代开发趋势，越来越多的APP中嵌入了html网页，但在一些大中型APP中，尤其是电商类APP，html页面已经不仅仅满足展示功能，这时html要求能与原生语言进行交互、相互传值。比如携程APP中一个热门景点的网页中，点击某个景点，可以跳转到原生中的该景点详情页控制器。</p>
+
+                                <p>为此，我整理了三种最常用最便捷有效的<strong>OC与JS交互的方式</strong>，供大家学习交流。</p>
+                            </blockquote>
+
+                            <h2 id="第一种js给oc传值">第一种：JS给OC传值。</h2>
+
+                            <p><code>1. 技术方案：使用JavaScriptCore.framework框架</code> <br>
+                                <code>2. 使用场景： 网页中代码中的某个方法，比如点击事件方法，将该方法的参数传值给OC，供OC使用。 <br>
+                                    比如：携程APP中一个热门景点的网页中，有很多个热门景点，点击某个景点的图片或名称，可以跳转到原生中的该景点详情页控制器。</code> <br>
+                                <code>3. 代码实现如下：</code></p>
+
+                            <h4 id="oc里要实现的代码">OC里要实现的代码：</h4>
+
+                            <p>拖入JavaScriptCore.framework静态库，遵守<code>UIWebViewDelegate</code>代理协议。 <br>
+                                在-webViewDidFinishLoad:方法里编写如下代码：</p>
+
+
+                            <pre class="prettyprint"><code class=" hljs objectivec">- (<span
+                                    class="hljs-keyword">void</span>)webViewDidFinishLoad:(<span class="hljs-built_in">UIWebView</span> *)webView{
+
+    JSContext *context = [webView valueForKeyPath:@<span class="hljs-string">"documentView.webView.mainFrame.javaScriptContext"</span>];
+
+    context[@<span class="hljs-string">"passValue"</span>] = ^{
+
+        <span class="hljs-built_in">NSArray</span> *arg = [JSContext currentArguments];
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">id</span> obj in arg) {
+            <span class="hljs-built_in">NSLog</span>(@<span class="hljs-string">"%@"</span>, obj);
+        }
+    };
+
+}
+</code></pre>
+
+                            <p>其中 <strong>passValue</strong> 是JS的函数名，得到的 <strong>arg数组</strong> 里面为JS的
+                                <strong>passValue</strong> 函数的参数，即 <strong>JS要传给OC的参数</strong>。</p>
+
+
+                            <h4 id="js里要实现的代码">JS里要实现的代码：</h4>
+
+
+                            <pre class="prettyprint"><code class=" hljs javascript"><span class="hljs-function"><span
+                                    class="hljs-keyword">function</span> <span class="hljs-title">testClick</span><span
+                                    class="hljs-params">()</span>
+            {</span>
+                <span class="hljs-keyword">var</span> str1=document.getElementById(<span
+                                        class="hljs-string">"text1"</span>).value;
+                <span class="hljs-keyword">var</span> str2=document.getElementById(<span
+                                        class="hljs-string">"text2"</span>).value;
+
+                passValue(str1,str2);
+            }</code></pre>
+
+                            <p>在需要给OC传值的函数里（例如：<code>testClick（）</code>）直接调用 <code>passValue（）</code>函数，将值传进去即可。</p>
+
+                            <hr>
+
+
+                            <h2 id="第二种js给oc传值">第二种：JS给OC传值。</h2>
+
+                            <p><code>1. 技术方案：使用自定义url方法，每次点击网页</code> <br>
+                                <code>2. 使用场景： 网页中代码中的某个方法，比如点击事件方法，将该方法的参数传值给OC，供OC使用。 <br>
+                                    比如：携程APP中一个热门景点的网页中，有很多个热门景点，点击某个景点的图片或名称，可以跳转到原生中的该景点详情页控制器。</code> <br>
+                                <code>3. 代码实现如下：</code></p>
+
+                            <h4 id="js里要实现的代码-1">JS里要实现的代码：</h4>
+
+
+                            <pre class="prettyprint"><code class=" hljs avrasm">  function testClick()
+            {
+
+                var str1=document<span class="hljs-preprocessor">.getElementById</span>(<span class="hljs-string">"text1"</span>)<span
+                                        class="hljs-preprocessor">.value</span><span class="hljs-comment">;</span>
+                var str2=document<span class="hljs-preprocessor">.getElementById</span>(<span class="hljs-string">"text2"</span>)<span
+                                        class="hljs-preprocessor">.value</span><span class="hljs-comment">;</span>
+
+                //  <span class="hljs-string">"objc://"</span>为自定义协议头<span class="hljs-comment">;</span>
+                //  str1&amp;str2为要传给OC的值,以<span class="hljs-string">":/"</span>作为分隔
+                window<span class="hljs-preprocessor">.location</span><span class="hljs-preprocessor">.href</span>=<span
+                                        class="hljs-string">"objc://"</span>+<span class="hljs-string">":/"</span>+str1+<span
+                                        class="hljs-string">":/"</span>+str2<span class="hljs-comment">;</span>
+            }</code></pre>
+
+                            <p>在需要给OC传值的函数里（例如：<code>testClick（）</code>）写如上格式的代码。</p>
+
+                            <p>其中 <code>objc://</code>
+                                是自定义的协议头，<code>str1</code>与<code>str2</code>为<strong>JS要传给OC的值</strong>。</p>
+
+
+                            <h4 id="oc里要实现的代码-1">OC里要实现的代码：</h4>
+
+
+                            <pre class="prettyprint"><code class=" hljs objectivec"><span class="hljs-comment">//遵守UIWebViewDelegate代理协议。</span>
+-(<span class="hljs-built_in">BOOL</span>)webView:(<span class="hljs-built_in">UIWebView</span> *)webView shouldStartLoadWithRequest:(<span
+                                        class="hljs-built_in">NSURLRequest</span> *)request navigationType:(UIWebViewNavigationType)navigationType{
+    <span class="hljs-comment">//拿到网页的实时url</span>
+    <span class="hljs-built_in">NSString</span> *requestStr = [[request<span class="hljs-variable">.URL</span> absoluteString] stringByRemovingPercentEncoding];
+
+    <span class="hljs-comment">//在url中寻找自定义协议头"objc://"</span>
+    <span class="hljs-keyword">if</span> ([requestStr hasPrefix:@<span class="hljs-string">"objc://"</span>]) {
+
+        <span class="hljs-comment">// 以"://"为中心将url分割成两部分，放进数组arr</span>
+        <span class="hljs-built_in">NSArray</span> *arr = [requestStr componentsSeparatedByString:@<span
+                                        class="hljs-string">"://"</span>];
+        <span class="hljs-built_in">NSLog</span>(@<span class="hljs-string">"%@"</span>,arr);
+
+        <span class="hljs-comment">//取其后半段</span>
+        <span class="hljs-built_in">NSString</span> *paramStr = arr[<span class="hljs-number">1</span>];
+        <span class="hljs-built_in">NSLog</span>(@<span class="hljs-string">"%@"</span>,paramStr);
+
+        <span class="hljs-comment">//以":/"为标识将后半段url分割成若干部分，放进数组arr2，此时arr2[0]为空，arr2[1]为第一个传参值，arr2[2]为第二个传参值，以此类推</span>
+        <span class="hljs-built_in">NSArray</span> *arr2 = [paramStr componentsSeparatedByString:@<span
+                                        class="hljs-string">":/"</span>];
+        <span class="hljs-built_in">NSLog</span>(@<span class="hljs-string">"%@"</span>,arr2);
+
+        <span class="hljs-comment">//取出参数，进行使用</span>
+        <span class="hljs-keyword">if</span> (arr2<span class="hljs-variable">.count</span>) {
+            <span class="hljs-built_in">NSLog</span>(@<span class="hljs-string">"有参数"</span>);
+            [<span class="hljs-keyword">self</span> doSomeThingWithParamA:arr2[<span class="hljs-number">1</span>] andParamB:arr2[<span
+                                        class="hljs-number">2</span>]];
+        }<span class="hljs-keyword">else</span>{
+            <span class="hljs-built_in">NSLog</span>(@<span class="hljs-string">"无参数"</span>);
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">NO</span>;
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">YES</span>;
+}
+<span class="hljs-comment">//对JS传来的值进行调用</span>
+- (<span class="hljs-keyword">void</span>)doSomeThingWithParamA:(<span class="hljs-keyword">id</span>)paramA andParamB:(<span
+                                        class="hljs-keyword">id</span>)paramB{
+
+    <span class="hljs-built_in">NSLog</span>(@<span class="hljs-string">"%@    %@"</span>, paramA, paramB);
+}</code></pre>
+
+                            <hr>
+
+
+                            <h2 id="第三种利用第三方库实现js与oc的相互传值">第三种：利用第三方库实现JS与OC的相互传值。</h2>
+
+                            <p><code>1. 技术方案：使用WebViewJavascriptBridge三方库</code> <br>
+                                <code>2. 使用场景： 网页中代码中的某个方法，比如点击事件方法，将该方法的参数传值给OC，供OC使用。 <br>
+                                    比如：携程APP中一个热门景点的网页中，有很多个热门景点，点击某个景点的图片或名称，可以跳转到原生中的该景点详情页控制器。 <br>
+                                    或者将原生中的用户信息传递给网页，以便其个性化展示</code> <br>
+                                <code>3. 代码实现如下：</code></p>
+
+                            <h3 id="oc传值给js">OC传值给JS</h3>
+
+
+                            <h4 id="js里需要实现的代码">JS里需要实现的代码：</h4>
+
+
+                            <pre class="prettyprint"><code class=" hljs javascript"><span class="hljs-function"><span
+                                    class="hljs-keyword">function</span> <span class="hljs-title">setupWebViewJavascriptBridge</span><span
+                                    class="hljs-params">(callback)</span> {</span>
+        <span class="hljs-keyword">if</span> (window.WebViewJavascriptBridge) { <span class="hljs-keyword">return</span> callback(WebViewJavascriptBridge); }
+        <span class="hljs-keyword">if</span> (window.WVJBCallbacks) { <span class="hljs-keyword">return</span> window.WVJBCallbacks.push(callback); }
+        window.WVJBCallbacks = [callback];
+        <span class="hljs-keyword">var</span> WVJBIframe = document.createElement(<span
+                                        class="hljs-string">'iframe'</span>);
+        WVJBIframe.style.display = <span class="hljs-string">'none'</span>;
+        WVJBIframe.src = <span class="hljs-string">'wvjbscheme://__BRIDGE_LOADED__'</span>;
+        document.documentElement.appendChild(WVJBIframe);
+        setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span><span
+                                        class="hljs-params">()</span> {</span> document.documentElement.removeChild(WVJBIframe) }, <span
+                                        class="hljs-number">0</span>)
+    }
+
+    <span class="hljs-comment">//调用上面定义的函数</span>
+    setupWebViewJavascriptBridge(<span class="hljs-function"><span class="hljs-keyword">function</span> <span
+                                        class="hljs-params">(bridge)</span>{</span>
+
+        <span class="hljs-comment">//OC传值给JS 'testJavascriptHandler'为双方自定义好的统一方法名；'data'是OC传过来的值；'responseCallback'是JS接收到之后给OC的回调</span>
+        bridge.registerHandler(<span class="hljs-string">'testJavascriptHandler'</span>, <span
+                                        class="hljs-function"><span class="hljs-keyword">function</span><span
+                                        class="hljs-params">(data, responseCallback)</span> {</span>
+                <span class="hljs-comment">//打印OC传过来的值</span>
+                log(<span class="hljs-string">'ObjC called testJavascriptHandler with'</span>, data)
+
+                <span class="hljs-keyword">var</span> responseData = { <span
+                                        class="hljs-string">'Javascript Says'</span>:<span class="hljs-string">'Right back atcha!'</span> }
+
+                log(<span class="hljs-string">'JS responding with'</span>, responseData)
+
+                <span class="hljs-comment">//给OC的回调</span>
+                responseCallback(responseData)
+
+            })</code></pre>
+
+
+                            <h4 id="oc里需要实现的代码">OC里需要实现的代码：</h4>
+
+                            <p>导入第三方库WebViewJavascriptBridge；遵守<code>UIWebViewDelegate</code>；</p>
+
+
+                            <pre class="prettyprint"><code class=" hljs rust">    <span class="hljs-comment">//设置第三方Bridge是否可用</span>
+    [WebViewJavascriptBridge enableLogging];
+
+    <span class="hljs-comment">//关联webView和bridge</span>
+    <span class="hljs-number">_</span>bridge = [WebViewJavascriptBridge bridgeForWebView:web];
+
+    [<span class="hljs-number">_</span>bridge setWebViewDelegate:<span class="hljs-keyword">self</span>];
+
+    <span class="hljs-comment">//OC给JS传值，双方自定义一个统一的方法名'testJavascriptHandler'；data里即为要传过去的值</span>
+    [<span class="hljs-number">_</span>bridge callHandler:@<span class="hljs-string">"testJavascriptHandler"</span> data:@{@<span
+                                        class="hljs-string">"年龄"</span>:@<span class="hljs-string">"20"</span>}];</code></pre>
+
+
+                            <h3 id="js传值给oc">JS传值给OC</h3>
+
+
+                            <h4 id="js里需要实现的代码-1">JS里需要实现的代码：</h4>
+
+
+                            <pre class="prettyprint"><code class=" hljs javascript">     <span class="hljs-comment">//点击网页上一个按钮时</span>
+     callbackBt.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span><span
+                                        class="hljs-params">()</span>
+     {</span>  
+     <span class="hljs-keyword">var</span> str1=document.getElementById(<span class="hljs-string">"text1"</span>).value;
+     <span class="hljs-keyword">var</span> str2=document.getElementById(<span class="hljs-string">"text2"</span>).value;
+
+     <span class="hljs-comment">//JS给OC传值。'passValue'为双方自定义的统一方法名；'str1'&amp;'str2'为要传的值； response为OC收到后给JS的回调</span>
+     bridge.callHandler(<span class="hljs-string">'passValue'</span>, {str1,str2}, <span class="hljs-function"><span
+                                        class="hljs-keyword">function</span><span class="hljs-params">(response)</span> {</span>
+                                })
+
+     }</code></pre>
+
+
+                            <h4 id="oc里需要实现的代码-1">OC里需要实现的代码：</h4>
+
+                            <p>导入第三方库WebViewJavascriptBridge；遵守<code>UIWebViewDelegate</code>；</p>
+
+
+                            <pre class="prettyprint"><code class=" hljs objectivec">   <span class="hljs-comment">//设置第三方Bridge是否可用</span>
+    [WebViewJavascriptBridge enableLogging];
+
+    <span class="hljs-comment">//关联webView和bridge</span>
+    _bridge = [WebViewJavascriptBridge bridgeForWebView:web];
+
+    [_bridge setWebViewDelegate:<span class="hljs-keyword">self</span>];
+
+    <span class="hljs-comment">//js给oc传值.'passValue'为双方自定义的统一方法名；'data'为JS传过来的值；'responseCallback'为OC收到值后给JS返回的回调</span>
+    [_bridge registerHandler:@<span class="hljs-string">"passValue"</span> handler:^(<span
+                                        class="hljs-keyword">id</span> data, WVJBResponseCallback responseCallback) {
+
+        <span class="hljs-comment">//打印js传过来的值</span>
+        <span class="hljs-built_in">NSLog</span>(@<span class="hljs-string">"%@"</span>, data);
+
+        <span class="hljs-comment">//返回给js的值</span>
+        responseCallback(@<span class="hljs-string">"收到了"</span>);
+    }];</code></pre>
+
+                            <blockquote>
+                                <p>需要注意的是：不论哪方给哪方传值，传值的方法名称与对应接收值的方法名称要保持一致。</p>
+                            </blockquote>
+
+                            <p>有任何问题，大家可以在评论区留言，我会一一解答。</p></div>
+
+                    </div>
+
+
+                    <div class="readall_box csdn-tracking-statistics tracking-click" data-pid="blog"
+                         data-mod="popu_596">
+                        <div class="read_more_mask"></div>
+                        <a class="btn btn-large btn-gray-fred read_more_btn" target="_self">阅读全文</a>
+                    </div>
+
+                    <div class="csdn-tracking-statistics" data-pid="blog" data-mod="popu_222"><a
+                            href="javascript:void(0);">&nbsp;</a></div>
+                    <div class="csdn-tracking-statistics" data-pid="blog" data-mod="popu_223"><a
+                            href="javascript:void(0);">&nbsp;</a></div>
+                    <div id="digg" articleid="51955956">
+                        <dl id="btnDigg" class="digg digg_disable" onclick="btndigga();">
+
+                            <dt>顶</dt>
+                            <dd>7</dd>
+                        </dl>
+
+
+                        <dl id="btnBury" class="digg digg_disable" onclick="btnburya();">
+
+                            <dt>踩</dt>
+                            <dd>0</dd>
+                        </dl>
+
+                    </div>
+
+
+
+                    <div style="clear:both; height:10px;"></div>
+
+
+                </div>
+
+                <div>
+                </div>
+
+                <div id="suggest"></div>
+
+
+
+                <!-- 广告位开始 -->
+                <!-- 广告位结束 -->
+
+
+                <div class="comment_class">
+                    <div class="commentform"><!--<div class="panel_head">发表评论</div>--></div>
+                    <div id="comment_form">
+
+                    </div>
+                    <div id="comment_title" class="panel_head">
+                        <span class="see_comment">查看评论</span><a name="comments"></a></div>
+                    <div id="comment_list">
+
+                    </div>
+                    <div id="comment_bar">
+                    </div>
+                    <!--<div class="announce">
+                        * 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场<a name="reply"></a><a name="quote"></a></div>-->
+                </div>
+                <div class="recommend_list">
+
+
+                    <dl class="clearfix csdn-tracking-statistics recommend_article" data-mod="popu_614"
+                        data-poputype="feed" data-feed-show="false" data-dsm="post">
+                        <a href="http://blog.csdn.net/tony_18736165317/article/details/65639734" target="_blank"
+                           strategy="BlogCommendFromBaidu_0">
+                            <dd>
+                                <h2>iOS 开发中OC 与 JS的交互</h2>
+                                <div class="summary">
+                                    iOS原生应用和web页面的交互有iOS7之后的JavaScriptCore、拦截协议、第三方框架WebViewJavaScriptBridge、iOS8之后的WKWebView几种方法，这一章我们主要讲解JavaScriptCore和拦截协议这两种办法。WebViewJavaScriptBridg...
+                                </div>
+                                <ul>
+                                    <li class="avatar_img"><img
+                                            src="./iOS与网页JS交互，看我就够了 - LeaderQiu的专栏 - CSDN博客_files/2_tony_18736165317.jpg"
+                                            alt="Tony_18736165317" title="Tony_18736165317"></li>
+                                    <li class="user_name">Tony_18736165317</li>
+                                    <li class="time">2017-03-24 19:38</li>
+                                    <li class="visited_num">
+                                        <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"
+                                             width="16" height="16" fill="#ccc">
+                                            <defs>
+                                                <style></style>
+                                            </defs>
+                                            <path d="M988.16 240.64c0-5.12-2.56-11.52-6.4-15.36-2.56-2.56-51.2-55.04-135.68-81.92-32-10.24-64-15.36-96-15.36-97.28 0-181.76 46.08-235.52 84.48-55.04-39.68-139.52-85.76-236.8-85.76-32 0-65.28 5.12-96 15.36C97.28 168.96 49.92 224 47.36 226.56c-3.84 3.84-5.12 8.96-5.12 15.36v546.56l60.16 71.68c3.84 8.96 12.8 15.36 21.76 15.36 3.84 0 7.68 0 10.24-2.56 19.2-5.12 120.32-29.44 199.68-29.44 37.12 0 64 5.12 79.36 15.36 7.68 5.12 11.52 10.24 12.8 16.64 0 12.8 10.24 23.04 23.04 23.04h21.76c24.32 0 61.44 0 98.56-2.56h5.12c10.24 0 20.48-7.68 23.04-17.92 2.56-10.24 7.68-16.64 17.92-23.04 16.64-8.96 42.24-14.08 76.8-14.08 78.08 0 171.52 24.32 198.4 32 3.84 1.28 7.68 2.56 11.52 2.56 8.96 0 17.92-5.12 21.76-14.08l64-72.96V240.64zM88.32 744.96V250.88c14.08-14.08 52.48-46.08 107.52-64 26.88-8.96 53.76-12.8 81.92-12.8 70.4 0 142.08 26.88 213.76 79.36v477.44c-38.4-23.04-88.32-34.56-149.76-34.56-32 0-66.56 3.84-102.4 10.24-60.16 8.96-115.2 26.88-151.04 38.4zm805.12 79.36c-20.48-5.12-61.44-15.36-106.24-23.04-35.84-5.12-66.56-7.68-94.72-7.68-43.52 0-76.8 6.4-101.12 20.48-15.36 8.96-26.88 20.48-33.28 34.56-33.28 1.28-65.28 2.56-87.04 2.56h-3.84c-6.4-12.8-15.36-24.32-29.44-32-23.04-15.36-58.88-21.76-106.24-21.76-76.8 0-165.12 19.2-200.96 28.16l-29.44-35.84c51.2-17.92 148.48-47.36 240.64-47.36 70.4 0 122.88 17.92 153.6 52.48l2.56 2.56 1.28 1.28 1.28 1.28 1.28 1.28h1.28l2.56 1.28h11.52l2.56-1.28h1.28s1.28 0 1.28-1.28h1.28s1.28 0 1.28-1.28h1.28l2.56-2.56c30.72-37.12 81.92-56.32 152.32-56.32 39.68 0 122.88 6.4 240.64 49.92l-28.16 34.56zm47.36-79.36c-35.84-14.08-90.88-32-152.32-43.52-37.12-6.4-71.68-10.24-103.68-10.24-60.16 0-110.08 12.8-148.48 37.12V253.44c70.4-51.2 142.08-78.08 212.48-78.08 28.16 0 55.04 3.84 81.92 12.8 56.32 17.92 94.72 49.92 110.08 64v492.8z"></path>
+                                        </svg>
+                                        <span>1665</span></li>
+                                </ul>
+                            </dd>
+                        </a>
+                    </dl>
+
+                    <dl class="clearfix csdn-tracking-statistics recommend_article" data-mod="popu_614"
+                        data-poputype="feed" data-feed-show="false" data-dsm="post">
+                        <a href="http://blog.csdn.net/sinat_25544827/article/details/50675154" target="_blank"
+                           strategy="BlogCommendFromBaidu_1">
+                            <dd>
+                                <h2>iOS与JS交互</h2>
+                                <div class="summary">
+                                    1.使用JavaScriptCoreJavaScriptCore中常用的类型：
+                                    JSContext ：JSContext代表JS的执行环境，它的对象通过-evaluateScipt: 方法就可以执行JS代码。可以通过JSContext
+                                    *jscontext = [webView valueForKe...
+                                </div>
+                                <ul>
+                                    <li class="avatar_img"><img
+                                            src="./iOS与网页JS交互，看我就够了 - LeaderQiu的专栏 - CSDN博客_files/2_sinat_25544827.jpg"
+                                            alt="sinat_25544827" title="sinat_25544827"></li>
+                                    <li class="user_name">sinat_25544827</li>
+                                    <li class="time">2016-02-16 15:42</li>
+                                </ul>
+                            </dd>
+                        </a>
+                    </dl>
+
+                    <div id="_sg3l5qprtv"></div>
+                    <dl class="clearfix csdn-tracking-statistics downloadElement" data-mod="popu_36"
+                        data-poputype="feed" data-feed-show="false" data-dsm="post">
+                        <a href="http://download.csdn.net/download/u012903898/9996178" target="_blank"
+                           strategy="searchFromBaidu_3">
+                            <dd class="floatL">
+                                <div class="summary">
+                                    <h2>ios 原生与js交互</h2>
+                                    <div class="summary">
+                                        <ul>
+                                            <li class="time">2017-09-26 16:09</li>
+                                            <li class="visited_num fileSize">78KB</li>
+                                            <li class="download_btn">下载</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </dd>
+                        </a>
+                        <dt class="floatR"><a href="http://download.csdn.net/download/u012903898/9996178"
+                                              target="_blank" strategy="searchFromBaidu_3"></a><a
+                                href="http://download.csdn.net/download/u012903898/9996178" target="_blank"
+                                strategy="searchFromBaidu_3"><img class="maxwidth"
+                                                                  src="./iOS与网页JS交互，看我就够了 - LeaderQiu的专栏 - CSDN博客_files/zip.svg"
+                                                                  alt="" title=""></a></dt>
+                    </dl>
+
+                    <dl class="clearfix csdn-tracking-statistics recommend_article" data-mod="popu_614"
+                        data-poputype="feed" data-feed-show="false" data-dsm="post">
+                        <a href="http://blog.csdn.net/baby_hua/article/details/53693776" target="_blank"
+                           strategy="BlogCommendFromBaidu_4">
+                            <dd>
+                                <h2>iOS WebView中的JS交互</h2>
+                                <div class="summary">
+                                    前言：
+                                    一段时间了，手头的工作照常进行中，之前有好几个主题一直想写，但又搁置了，主要是主题有点大，看样子路还是要一步一步走的；
+                                    前几天，收到了一份面试通知，一家比较大的互联网企业吧，想想自己也没什么面试经验，总想着要换个环境，也想换个角度审视一下自己，所以就去了，真心是没准备什么，临行前把几个常用算...
+                                </div>
+                                <ul>
+                                    <li class="avatar_img"><img
+                                            src="./iOS与网页JS交互，看我就够了 - LeaderQiu的专栏 - CSDN博客_files/2_baby_hua.jpg"
+                                            alt="baby_hua" title="baby_hua"></li>
+                                    <li class="user_name">baby_hua</li>
+                                    <li class="time">2016-12-23 18:21</li>
+                                </ul>
+                            </dd>
+                        </a>
+                    </dl>
+
+                    <dl class="clearfix csdn-tracking-statistics recommend_article" data-mod="popu_614"
+                        data-poputype="feed" data-feed-show="false" data-dsm="post">
+                        <a href="http://blog.csdn.net/luochuanad/article/details/73274598" target="_blank"
+                           strategy="BlogCommendFromBaidu_5">
+                            <dd>
+                                <h2>iOS与JS交互(全)</h2>
+                                <div class="summary">
+                                    一,说明:(此文转载,如果涉及任何版权问题,请联系我)
+
+                                    转载自:天狐博客&nbsp;»&nbsp;js(javascript)与ios(Objective-C)相互通信交互
+                                    话说,当时在找js交互这块内容时,朋友给了我这个非常好的代码,我照着这个demo从头敲到尾,对js交互有了很大的理...
+                                </div>
+                                <ul>
+                                    <li class="avatar_img"><img
+                                            src="./iOS与网页JS交互，看我就够了 - LeaderQiu的专栏 - CSDN博客_files/2_luochuanad.jpg"
+                                            alt="luochuanAD" title="luochuanAD"></li>
+                                    <li class="user_name">luochuanAD</li>
+                                    <li class="time">2017-06-15 09:26</li>
+                                </ul>
+                            </dd>
+                        </a>
+                    </dl>
+                    <dl class="clearfix csdn-tracking-statistics downloadElement" data-mod="popu_36"
+                        data-poputype="feed" data-feed-show="false" data-dsm="post">
+                        <a href="http://download.csdn.net/download/baihuaxiu123/9524216" target="_blank"
+                           strategy="searchFromBaidu_6">
+                            <dd class="floatL">
+                                <div class="summary">
+                                    <h2>js与iOS交互.zip</h2>
+                                    <div class="summary">
+                                        <ul>
+                                            <li class="time">2016-05-18 17:37</li>
+                                            <li class="visited_num fileSize">67KB</li>
+                                            <li class="download_btn">下载</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </dd>
+                        </a>
+                        <dt class="floatR"><a href="http://download.csdn.net/download/baihuaxiu123/9524216"
+                                              target="_blank" strategy="searchFromBaidu_6"></a><a
+                                href="http://download.csdn.net/download/baihuaxiu123/9524216" target="_blank"
+                                strategy="searchFromBaidu_6"><img class="maxwidth"
+                                                                  src="./iOS与网页JS交互，看我就够了 - LeaderQiu的专栏 - CSDN博客_files/zip.svg"
+                                                                  alt="" title=""></a></dt>
+                    </dl>
+
+                    <dl class="clearfix csdn-tracking-statistics recommend_article" data-mod="popu_614"
+                        data-poputype="feed" data-feed-show="false" data-dsm="post">
+                        <a href="http://blog.csdn.net/sinat_28709097/article/details/51000026" target="_blank"
+                           strategy="searchFromBaidu_7">
+                            <dd>
+                                <h2>iOS开发-WebView与JS的交互</h2>
+                                <div class="summary">
+                                    WebView与JS的交互分为两种种方式:1.在OC中调用JS 2.在JS中调用OC&nbsp;
+
+                                    网页试用[NSString stringWithFormat:@"http://cn.bing.com"]
+
+                                    一.在OC中调用JS
+
+                                    直接上代码
+
+                                    -(void)w...
+                                </div>
+                                <ul>
+                                    <li class="avatar_img"><img
+                                            src="./iOS与网页JS交互，看我就够了 - LeaderQiu的专栏 - CSDN博客_files/2_sinat_28709097.jpg"
+                                            alt="sinat_28709097" title="sinat_28709097"></li>
+                                    <li class="user_name">sinat_28709097</li>
+                                    <li class="time">2016-03-28 18:12</li>
+                                    <li class="visited_num">
+                                        <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"
+                                             width="16" height="16" fill="#ccc">
+                                            <defs>
+                                                <style></style>
+                                            </defs>
+                                            <path d="M988.16 240.64c0-5.12-2.56-11.52-6.4-15.36-2.56-2.56-51.2-55.04-135.68-81.92-32-10.24-64-15.36-96-15.36-97.28 0-181.76 46.08-235.52 84.48-55.04-39.68-139.52-85.76-236.8-85.76-32 0-65.28 5.12-96 15.36C97.28 168.96 49.92 224 47.36 226.56c-3.84 3.84-5.12 8.96-5.12 15.36v546.56l60.16 71.68c3.84 8.96 12.8 15.36 21.76 15.36 3.84 0 7.68 0 10.24-2.56 19.2-5.12 120.32-29.44 199.68-29.44 37.12 0 64 5.12 79.36 15.36 7.68 5.12 11.52 10.24 12.8 16.64 0 12.8 10.24 23.04 23.04 23.04h21.76c24.32 0 61.44 0 98.56-2.56h5.12c10.24 0 20.48-7.68 23.04-17.92 2.56-10.24 7.68-16.64 17.92-23.04 16.64-8.96 42.24-14.08 76.8-14.08 78.08 0 171.52 24.32 198.4 32 3.84 1.28 7.68 2.56 11.52 2.56 8.96 0 17.92-5.12 21.76-14.08l64-72.96V240.64zM88.32 744.96V250.88c14.08-14.08 52.48-46.08 107.52-64 26.88-8.96 53.76-12.8 81.92-12.8 70.4 0 142.08 26.88 213.76 79.36v477.44c-38.4-23.04-88.32-34.56-149.76-34.56-32 0-66.56 3.84-102.4 10.24-60.16 8.96-115.2 26.88-151.04 38.4zm805.12 79.36c-20.48-5.12-61.44-15.36-106.24-23.04-35.84-5.12-66.56-7.68-94.72-7.68-43.52 0-76.8 6.4-101.12 20.48-15.36 8.96-26.88 20.48-33.28 34.56-33.28 1.28-65.28 2.56-87.04 2.56h-3.84c-6.4-12.8-15.36-24.32-29.44-32-23.04-15.36-58.88-21.76-106.24-21.76-76.8 0-165.12 19.2-200.96 28.16l-29.44-35.84c51.2-17.92 148.48-47.36 240.64-47.36 70.4 0 122.88 17.92 153.6 52.48l2.56 2.56 1.28 1.28 1.28 1.28 1.28 1.28h1.28l2.56 1.28h11.52l2.56-1.28h1.28s1.28 0 1.28-1.28h1.28s1.28 0 1.28-1.28h1.28l2.56-2.56c30.72-37.12 81.92-56.32 152.32-56.32 39.68 0 122.88 6.4 240.64 49.92l-28.16 34.56zm47.36-79.36c-35.84-14.08-90.88-32-152.32-43.52-37.12-6.4-71.68-10.24-103.68-10.24-60.16 0-110.08 12.8-148.48 37.12V253.44c70.4-51.2 142.08-78.08 212.48-78.08 28.16 0 55.04 3.84 81.92 12.8 56.32 17.92 94.72 49.92 110.08 64v492.8z"></path>
+                                        </svg>
+                                        <span>387</span></li>
+                                </ul>
+                            </dd>
+                        </a>
+                    </dl>
+
+                    <dl class="clearfix csdn-tracking-statistics recommend_article" data-mod="popu_614"
+                        data-poputype="feed" data-feed-show="false" data-dsm="post">
+                        <a href="http://blog.csdn.net/dreamcoffeezs/article/details/52067781" target="_blank"
+                           strategy="BlogCommendFromBaidu_8">
+                            <dd>
+                                <h2>iOS与JS交互的总结</h2>
+                                <div class="summary">
+                                    实现iOS和JS的交互
+                                </div>
+                                <ul>
+                                    <li class="avatar_img"><img
+                                            src="./iOS与网页JS交互，看我就够了 - LeaderQiu的专栏 - CSDN博客_files/2_dreamcoffeezs.jpg"
+                                            alt="DreamcoffeeZS" title="DreamcoffeeZS"></li>
+                                    <li class="user_name">DreamcoffeeZS</li>
+                                    <li class="time">2016-07-29 18:39</li>
+                                    <li class="visited_num">
+                                        <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"
+                                             width="16" height="16" fill="#ccc">
+                                            <defs>
+                                                <style></style>
+                                            </defs>
+                                            <path d="M988.16 240.64c0-5.12-2.56-11.52-6.4-15.36-2.56-2.56-51.2-55.04-135.68-81.92-32-10.24-64-15.36-96-15.36-97.28 0-181.76 46.08-235.52 84.48-55.04-39.68-139.52-85.76-236.8-85.76-32 0-65.28 5.12-96 15.36C97.28 168.96 49.92 224 47.36 226.56c-3.84 3.84-5.12 8.96-5.12 15.36v546.56l60.16 71.68c3.84 8.96 12.8 15.36 21.76 15.36 3.84 0 7.68 0 10.24-2.56 19.2-5.12 120.32-29.44 199.68-29.44 37.12 0 64 5.12 79.36 15.36 7.68 5.12 11.52 10.24 12.8 16.64 0 12.8 10.24 23.04 23.04 23.04h21.76c24.32 0 61.44 0 98.56-2.56h5.12c10.24 0 20.48-7.68 23.04-17.92 2.56-10.24 7.68-16.64 17.92-23.04 16.64-8.96 42.24-14.08 76.8-14.08 78.08 0 171.52 24.32 198.4 32 3.84 1.28 7.68 2.56 11.52 2.56 8.96 0 17.92-5.12 21.76-14.08l64-72.96V240.64zM88.32 744.96V250.88c14.08-14.08 52.48-46.08 107.52-64 26.88-8.96 53.76-12.8 81.92-12.8 70.4 0 142.08 26.88 213.76 79.36v477.44c-38.4-23.04-88.32-34.56-149.76-34.56-32 0-66.56 3.84-102.4 10.24-60.16 8.96-115.2 26.88-151.04 38.4zm805.12 79.36c-20.48-5.12-61.44-15.36-106.24-23.04-35.84-5.12-66.56-7.68-94.72-7.68-43.52 0-76.8 6.4-101.12 20.48-15.36 8.96-26.88 20.48-33.28 34.56-33.28 1.28-65.28 2.56-87.04 2.56h-3.84c-6.4-12.8-15.36-24.32-29.44-32-23.04-15.36-58.88-21.76-106.24-21.76-76.8 0-165.12 19.2-200.96 28.16l-29.44-35.84c51.2-17.92 148.48-47.36 240.64-47.36 70.4 0 122.88 17.92 153.6 52.48l2.56 2.56 1.28 1.28 1.28 1.28 1.28 1.28h1.28l2.56 1.28h11.52l2.56-1.28h1.28s1.28 0 1.28-1.28h1.28s1.28 0 1.28-1.28h1.28l2.56-2.56c30.72-37.12 81.92-56.32 152.32-56.32 39.68 0 122.88 6.4 240.64 49.92l-28.16 34.56zm47.36-79.36c-35.84-14.08-90.88-32-152.32-43.52-37.12-6.4-71.68-10.24-103.68-10.24-60.16 0-110.08 12.8-148.48 37.12V253.44c70.4-51.2 142.08-78.08 212.48-78.08 28.16 0 55.04 3.84 81.92 12.8 56.32 17.92 94.72 49.92 110.08 64v492.8z"></path>
+                                        </svg>
+                                        <span>1099</span></li>
+                                </ul>
+                            </dd>
+                        </a>
+                    </dl>
+
+                    <dl class="clearfix csdn-tracking-statistics recommend_article" data-mod="popu_614"
+                        data-poputype="feed" data-feed-show="false" data-dsm="post">
+                        <a href="http://blog.csdn.net/qq510304723/article/details/34414551" target="_blank"
+                           strategy="BlogCommendFromBaidu_9">
+                            <dd>
+                                <h2>iOS中js与objective-c的交互</h2>
+                                <div class="summary">
+                                    1、首先是objective-c调用js中的代码，可以用UIWebview中的一个方法&nbsp;
+
+                                    stringByEvaluatingJavaScriptFromString：后面接的是js中的方法名。这个函数的返回值就是所调用js方法&nbsp;
+
+
+                                    的返回值。
+                                </div>
+                                <ul>
+                                    <li class="avatar_img"><img
+                                            src="./iOS与网页JS交互，看我就够了 - LeaderQiu的专栏 - CSDN博客_files/2_qq510304723.jpg"
+                                            alt="qq510304723" title="qq510304723"></li>
+                                    <li class="user_name">qq510304723</li>
+                                    <li class="time">2014-06-25 10:48</li>
+                                    <li class="visited_num">
+                                        <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"
+                                             width="16" height="16" fill="#ccc">
+                                            <defs>
+                                                <style></style>
+                                            </defs>
+                                            <path d="M988.16 240.64c0-5.12-2.56-11.52-6.4-15.36-2.56-2.56-51.2-55.04-135.68-81.92-32-10.24-64-15.36-96-15.36-97.28 0-181.76 46.08-235.52 84.48-55.04-39.68-139.52-85.76-236.8-85.76-32 0-65.28 5.12-96 15.36C97.28 168.96 49.92 224 47.36 226.56c-3.84 3.84-5.12 8.96-5.12 15.36v546.56l60.16 71.68c3.84 8.96 12.8 15.36 21.76 15.36 3.84 0 7.68 0 10.24-2.56 19.2-5.12 120.32-29.44 199.68-29.44 37.12 0 64 5.12 79.36 15.36 7.68 5.12 11.52 10.24 12.8 16.64 0 12.8 10.24 23.04 23.04 23.04h21.76c24.32 0 61.44 0 98.56-2.56h5.12c10.24 0 20.48-7.68 23.04-17.92 2.56-10.24 7.68-16.64 17.92-23.04 16.64-8.96 42.24-14.08 76.8-14.08 78.08 0 171.52 24.32 198.4 32 3.84 1.28 7.68 2.56 11.52 2.56 8.96 0 17.92-5.12 21.76-14.08l64-72.96V240.64zM88.32 744.96V250.88c14.08-14.08 52.48-46.08 107.52-64 26.88-8.96 53.76-12.8 81.92-12.8 70.4 0 142.08 26.88 213.76 79.36v477.44c-38.4-23.04-88.32-34.56-149.76-34.56-32 0-66.56 3.84-102.4 10.24-60.16 8.96-115.2 26.88-151.04 38.4zm805.12 79.36c-20.48-5.12-61.44-15.36-106.24-23.04-35.84-5.12-66.56-7.68-94.72-7.68-43.52 0-76.8 6.4-101.12 20.48-15.36 8.96-26.88 20.48-33.28 34.56-33.28 1.28-65.28 2.56-87.04 2.56h-3.84c-6.4-12.8-15.36-24.32-29.44-32-23.04-15.36-58.88-21.76-106.24-21.76-76.8 0-165.12 19.2-200.96 28.16l-29.44-35.84c51.2-17.92 148.48-47.36 240.64-47.36 70.4 0 122.88 17.92 153.6 52.48l2.56 2.56 1.28 1.28 1.28 1.28 1.28 1.28h1.28l2.56 1.28h11.52l2.56-1.28h1.28s1.28 0 1.28-1.28h1.28s1.28 0 1.28-1.28h1.28l2.56-2.56c30.72-37.12 81.92-56.32 152.32-56.32 39.68 0 122.88 6.4 240.64 49.92l-28.16 34.56zm47.36-79.36c-35.84-14.08-90.88-32-152.32-43.52-37.12-6.4-71.68-10.24-103.68-10.24-60.16 0-110.08 12.8-148.48 37.12V253.44c70.4-51.2 142.08-78.08 212.48-78.08 28.16 0 55.04 3.84 81.92 12.8 56.32 17.92 94.72 49.92 110.08 64v492.8z"></path>
+                                        </svg>
+                                        <span>8996</span></li>
+                                </ul>
+                            </dd>
+                        </a>
+                    </dl>
+
+                </div>
+
+
+                <div id="ad_bot">
+                </div>
+                <div id="report_dialog">
+                </div>
+
+                <div id="d-top" style="bottom:60px;">
+
+
+                    <a id="quick-reply" class="btn btn-top q-reply" title="快速回复" style="display:none;">
+                        <img src="./iOS与网页JS交互，看我就够了 - LeaderQiu的专栏 - CSDN博客_files/blog-icon-reply.png" alt="快速回复">
+                    </a>
+                </div>
+
+                <style type="text/css">
+                    .tag_list {
+                        background: none repeat scroll 0 0 #FFFFFF;
+                        border: 1px solid #D7CBC1;
+                        color: #000000;
+                        font-size: 12px;
+                        line-height: 20px;
+                        list-style: none outside none;
+                        margin: 10px 2% 0 1%;
+                        padding: 1px;
+                    }
+
+                    .tag_list h5 {
+                        background: none repeat scroll 0 0 #E0DBD3;
+                        color: #47381C;
+                        font-size: 12px;
+                        height: 24px;
+                        line-height: 24px;
+                        padding: 0 5px;
+                        margin: 0;
+                    }
+
+                    .tag_list h5 a {
+                        color: #47381C;
+                    }
+
+                    .classify {
+                        margin: 10px 0;
+                        padding: 4px 12px 8px;
+                    }
+
+                    .classify a {
+                        margin-right: 20px;
+                        white-space: nowrap;
+                    }
+                </style>
+
+
+                <div id="pop_win"
+                     style="display:none ;position: absolute; z-index: 10000; border: 1px solid rgb(220, 220, 220); top: 222.5px; left: 630px; opacity: 1; background: none 0px 0px repeat scroll rgb(255, 255, 255);">
+
+                </div>
+                <div id="popup_mask"></div>
+                <style>
+                    #popup_mask {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background: #000;
+                        z-index: 9999;
+                        left: 0px;
+                        top: 0px;
+                        opacity: 0.3;
+                        filter: alpha(opacity=30);
+                        display: none;
+                    }
+
+                </style>
+
+
+
+                <div class="clear">
+                </div>
+            </div>
+
+        </div>
+
+        <div id="side">
+
+
+            <div class="side">
+
+                <div id="panel_Profile" class="panel">
+                    <ul class="panel_head"><span>个人资料</span></ul>
+                    <ul class="panel_body profile">
+                        <div id="blog_userface">
+                            <a href="http://my.csdn.net/LeaderQiu" target="_blank">
+                                <img src="./iOS与网页JS交互，看我就够了 - LeaderQiu的专栏 - CSDN博客_files/1_leaderqiu.jpg"
+                                     title="访问我的空间" style="max-width:90%">
+                            </a>
+                            <br>
+                            <span><a href="http://my.csdn.net/LeaderQiu" class="user_name" target="_blank">LeaderQiu</a></span>
+                        </div>
+                        <div class="interact">
+
+                            <a href="javascript:void(0);" class="attent" id="span_add_follow" title="[加关注]"></a>
+                        </div>
+                        <div id="blog_medal">
+                            <div id="bms_box">
+                            </div>
+
+                        </div>
+
+                    </ul>
+                </div>
+
+
+            </div>
+            <div class="clear">
+            </div>
+
+            <div class="csdn-tracking-statistics" data-pid="blog" data-view="true" data-mod="ad_popu_189" data-mtp="63"
+                 data-order="40" data-con="ad_content_1259" style="width: 250px; height: 250px;">
+                <div id="nav_show_top_stop" style="width: 250px;height: 250px;z-index:1000">
+
+                    <div id="cpro_u3031286" style="text-align:center;">
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+
+
+</div>
+<div class="texCommend" style="position:absolute;display:none;">显示当前公式源码</div>
+
+
+<link rel="stylesheet" type="text/css" href="./iOS与网页JS交互，看我就够了 - LeaderQiu的专栏 - CSDN博客_files/pub_footer_2014.css">
+
+
+</body>
+</html>
