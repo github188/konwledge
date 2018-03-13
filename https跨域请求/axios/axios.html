@@ -5,20 +5,16 @@
     <title>Title</title>
 </head>
 <body>
-1
+axios
 </body>
 <script src="axios.min.js"></script>
 <script>
-
-    let name = "Bob", time = "today";
-    console.log( `Hello ${name}, how are you ${time}?`)
-
     axios({
         method:"get",
         url:"http://test.jubao56.com"+"/v1/cmn/province/list",
         headers: { 'Authorization': 'Bearer ' + "" },
     }).then(res=>{
-        console.log(res.data)
+        console.log(res)
     })
 </script>
 </html>

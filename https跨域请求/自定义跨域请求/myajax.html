@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button type="button" onclick="getData()">GET</button><br>
+<button type="button" onclick="postData()">POST</button><br>
+<input type="file" onchange="upload()" id="upload">upload</input><br>
+<textarea id="text" style="width:100%;height:500px;"></textarea>
+</body>
+<script src="ajax.js"></script>
+<script>
+    function getData() {
+        ajax({
+            type:"get",
+            url:"http://test.jubao56.com"+"/v1/cmn/province/list",
+            success:function (res) {
+                document.getElementById("text").innerHTML=JSON.stringify(res);
+                console.log(res)
+            }
+        })
+
+    }
+
+    function postData() {
+        ajax({
+            type: "post",
+            url: "http://test.jubao56.com"+"/v1/zcb/order/save",
+            data:{
+                beneficiary: "武汉双视角保险理赔咨询有限公司",
+                coverage: 500000,
+                cargos:[
+                    {file_url: "http://test.jubao56.com/res/2018/03/07/17/4942356/小兔子.jpg"}
+                ],
+                end_city: "南京市",
+                end_province: "江苏省",
+                id: 53445,
+                plate_extra_no: "1",
+                plate_no: "asdf123",
+                policyholder: "武汉双视角保险理赔咨询有限公司",
+                start_city: "武汉市",
+                start_province: "湖北省"
+            },
+            headers:{"Authorization":"Bearer "+"13079|WalAaM3GArql2o/FlwuvvEgtDzamBKN3YfwRSyc6YaL/6IlL8yCDfWIRxeywnfcmyhZiM28sLru7U/F7uO1Zrg=="},
+            success:function (res) {
+                document.getElementById("text").innerHTML=JSON.stringify(res);
+                console.log(res)
+            }
+        })
+    }
+
+    function upload() {
+        ajax({
+            type:"upload",
+            url: "http://test.jubao56.com"+"/v1/zcb/order/save",
+            headers:{"Authorization":"Bearer "+"13079|WalAaM3GArql2o/FlwuvvEgtDzamBKN3YfwRSyc6YaL/6IlL8yCDfWIRxeywnfcmyhZiM28sLru7U/F7uO1Zrg=="},
+            file:{
+                el:document.getElementById("upload"),
+                name:"fileVal"
+            },
+            success:function (res) {
+                document.getElementById("text").innerHTML=JSON.stringify(res);
+                console.log(res)
+            }
+        })
+    }
+</script>
+</html>

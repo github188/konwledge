@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var str= "www.baidu.com"
+    addHref(str,{a:1,b:2,c:3})
+    function addHref(href,data) {
+        var str=href.indexOf("?")===-1?"?":"&";
+        for(var k in data){
+            str += k+"="+data[k]+"&"
+        }
+        href+= str.substring(0,str.length-1);
+        return href
+    }
+    console.log(str)
+</script>
+</html>

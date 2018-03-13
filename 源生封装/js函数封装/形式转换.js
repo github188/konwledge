@@ -13,6 +13,15 @@ function getQuery(str) {
     }
     return query
 }
+//给"www.jubao56.com"后面按照浏览器location规则添加对象{a:1}的属性
+function addHrefQuery(href,data) {
+    var str=href.indexOf("?")===-1?"?":"&";
+    for(var k in data){
+        str += k+"="+data[k]+"&"
+    }
+    href+= str.substring(0,str.length-1);
+    return href
+}
 
 
 
