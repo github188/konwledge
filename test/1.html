@@ -5,8 +5,12 @@
     <title>Title</title>
 </head>
 <body>
-
+<div data-id="power" style="color: red;">1111</div>
+<div data-power="power" style="color: red;">1111</div>
 </body>
-<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
-
+<script src="jquery.min.js"></script>
+<script>
+    $("*[data-id]").eq(0);
+    $("*[data-power]").eq(0)
+</script>
 </html>

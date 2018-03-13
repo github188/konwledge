@@ -4,8 +4,10 @@
 3,video 全屏
 4,video 退出全屏
  */
-
-//获取元素的属性
+function isArray(o){
+    return Object.prototype.toString.call(o)=='[object Array]';
+}
+//获取元素的样式
 function getStyle(el,attr) {
     if(window.getComputedStyle){
         return window.getComputedStyle(el)[attr]
