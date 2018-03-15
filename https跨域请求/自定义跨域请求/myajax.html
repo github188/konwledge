@@ -10,8 +10,10 @@
 <input type="file" onchange="upload()" id="upload">upload</input><br>
 <textarea id="text" style="width:100%;height:500px;"></textarea>
 </body>
-<script src="ajax.js"></script>
+<!--<script src="ajax.js"></script>-->
+<script src="ajax.min.js"></script>
 <script>
+    var token ="13092|OBEq22aNG9wH71Pt4FFBg3ou/anVsXEbbaiVGu+MJA9AIzq633lPpn5T14wmaJ2fvUbTG7VFytGvZaruUyfTag=="
     function getData() {
         ajax({
             type:"get",
@@ -43,7 +45,7 @@
                 start_city: "武汉市",
                 start_province: "湖北省"
             },
-            headers:{"Authorization":"Bearer "+"13079|WalAaM3GArql2o/FlwuvvEgtDzamBKN3YfwRSyc6YaL/6IlL8yCDfWIRxeywnfcmyhZiM28sLru7U/F7uO1Zrg=="},
+            headers:{"Authorization":"Bearer "+token},
             success:function (res) {
                 document.getElementById("text").innerHTML=JSON.stringify(res);
                 console.log(res)
@@ -54,15 +56,19 @@
     function upload() {
         ajax({
             type:"upload",
-            url: "http://test.jubao56.com"+"/v1/zcb/order/save",
-            headers:{"Authorization":"Bearer "+"13079|WalAaM3GArql2o/FlwuvvEgtDzamBKN3YfwRSyc6YaL/6IlL8yCDfWIRxeywnfcmyhZiM28sLru7U/F7uO1Zrg=="},
-            file:{
+            url: "http://test.jubao56.com"+"/res/file/upload",
+            headers:{"Authorization":"Bearer "+token},
+            upload:{
                 el:document.getElementById("upload"),
-                name:"fileVal"
+                name:"fileVal",
+                method:"POST"
             },
             success:function (res) {
                 document.getElementById("text").innerHTML=JSON.stringify(res);
                 console.log(res)
+            },
+            fail:function (err) {
+                console.log(err)
             }
         })
     }

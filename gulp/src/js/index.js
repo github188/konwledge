@@ -1,3 +1,4 @@
+//自定义ajax跨域请求
 function ajax(object) {
     var props = {
         type: "GET",
