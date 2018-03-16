@@ -1,0 +1,1 @@
+"use strict";var mesage="root message is here !",a=1,_a=2,_a2=3;document.getElementById("root").innerHTML=mesage;

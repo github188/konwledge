@@ -20,6 +20,7 @@ var imgGulp={name:"img",entry:"src/img/*",output:"dist/img"};
 
 var es6Gulp={name:"es6-es5",entry:jsGulp.entry,output:"dist/es5_js"};
 var jshintGulp ={name:"hshint",entry:jsGulp.entry};
+var jsminGulp ={name:"jsmin",entry:jsGulp.entry,output:jsGulp.output};
 var imgminGulp = {name:"imgmin",entry:"src/img/*",output:"dist/img"};
 
 var allTask =[jsGulp,cssGulp,htmlGulp,imgGulp];
@@ -77,13 +78,18 @@ gulp.task(jshintGulp.name,function () {
         .pipe(jshint.reporter()); // 输出检查结果
 });
 
-gulp.task(imgminGulp.name, function () {
-    return gulp.src(imgminGulp.entry)
-        .pipe(imagemin({
-            progressive: true,
-            use: [pngquant()] //使用pngquant来压缩png图片
+gulp.task(jsminGulp.name, function () {
+    gulp.src(jsminGulp.entry)
+        .pipe(babel({
+            presets: ['es2015']
         }))
-        .pipe(gulp.dest(imgminGulp.output));
+        .pipe(uglify())
+        .pipe(rename(function (path) {
+            path.dirname += "/min";
+            path.basename += ".min";
+            path.extname = ".js"
+        }))
+        .pipe(gulp.dest(jsminGulp.output))
 });
 
 gulp.task(allGulp.name, allGulp.task, allGulp.callback);
