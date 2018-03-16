@@ -9,7 +9,6 @@
 
 <body>
     <input type="file" onchange="importf(this)"/>
-    <input type="file" onchange="test()"  class="file"/>
     <div id="demo"></div>
 <script>
     /*
@@ -21,12 +20,6 @@
      */
     var wb;//读取完成的数据
     var rABS = false; //是否将文件读取为二进制字符串
-
-    function test() {
-        let obj = document.querySelector(".file");
-        importf(obj)
-    }
-
 
     function importf(obj) {//导入
         console.log(obj);
