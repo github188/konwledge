@@ -12,6 +12,7 @@ var jshint = require("gulp-jshint");
 var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant'); //png图片压缩插件
 
+
 var jsGulp={name:"js",entry:"src/js/*.js",output:"dist/js"};
 var cssGulp={name:"css",entry:"src/css/*.scss",output:"dist/css"};
 var htmlGulp={name:"html",entry:"src/*.html",output:"dist"};
