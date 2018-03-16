@@ -3,7 +3,11 @@
 2,
  */
 
-//将字符串?id=7&text=g，转化为{id:7,text:"g"}
+
+/**
+ * @param str   www.baidu.com?status=1&orderId=2
+ * @returns {{}}    {status:1,orderId:2}
+ */
 function getQuery(str) {
     var msgArr = str.substring(str.indexOf("?")+1).split("&");
     var query = {};
@@ -13,7 +17,12 @@ function getQuery(str) {
     }
     return query
 }
-//给"www.jubao56.com"后面按照浏览器location规则添加对象{a:1}的属性
+
+/**
+ * @param href  www.baidu.com /  www.baidu.com?status=1  / www.baidu.com?status=1&orderId=2
+ * @param data  {productType:"zcb"}
+ * @returns {string|*}      www.baidu.com?productType=zcb /  www.baidu.com?status=1&productType=zcb   / www.baidu.com?status=1&orderId=2&productType=zcb
+ */
 function addHrefQuery(href,data) {
     var str=href.indexOf("?")===-1?"?":"&";
     for(var k in data){
@@ -22,8 +31,6 @@ function addHrefQuery(href,data) {
     href+= str.substring(0,str.length-1);
     return href
 }
-
-
 
 //将30000 秒 转化为01:19:28 这种形式
 function changeTimeFormat(allTime) {

@@ -31,6 +31,11 @@ function removeChild(parent,child) {
     child = child?getElement(child,parent) : null;
     child?parent.removeChild(child):parent.parentNode.removeChild(parent)
 }
+
+/**
+ * 目标，获取【包含指定字符串】的script标签的src
+ * @param src   "message"  "mes"
+ */
 function getScriptBySrc(src) {//默认获取最后一个script标签的src所附带的信息，
     var scriptBox = document.getElementsByTagName("script");
     if(!src){return getQuery(scriptBox[scriptBox.length-1].src)}

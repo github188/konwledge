@@ -1,8 +1,10 @@
 /*
-1,获取元素的属性
-2,阻止浏览器的默认事件
-3,video 全屏
-4,video 退出全屏
+* 1,获取元素的属性
+* 2,阻止浏览器的默认事件
+* 3,video 全屏
+* 4,video 退出全屏
+* 5，批量阻止各个元素上的事件冒泡
+* 6，将body的高度设置屏幕高度，自带属性：position:relative；
  */
 function isArray(o){
     return Object.prototype.toString.call(o)=='[object Array]';
@@ -84,4 +86,24 @@ function getArr(str) {
         }
     });
     return arr.slice(index);
+}
+
+//批量阻止各个元素上的事件冒泡
+function preventBubble(elArr) {
+    if(isArray(elArr)){
+        for(var i=0;i<elArr.length;i++){
+            elArr[i].onclick=function (e) {
+                window.event? window.event.cancelBubble = true : e.stopPropagation();
+            }
+        }
+    }
+}
+//将body的高度设置屏幕高度，自带属性：position:relative；
+function bodyRelative() {
+    var body = document.querySelector("body");
+    body.style.height= document.documentElement.clientHeight+"px";
+    body.style.position='relative';
+    window.onresize=function () {
+        body.style.height= document.documentElement.clientHeight+"px"
+    }
 }
