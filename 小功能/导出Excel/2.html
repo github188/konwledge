@@ -21,47 +21,18 @@ function submit() {
         dataType:"text",
         success: function(res) {
             res=JSON.parse(res);
-//            JtoExcel(res.rows, '用户列表', 'sheet', [
-//                ['被保险人', '被保险人',translateName],
-//                ['运单号', '运单号'],
-//                ['车牌号', '车牌号'],
-//                ['挂车号', '挂车号'],
-//                ['始发地', '始发地'],
-//                ['目的地', '目的地'],
-//                ['货物信息', '货物信息'],
-//                ['保险金额(元)', '保险金额(元)']
-//            ])
-
-            loadExcel(res.rows,"投保清单","sheet")
+            JtoExcel(res.rows, '用户列表', 'sheet', [
+                ['被保险人', '被保险人',translateName],
+                ['运单号', '运单号'],
+                ['车牌号', '车牌号'],
+                ['挂车号', '挂车号'],
+                ['始发地', '始发地'],
+                ['目的地', '目的地'],
+                ['货物信息', '货物信息'],
+                ['保险金额(元)', '保险金额(元)']
+            ])
         }
     })
-
-    /**
-     * 自定义的函数，前提要求为：json中的数据格式统一；
-     * 输入的结果为：以rows中的每个对象的键值为表头
-     * @param rows
-     * @param filename
-     * @param sheetname
-     */
-    function loadExcel(rows, filename, sheetname) {
-        var sheetheader = [];
-        for(var i in  rows[0]){
-            sheetheader.push(i)
-        }
-
-        var toExcel=new ExportJsonExcel({
-            fileName:filename,
-            datas:[
-                {
-                    sheetData:rows,//数据
-                    sheetName: sheetname,
-                    sheetHeader:sheetheader,//设置表头
-                }
-            ]
-        });
-        toExcel.saveExcel();
-    }
-
 
     function JtoExcel(data, filename, sheetname, convert){
         var tables = [];
