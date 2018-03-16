@@ -52,3 +52,36 @@ function exitVideoFull() {
         document.msExitFullscreen();
     }
 }
+
+//".box .it #china"
+function getElement(str) {
+    var parent=document;
+    var arr = str.split(" ");
+    arr.forEach(function (val, idx) {
+        parent=getParentChild(parent,val);
+    });
+    return parent
+}
+
+//只能输入一个不带空格的字符串 .it
+function getParentChild(parent,str) {
+    if(str.indexOf("#")!==-1){
+        return document.getElementById(str.substring(str.indexOf("#")+1))
+    }else if(str.indexOf(".")!==-1){
+        return parent.getElementsByClassName(str.substring(str.indexOf(".")+1))[0]
+    }else{
+        return parent.getElementsByTagName(str)[0]
+    }
+}
+//".box #span .it #china"
+function getArr(str) {
+    var arr = str.split(" ");
+    var index=0;
+    arr.forEach(function (val, idx) {
+        if(val.indexOf("#")!==-1){
+            parent=getParentChild(parent,val);
+            index=idx;
+        }
+    });
+    return arr.slice(index);
+}

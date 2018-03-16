@@ -7,13 +7,13 @@
 <body>
 <button type="button" onclick="getData()">GET</button><br>
 <button type="button" onclick="postData()">POST</button><br>
-<input type="file" onchange="upload()" id="upload">upload</input><br>
+<input type="file" onchange="upload(this)" id="upload">upload</input><br>
 <textarea id="text" style="width:100%;height:500px;"></textarea>
 </body>
-<!--<script src="ajax.js"></script>-->
-<script src="ajax.min.js"></script>
+<script src="ajax.js"></script>
+<!--<script src="ajax.min.js"></script>-->
 <script>
-    var token ="13092|OBEq22aNG9wH71Pt4FFBg3ou/anVsXEbbaiVGu+MJA9AIzq633lPpn5T14wmaJ2fvUbTG7VFytGvZaruUyfTag=="
+    var token ="13293|uHJwC8zC+0aoVHg5mC4CSWWq8SjjmHq2M2lDtxQgaF4l3i+2ftD3uSLQnAFcHWcvjDGpKG0PhwmxfPdwPyeKqA=="
     function getData() {
         ajax({
             type:"get",
@@ -53,15 +53,14 @@
         })
     }
 
-    function upload() {
+    function upload(e) {
         ajax({
-            type:"upload",
+            type:"post",
             url: "http://test.jubao56.com"+"/res/file/upload",
             headers:{"Authorization":"Bearer "+token},
-            upload:{
-                el:document.getElementById("upload"),
+            file:{
+                el:e,
                 name:"fileVal",
-                method:"POST"
             },
             success:function (res) {
                 document.getElementById("text").innerHTML=JSON.stringify(res);
@@ -72,5 +71,31 @@
             }
         })
     }
+</script>
+<script>
+    //1,#box
+    //2,.box
+    //3,span
+    //3,.box #box span;#box .box span;span #box .box ...
+
+function getElement(str) {
+    var arr = str.split(" ");//[".box","#box","span"]
+    var parent=document;
+    arr.forEach(function (val, idx) {
+        parent=getParentChild(parent,val);
+    });
+    return parent
+}
+
+//只能输入一个不带空格的字符串
+function getParentChild(parent,str) {
+    if(str.indexOf("#")!==-1){
+        return parent.getElementById(str.substring(str.indexOf("#")+1))
+    }else if(str.indexOf(".")!==-1){
+        return parent.getElementsByClassName(str.substring(str.indexOf(".")+1))[0]
+    }else{
+        return parent.getElementsByTagName(str)[0]
+    }
+}
 </script>
 </html>
