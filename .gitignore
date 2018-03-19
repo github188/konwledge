@@ -5,3 +5,4 @@
 /node/node_modules
 /webpack/node_modules
 /gulp/node_modules
+/node/websocket/node_modules
