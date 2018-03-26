@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="searchInput"><button id="request">请求数据</button>
+<ul id="list">
+</ul>
+</body>
+<script src="../libs/jquery-1.9.1.min.js"></script>
+<script>
+
+    function getData(data) {
+        var Info = data['s'];  //获取异步数据
+        console.log(Info,"获取异步数据");
+    }
+
+    $('#request').click(function () {
+        let value = document.querySelector("#searchInput").value;
+        var qsData = {
+            'wd': value,
+            'p': '3',
+            'cb': 'getData',
+            't': new Date().getMilliseconds().toString()
+        };
+        $.ajax({
+            async: false,
+            url: "http://suggestion.baidu.com/su",
+            type: "GET",
+            dataType: 'jsonp',
+            jsonp: 'jsoncallback',
+            data: qsData,
+            timeout: 5000,
+            success: function (json) {
+            },
+            error: function (xhr) {
+            }
+        });
+    })
+</script>
+</html>
