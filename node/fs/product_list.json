@@ -1,0 +1,79 @@
+[
+  {
+    "id": 2,
+    "name": "整车保",
+    "insurance_type": 1,
+    "commission_rate": 15,
+    "risk_type": 1,
+    "frequency_type": 1,
+    "policy_type": 1,
+    "pay_channel": 1,
+    "disabled": false
+  },
+  {
+    "id": 4,
+    "name": "员工保",
+    "insurance_type": 2,
+    "commission_rate": 15,
+    "risk_type": 2,
+    "frequency_type": 2,
+    "policy_type": 2,
+    "pay_channel": 2,
+    "disabled": false
+  },
+  {
+    "id": 16,
+    "name": "商铺档口火灾保",
+    "insurance_type": 2,
+    "commission_rate": 15,
+    "risk_type": 4,
+    "frequency_type": 2,
+    "policy_type": 1,
+    "pay_channel": 2,
+    "disabled": false
+  },
+  {
+    "id": 8192,
+    "name": "货车重大事故保",
+    "insurance_type": 2,
+    "commission_rate": 15,
+    "risk_type": 64,
+    "frequency_type": 2,
+    "policy_type": 2,
+    "pay_channel": 2,
+    "disabled": false
+  },
+  {
+    "id": 16384,
+    "name": "定车货运年保",
+    "insurance_type": 1,
+    "commission_rate": 15,
+    "risk_type": 32,
+    "frequency_type": 2,
+    "policy_type": 2,
+    "pay_channel": 2,
+    "disabled": false
+  },
+  {
+    "id": 32768,
+    "name": "预约货运万能保",
+    "insurance_type": 2,
+    "commission_rate": 15,
+    "risk_type": 16,
+    "frequency_type": 1,
+    "policy_type": 1,
+    "pay_channel": 2,
+    "disabled": false
+  },
+  {
+    "id": 131072,
+    "name": "专线保",
+    "insurance_type": 4,
+    "commission_rate": 15,
+    "risk_type": 128,
+    "frequency_type": 1,
+    "policy_type": 1,
+    "pay_channel": 1,
+    "disabled": false
+  }
+]
