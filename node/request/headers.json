@@ -1,0 +1,11 @@
+{
+    "server": "nginx/1.10.2",
+    "date": "Thu, 29 Mar 2018 09:06:50 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "transfer-encoding": "chunked",
+    "connection": "close",
+    "vary": "Accept-Encoding",
+    "access-control-allow-headers": "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, Platform, JB-Filename",
+    "access-control-allow-methods": "POST, GET",
+    "access-control-allow-origin": "*"
+}
