@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,IAAI;EACF,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,MAAM;EACvB,WAAW,EAAE,MAAM",
+"sources": ["../gulp/src/css/test.scss"],
+"names": [],
+"file": "test.css"
+}

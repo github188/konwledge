@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width:100px;height:30px;background: yellowgreen;margin:5px 0;
+        }
+    </style>
+</head>
+<body>
+<div id="vue">
+    <button @click="flag=!flag">按钮</button>
+    <keep-alive activated="activated" deactivated="deactivated">
+        <!--<div class="box">第一个BOX</div>-->
+        <!--<div class="box">第二个BOX</div>-->
+        <box1 v-if="flag"></box1>
+        <box2 v-else></box2>
+    </keep-alive>
+
+</div>
+</body>
+<script src="../libs/vue.min.js"></script>
+<script>
+    var component = Vue.component("box1",{
+        template:"<div class=\"box\">第一个box</div>"
+    })
+    var component2 = Vue.component("box2",{
+        template:"<div class=\"box\">第二个box</div>"
+    })
+
+    var vm = new Vue({
+        el: "#vue",
+        data(){
+            return {
+                flag:true
+            }
+        },
+        methods: {
+            activated(){
+                console.log("activated")
+            },
+            deactivated(){
+                console.log("deactivated")
+            }
+        }
+    })
+</script>
+</html>
