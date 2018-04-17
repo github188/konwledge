@@ -63,7 +63,7 @@ module.exports = {
         // new webpack.optimize.UglifyJsPlugin(),//webpack.optimize.UglifyJsPlugin has been removed, please use config.optimization.minimize instead.
         //个人认为：随着webpack版本的提升，压缩代码功能早已经变成了默认设置
 
-        // new ExtractTextPlugin("style.css"),//暂时无效,而且对于4.1版本的webpack而言会影响打包-------
+        new ExtractTextPlugin("style.css"),//暂时无效,而且对于4.1版本的webpack而言会影响打包-------
         new CleanWebpackPlugin('dist/*.*', {
             root: __dirname,
             verbose: true,

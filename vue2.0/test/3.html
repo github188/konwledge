@@ -6,7 +6,7 @@
 </head>
 <body>
 <div id="vue">
-
+<button @click="flag=!flag">111</button>
 </div>
 </body>
 <script src="../libs/vue.min.js"></script>
@@ -16,6 +16,8 @@
         data(){
             return {
                 flag:false,
+                a:"1",
+                b:"2"
             }
         },
         computed(){
@@ -26,6 +28,11 @@
         },
         mounted(){
 
+        },
+        watch:{
+            flag:(val,oldVal)=>{
+                console.log(this)
+            }
         }
     })
 </script>
