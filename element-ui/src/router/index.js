@@ -4,15 +4,16 @@ import Router from 'vue-router'
 //首页和其他路由
 const Home = resolve => require(['views/Home'], resolve);
 const test = resolve => require(['views/Test'], resolve);
-
+const test2 = resolve => require(['../views/test2.vue'], resolve);
 
 Vue.use(Router);
 
-const router =  new Router({
+const router = new Router({
   routes: [
-      { path: '/', redirect:'home' },
-      { path: '/home', component: Home },
-      { path: '/test',component:test}
+    {path: '/', redirect: 'home'},
+    {path: '/home', component: Home},
+    {path: '/test', component: test},
+    {path: '/test2', component: test2},
   ]
 })
 router.beforeEach((to, from, next) => {

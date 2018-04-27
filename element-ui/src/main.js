@@ -2,10 +2,12 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import store from "./vuex/store"
+
 import "babel-polyfill"
 
-
-import store from "./vuex/store"
+import {elTabs} from "./base/index";
+Vue.use(elTabs);
 
 new Vue({
   el: '#app',

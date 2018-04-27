@@ -1,2 +1,3 @@
-import header from "./header/index"
-export default {header}
+
+export {elTabs} from "./el-tabs/index"
+
