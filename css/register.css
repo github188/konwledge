@@ -1,0 +1,72 @@
+.register {
+  background: white;
+}
+.register .header {
+  position: relative;
+  height: pxToRem(90);
+  padding: 0 pxToRem(20);
+  text-align: center;
+  font-size: pxToRem(40);
+  line-height: pxToRem(90);
+  background: white;
+}
+.register .header .back {
+  position: absolute;
+  left: pxToRem(20);
+}
+.register .header .back .icon-fanhui {
+  height: pxToRem(90);
+  font-size: pxToRem(40);
+  line-height: pxToRem(90);
+}
+.register .enter_box {
+  padding: pxToRem(30);
+}
+.register .enter_box p {
+  position: relative;
+}
+.register .enter_box p .enter_input_box {
+  display: flex;
+  height: pxToRem(90);
+  line-height: pxToRem(90);
+  border-bottom: 1px solid #eee;
+}
+.register .enter_box p .enter_input_box span {
+  font-size: pxToRem(32);
+  flex: 2;
+}
+.register .enter_box p .enter_input_box .enter_input {
+  font-size: pxToRem(32);
+  flex: 4;
+}
+.register .enter_box p img {
+  position: absolute;
+  top: pxToRem(10);
+  right: 0;
+  width: pxToRem(175);
+  height: pxToRem(70);
+}
+.register .enter_box p .get_smm {
+  position: absolute;
+  top: pxToRem(10);
+  right: 0;
+  width: pxToRem(200);
+  height: pxToRem(70);
+}
+.register .enter_box .agree {
+  display: block;
+  font-size: pxToRem(26);
+  padding: pxToRem(50) 0;
+}
+.register .enter_box .login_btn input {
+  width: 100%;
+  height: pxToRem(98);
+  border-radius: pxToRem(8);
+  font-size: pxToRem(40);
+  color: #fff;
+}
+.register.recovery .login_btn {
+  margin-top: pxToRem(70);
+}
+
+/*# sourceMappingURL=register.css.map */

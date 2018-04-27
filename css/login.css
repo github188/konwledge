@@ -1,0 +1,69 @@
+.login {
+  background: white;
+}
+.login .header .back {
+  position: absolute;
+  left: pxToRem(20);
+}
+.login .header .back .icon-fanhui {
+  height: pxToRem(90);
+  font-size: pxToRem(40);
+  line-height: pxToRem(90);
+}
+.login .login_title {
+  font-size: pxToRem(48);
+  text-align: center;
+  padding: pxToRem(80);
+}
+.login .enter_box {
+  padding: pxToRem(30);
+}
+.login .enter_box > .enter_input {
+  display: block;
+  width: 100%;
+  height: pxToRem(90);
+  border-bottom: 1px solid #eee;
+  font-size: pxToRem(30);
+}
+.login .enter_box > label {
+  position: relative;
+  display: flex;
+  height: pxToRem(90);
+  line-height: pxToRem(90);
+  border-bottom: 1px solid #eee;
+}
+.login .enter_box > label span {
+  flex: 1;
+  font-size: pxToRem(30);
+}
+.login .enter_box > label input {
+  flex: 4;
+  font-size: pxToRem(30);
+}
+.login .enter_box > label:nth-of-type(2) {
+  margin-bottom: pxToRem(90);
+}
+.login .enter_box > label:nth-of-type(2) + p + p {
+  justify-content: center;
+}
+.login .enter_box > label:nth-of-type(2) + p + p span {
+  font-size: pxToRem(30);
+}
+.login .enter_box .remember {
+  height: pxToRem(90);
+  line-height: pxToRem(90);
+}
+.login .enter_box .login_btn input {
+  width: 100%;
+  height: pxToRem(98);
+  border-radius: pxToRem(8);
+  font-size: pxToRem(40);
+  color: #fff;
+}
+.login .enter_box .other_way {
+  display: flex;
+  justify-content: space-between;
+  padding: pxToRem(30) 0;
+}
+
+/*# sourceMappingURL=login.css.map */

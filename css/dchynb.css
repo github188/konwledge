@@ -424,9 +424,6 @@ body {
   background-image: url("../img/dchynb/icon_find.png");
 }
 .all .pro_info .pro_item10 .item_text div:nth-child(3) i {
-  background-image: url("../img/dchynb/icon_txt.png");
-}
-.all .pro_info .pro_item10 .item_text div:nth-child(4) i {
   background-image: url("../img/dchynb/icon_money.jpg");
 }
 .all .pro_info .share {

@@ -2,9 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        .box{
+            width:200px;height:200px;border: 1px solid #2f2f2f;
+            overflow-y: scroll;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="box">
+    1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>
+    2<br>2<br>2<br>2<br>2<br>2<br>2<br>2<br>
+    3<br>3<br>3<br>3<br>3<br>3<br>3<br>3<br>
+    4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>
+    1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>
+    2<br>2<br>2<br>2<br>2<br>2<br>2<br>2<br>
+    3<br>3<br>3<br>3<br>3<br>3<br>3<br>3<br>
+    4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>
+    1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>
+    2<br>2<br>2<br>2<br>2<br>2<br>2<br>2<br>
+    3<br>3<br>3<br>3<br>3<br>3<br>3<br>3<br>
+    4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>
+    1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>
+    2<br>2<br>2<br>2<br>2<br>2<br>2<br>2<br>
+    3<br>3<br>3<br>3<br>3<br>3<br>3<br>3<br>
+    4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>
+</div>
 </body>
+<script>
+var box = document.querySelector(".box");
+
+    let limitTime = 1000;  // 单位ms;限定的时间内
+    let distance = 472 ;    //限定时间内通过的路程
+
+
+    setInterval(function () {
+//        move(472,1000)
+    },2000);
+
+
+
+function move(distance,limitTime) {
+    let count = 0 ;
+    let double = 10 ; //分化倍数
+    let timer = null ; //计时器
+
+    clearInterval(timer)
+    timer = setInterval(function () {
+        count+=1;
+//        box.scrollTop+=distance/double;
+        let speed = Math.floor((distance-box.scrollTop)/4);
+        box.scrollTop+=speed;
+        if(count>=double){
+            console.log(count);
+            box.scrollTop=distance;
+            clearInterval(timer)
+        }
+    },limitTime/double);
+}
+
+
+
+
+</script>
 </html>

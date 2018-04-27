@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<p>要使用的视频：</p>
+<video id="video1" controls width="270" autoplay src="https://www.jubao56.com/res/2017/12/22/08/3307208/员工保out.mp4"></video>
+<p>画布（每 20 毫秒，代码就会绘制视频的当前帧）：</p>
+
+<canvas id="myCanvas" width="270" height="135"></canvas>
+</body>
+<script>
+  var v = document.getElementById("video1");
+  var c = document.getElementById("myCanvas");
+  ctx = c.getContext('2d');
+
+  v.addEventListener('play', function() {
+    var i = window.setInterval(function() {
+      ctx.drawImage(v, 0, 0, 270, 135)
+    }, 20);
+  }, false);
+</script>
+</html>

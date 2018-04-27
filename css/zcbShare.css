@@ -263,6 +263,12 @@ body {
   letter-spacing: 0.04rem;
   font-family: PingFang-SC-Regular;
 }
+.all .pro_info .pro_item .item_text .isMsg {
+  text-align: left;
+  padding-left: 0.2666666667rem;
+  line-height: 0.6933333333rem;
+  letter-spacing: 0.04rem;
+}
 .all .pro_info .pro_item .item_text.text_center p {
   text-align: center;
   padding-left: 0;
@@ -277,7 +283,7 @@ body {
   text-align: left;
 }
 .all .pro_info .pro_item .item_text p.isTitle {
-  padding-left: 0.4rem;
+  padding-left: 0.2666666667rem;
   background: none;
   color: #0798dc;
 }
@@ -334,9 +340,6 @@ body {
   background-image: url("../img/hcbShare/icon_find.png");
 }
 .all .pro_info .pro_item.pro_LiPei .item_text div:nth-child(3) i {
-  background-image: url("../img/hcbShare/icon_txt.png");
-}
-.all .pro_info .pro_item.pro_LiPei .item_text div:nth-child(4) i {
   background-image: url("../img/hcbShare/icon_money.jpg");
 }
 .all .pro_info .pro_item.pro_LiPei .item_text > div:after {

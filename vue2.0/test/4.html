@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div id="vue">
+<div>
+    <input type="checkbox" v-model="useDefault" :disabled="flag">
+</div>
+</div>
+</body>
+<script src="../libs/vue.min.js"></script>
+<script>
+    let vm = new Vue({
+        el:"#vue",
+        data(){
+            return {
+                useDefault:true,
+                flag:false
+            }
+        },
+        computed(){
+
+        },
+        created(){
+
+        },
+        mounted(){
+
+        }
+    })
+</script>
+</html>

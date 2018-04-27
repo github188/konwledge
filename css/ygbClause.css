@@ -1,0 +1,45 @@
+.YgbClause .section {
+  padding: pxToRem(20) pxToRem(20) pxToRem(30) pxToRem(30);
+  font-size: pxToRem(20);
+  font-family: PingFang-SC-Medium;
+  color: #666;
+  line-height: pxToRem(36);
+}
+.YgbClause .section .title {
+  text-align: center;
+  color: #000;
+}
+.YgbClause .section .black {
+  color: #000;
+}
+.YgbClause .section .tab {
+  color: #000;
+  position: relative;
+}
+.YgbClause .section .tab .tab_body {
+  box-sizing: border-box;
+  width: pxToRem(306);
+  margin: 0 auto pxToRem(30);
+}
+.YgbClause .section .tab .tab_body .tab_title {
+  text-align: center;
+}
+.YgbClause .section .tab .tab_body .tab_con {
+  box-sizing: border-box;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+.YgbClause .section .tab .tab_body .tab_con span {
+  display: inline-block;
+  width: pxToRem(150);
+  height: pxToRem(40);
+  text-align: center;
+  line-height: pxToRem(40);
+  border-left: 1px solid #000;
+  border-top: 1px solid #000;
+}
+.YgbClause .section .tab .tab_body .tab_foot {
+  color: #666;
+}
+
+/*# sourceMappingURL=ygbClause.css.map */

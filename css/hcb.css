@@ -344,9 +344,6 @@ body {
   background-image: url("../img/zcbShare/icon_find.png");
 }
 .all .pro_info .pro_item.pro_LiPei .item_text div:nth-child(3) i {
-  background-image: url("../img/zcbShare/icon_txt.png");
-}
-.all .pro_info .pro_item.pro_LiPei .item_text div:nth-child(4) i {
   background-image: url("../img/zcbShare/icon_money.jpg");
 }
 .all .pro_info .pro_item.pro_LiPei .item_text > div:after {
