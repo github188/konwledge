@@ -1,3 +1,6 @@
+import elTabs from "./el-tabs"
 
-export {elTabs} from "./el-tabs/index"
+export {
+  elTabs
+}
 

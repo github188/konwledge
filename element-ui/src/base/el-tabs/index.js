@@ -1,5 +1,5 @@
 import components from "./el-tabs.vue"
-export const elTabs = {
+export default {
   install (Vue) {
     Vue.component("el-tabs",components)
   }

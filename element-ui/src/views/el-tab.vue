@@ -7,7 +7,7 @@
               <div id="tab-0" aria-controls="pane-0" role="tab" aria-selected="true" tabindex="0"
                    class="el-tabs__item is-top is-active">用户管理
               </div>
-              <div id="tab-1" aria-controls="pane-1" role="tab" tabindex="-1" class="el-tabs__item is-top">
+              <div id="tab-1" aria-controls="pane-1"  role="tab" tabindex="-1" class="el-tabs__item is-top">
                 配置管理
               </div>
               <div id="tab-2" aria-controls="pane-2" role="tab" tabindex="-1" class="el-tabs__item is-top">
@@ -21,10 +21,7 @@
         </div>
       </div>
       <div class="el-tabs__content">
-        <slot name="pane-0"></slot>
-        <slot name="pane-1"></slot>
-        <slot name="pane-2"></slot>
-        <slot name="pane-3"></slot>
+        <slot></slot>
       </div>
     </div>
 </template>

@@ -7,7 +7,14 @@ import store from "./vuex/store"
 import "babel-polyfill"
 
 import {elTabs} from "./base/index";
+import {busPlugin} from "./plugins/"
+
+
+
+
+
 Vue.use(elTabs);
+Vue.use(busPlugin);
 
 new Vue({
   el: '#app',
