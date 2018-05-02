@@ -12,11 +12,12 @@
   export default {
     props: {
       label: {type: String, require: true},
-      slotNum: {type: Number, require: true},
-      isActive: {type: Boolean, default:false},
     },
     data() {
-      return {}
+      return {
+        isActive:false,
+        slotNum:0,
+      }
     },
     created() {
 

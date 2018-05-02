@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     home
+    <span ref="s">asfsdfsdfsdf</span>
   </div>
 </template>
 
@@ -21,6 +22,9 @@
     created(){
 
     },
+    mounted(){
+      this.$refs.s.style.display="none"
+    }
   }
 </script>
 

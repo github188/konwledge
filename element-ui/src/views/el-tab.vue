@@ -4,17 +4,8 @@
         <div class="el-tabs__nav-wrap is-top">
           <div class="el-tabs__nav-scroll">
             <div role="tablist" class="el-tabs__nav" style="transform: translateX(0px);">
-              <div id="tab-0" aria-controls="pane-0" role="tab" aria-selected="true" tabindex="0"
-                   class="el-tabs__item is-top is-active">用户管理
-              </div>
-              <div id="tab-1" aria-controls="pane-1"  role="tab" tabindex="-1" class="el-tabs__item is-top">
-                配置管理
-              </div>
-              <div id="tab-2" aria-controls="pane-2" role="tab" tabindex="-1" class="el-tabs__item is-top">
-                角色管理
-              </div>
-              <div id="tab-3" aria-controls="pane-3" role="tab" tabindex="-1" class="el-tabs__item is-top">
-                定时任务补偿
+              <div :id="'tab-'+idx" :aria-controls="'pane-'+idx" role="tab" :aria-selected="val.selected" :tabindex="idx"
+                   class="el-tabs__item is-top" :class="{'is-active':val.isActive}"  v-for="(val,idx) in paneList">{{val.label}}
               </div>
             </div>
           </div>
@@ -29,7 +20,9 @@
 <script>
     export default {
         data() {
-            return {}
+            return {
+              paneList:[]
+            }
         },
         created() {
 
