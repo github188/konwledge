@@ -1,37 +1,93 @@
 <template>
-    <div class="el-tabs el-tabs--top el-tabs--border-card">
-      <div class="el-tabs__header is-top">
-        <div class="el-tabs__nav-wrap is-top">
-          <div class="el-tabs__nav-scroll">
-            <div role="tablist" class="el-tabs__nav" style="transform: translateX(0px);">
-              <div :id="'tab-'+idx" :aria-controls="'pane-'+idx" role="tab" :aria-selected="val.selected" :tabindex="idx"
-                   class="el-tabs__item is-top" :class="{'is-active':val.isActive}"  v-for="(val,idx) in paneList">{{val.label}}
-              </div>
+  <div class="el-tabs el-tabs--top" :style="currentStyle.tabs" :class="currentClass.tabs">
+    <div class="el-tabs__header is-top" :style="currentStyle.header">
+      <div class="el-tabs__nav-wrap is-top">
+        <div class="el-tabs__nav-scroll">
+          <div role="tablist" class="el-tabs__nav" style="transform: translateX(0px);" :style="currentStyle.tablist">
+            <div
+              class="el-tabs__item is-top"
+              role="tab"
+              :style="currentStyle.item"
+              v-for="(val,idx) in paneList"
+              @click="switchPane(idx)"
+              :id="`tab-${idx}`"
+              :aria-controls="`pane-${idx}`"
+              :aria-selected="val.selected"
+              :class="{'is-active':currentName===idx}">
+              {{val.label}}
             </div>
           </div>
         </div>
       </div>
-      <div class="el-tabs__content">
-        <slot></slot>
-      </div>
     </div>
+    <div class="el-tabs__content">
+      <slot></slot>
+    </div>
+  </div>
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-              paneList:[]
+  const styleDefault = "border-card";
+  export default {
+    props:{
+      type:String,
+    },
+    data() {
+      return {
+        paneList: [],
+        currentName: 0,
+        currentStyle:{},
+        currentClass:{}
+      }
+    },
+    created(){
+      this._initStyle(this.type)
+    },
+    mounted() {
+      this.paneList = this.$children.map((val, idx) => {
+        val.paneName = idx;
+        return {
+          active: val.active,
+          label: val.label
+        }
+      });
+    },
+    methods: {
+      switchPane(idx) {
+        this.currentName = idx;
+        this.$emit("tab-click",idx)
+      },
+      _initStyle(type=styleDefault){
+        switch (type){
+          case "border-card" :
+            this.currentClass={
+              tabs:"el-tabs--border-card"
             }
-        },
-        created() {
+            this.currentStyle={
+              header:"background-color:#f5f7fa",
+            };
+            break;
+          case "card" :
+            this.currentStyle={
+              header:"border-bottom: 1px solid #e4e7ed;",
+              tablist:"border-bottom: none;" +
+              "border-radius: 4px 4px 0 0;" +
+              "border: 1px solid #e4e7ed;",
+              item:"border-left:1px solid #e4e7ed;",
+            };
+            break;
+        }
+      }
 
-        },
-        methods: {}
     }
+  }
 </script>
 
 <style>
+  .el-tabs--card>.el-tabs__header .el-tabs__item.is-active {
+    border-bottom-color: #fff;
+  }
+
   .el-tabs--border-card {
     background: #fff;
     border: 1px solid #dcdfe6;
@@ -39,7 +95,7 @@
   }
 
   .el-tabs--border-card > .el-tabs__header {
-    background-color: #f5f7fa;
+    /*background-color: #f5f7fa;*/
     border-bottom: 1px solid #e4e7ed;
     margin: 0;
   }
@@ -106,5 +162,14 @@
   .el-tabs__content {
     overflow: hidden;
     position: relative;
+  }
+
+  .el-tabs--border-card > .el-tabs__header .el-tabs__item:not(.is-disabled):hover {
+    color: #409eff;
+  }
+
+  .el-tabs__item:hover {
+    color: #409eff;
+    cursor: pointer;
   }
 </style>

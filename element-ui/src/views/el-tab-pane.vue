@@ -1,9 +1,11 @@
 <template>
   <div role="tabpanel"
        class="el-tab-pane"
-       :id="'pane-'+slotNum"
-       :aria-labelledby="'tab-'+slotNum"
-       :style="{'display':isActive?'block':'none'}">
+       :id="`pane-${paneName}`"
+       :aria-labelledby="`tab-${paneName}`"
+       v-show="active"
+       :aria-hidden="!active"
+       >
     <slot></slot>
   </div>
 </template>
@@ -15,8 +17,12 @@
     },
     data() {
       return {
-        isActive:false,
-        slotNum:0,
+        paneName:0,
+      }
+    },
+    computed:{
+      active(){
+        return this.$parent.currentName===this.paneName
       }
     },
     created() {

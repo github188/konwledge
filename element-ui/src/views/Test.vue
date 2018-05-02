@@ -1,5 +1,5 @@
 <template>
-  <el-tabs>
+  <el-tabs @tab-click="tabClick">
     <el-tab-pane label="用户管理头部">用户管理text</el-tab-pane>
     <el-tab-pane label="配置管理头部">配置管理text</el-tab-pane>
     <el-tab-pane label="角色管理头部">角色管理text</el-tab-pane>
@@ -21,22 +21,13 @@
       }
     },
     created() {
-      console.log("created")
+
     },
-    mounted(){
-      let elTabs = this.$children[0];
-      let elTabPane = elTabs.$children;
-      console.log(elTabs,"elTabs");
-      elTabs.paneList = elTabPane.map((val,idx)=>{
-        val.isActive=idx===0;
-        val.slotNum=idx;
-        return {
-          isActive:val.isActive,
-          label:val.label
-        }
-      });
-    },
-    methods: {}
+    methods: {
+      tabClick(idx){
+        console.log(idx,"tabClick")
+      }
+    }
   }
 </script>
 
