@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": ";AAAA,QAAQ;AACR,kBAYC;EAXC,IAAK;IACH,gBAAgB,EAAE,OAAO;IACzB,iBAAiB,EAAE,YAAY;IAC/B,SAAS,EAAE,YAAY;;EAGzB,EAAG;IACD,gBAAgB,EAAE,OAAO;IACzB,iBAAiB,EAAE,cAAc;IACjC,SAAS,EAAE,cAAc;;;AAG7B,aAAc;EACZ,OAAO,EAAE,YAAY;EACrB,SAAS,EAAE,0BAA0B",
-"sources": ["../element-ui/src/assets/scss/animate.scss"],
-"names": [],
-"file": "animate.css"
-}
