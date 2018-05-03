@@ -1,10 +1,10 @@
 <template>
   <div class="el-tabs el-tabs--top" :style="currentStyle.tabs" :class="currentClass.tabs">
     <div class="el-tabs__header is-top" :style="currentStyle.header">
-      <div class="el-tabs__nav-wrap is-top">
+      <div class="el-tabs__nav-wrap is-top" :class="currentClass.navWrap">
         <div class="el-tabs__nav-scroll">
-          <div role="tablist" class="el-tabs__nav" style="transform: translateX(0px);" :style="currentStyle.tablist" ref="bar">
-            <div class="el-tabs__active-bar is-top" :style="currentStyle.bar"></div>
+          <div role="tablist" class="el-tabs__nav" style="transform: translateX(0px);" :style="currentStyle.tablist">
+            <div class="is-top" :style="currentStyle.bar" :class="currentClass.activeBar"></div>
             <div
               class="el-tabs__item is-top"
               role="tab"
@@ -42,9 +42,11 @@
       }
     },
     created(){
-      this._initStyle(this.type)
+
     },
     mounted() {
+      this._initStyle(this.type);
+
       this.paneList = this.$children.map((val, idx) => {
         val.paneName = idx;
         return {
@@ -56,12 +58,7 @@
     methods: {
       switchPane(idx) {
         this.currentName = idx;
-
-        debugger;
-        this.$refs.bar.style.transform=`translateX(${idx*96}px);`;
-        console.log(this.$refs.bar.style.transform,"this.$refs.bar.style")
-        console.log(`translateX(${idx*96}px);`)
-        debugger;
+        this.currentStyle.bar=`width: 56px; transform: translateX(${idx*96}px);`;
         this.$emit("tab-click",idx)
       },
       _initStyle(type=styleDefault){
@@ -69,7 +66,7 @@
           case "border-card" :
             this.currentClass={
               tabs:"el-tabs--border-card"
-            }
+            };
             this.currentStyle={
               header:"background-color:#f5f7fa",
             };
@@ -85,8 +82,15 @@
             break;
           case "active-card" :
             this.currentStyle={
+              header:"border-bottom: 1px solid #e4e7ed;",
               bar:`width: 56px; transform: translateX(0px);`
-            }
+            };
+            this.currentClass={
+              navWrap:"el-tabs--active_nav-wrap",
+              activeBar:"el-tabs__active-bar"
+            };
+//            let el = document.querySelector(".el-tabs__nav-wrap");
+//            console.log(document.defaultView.getComputedStyle(el,":after"));
             break;
         }
       }
@@ -105,6 +109,18 @@
     border: 1px solid #dcdfe6;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04);
   }
+  .el-tabs--active_nav-wrap:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #e4e7ed;
+    z-index: 1;
+  }
+
+
 
   .el-tabs--border-card > .el-tabs__header {
     /*background-color: #f5f7fa;*/
@@ -189,7 +205,7 @@
   .el-tabs__active-bar {
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 20px;
     height: 2px;
     background-color: #409eff;
     z-index: 1;

@@ -3,35 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .el-tabs__nav{
+            width:100px;height:50px;border:1px solid #a3a3a3;
+        }
+    </style>
 </head>
 <body>
 <div id="vue">
-<button @click="flag=!flag">111</button>
+    <div role="tablist" class="el-tabs__nav" :style="currentStyle.bar" ref="bar">
+        大苏打大大大
+    </div>
+    <button @click="change">111</button>
 </div>
 </body>
 <script src="../libs/vue.min.js"></script>
 <script>
     let vm = new Vue({
-        el:"#vue",
-        data(){
+        el: "#vue",
+        data() {
             return {
-                flag:false,
-                a:"1",
-                b:"2"
+                flag: false,
+                a: "1",
+                b: "2",
+                currentStyle:{
+                 bar:"transform: translateX(0px);"
+                }
             }
         },
-        computed(){
+        computed() {
 
         },
-        created(){
+        created() {
 
         },
-        mounted(){
+        mounted() {
 
         },
-        watch:{
-            flag:(val,oldVal)=>{
+        watch: {
+            flag: (val, oldVal) => {
                 console.log(this)
+            }
+        },
+        methods:{
+            change(){
+                this.$refs.bar.style.color="red";
+//                this.$refs.bar.style="transform: translateX(10px);"
+                this.currentStyle.bar="transform: translateX(10px);"
+
             }
         }
     })

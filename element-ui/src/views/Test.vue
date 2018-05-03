@@ -1,5 +1,5 @@
 <template>
-  <el-tabs @tab-click="tabClick" type="active-card">
+  <el-tabs @tab-click="tabClick">
     <el-tab-pane label="用户管理">用户管理text</el-tab-pane>
     <el-tab-pane label="配置管理">配置管理text</el-tab-pane>
     <el-tab-pane label="角色管理">角色管理text</el-tab-pane>
