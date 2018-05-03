@@ -3,9 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_651811_a9vpgvh1nt07wrk9.css">
     <style>
         .el-tabs__nav{
             width:100px;height:50px;border:1px solid #a3a3a3;
+        }
+
+        .icon-box{
+
+
+        }
+        .box{
+            width:100px;height:50px;border:1px solid #2f2f2f;
+            padding:0 20px !important;
+        }
+        .box.box1:hover{
+            padding:0 13px;
+        }
+
+        .box.box1.box2{
+            padding:0 14px;
         }
     </style>
 </head>
@@ -15,6 +32,15 @@
         大苏打大大大
     </div>
     <button @click="change">111</button>
+    <div class="box box1 box2">
+        阿斯达
+    </div>
+    <div class="box box1 box2">
+        哈哈哈哈
+    </div>
+        <span class="icon-box iconfont icon-close"></span>
+
+
 </div>
 </body>
 <script src="../libs/vue.min.js"></script>

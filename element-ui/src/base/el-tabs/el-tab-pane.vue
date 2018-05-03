@@ -14,6 +14,7 @@
   export default {
     props: {
       label: {type: String, require: true},
+      icon:{type:String,default:""}
     },
     data() {
       return {
@@ -26,12 +27,14 @@
       }
     },
     created() {
+    },
+    mounted(){
 
     },
     methods: {}
   }
 </script>
 
-<style lang="scss" scoped>
+<style>
 
 </style>
