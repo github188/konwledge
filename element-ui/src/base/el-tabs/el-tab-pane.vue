@@ -11,6 +11,7 @@
 </template>
 
 <script>
+  let index = 0 ;
   export default {
     props: {
       label: {type: String, require: true},
@@ -29,7 +30,14 @@
     created() {
     },
     mounted(){
-
+      this.paneName=index;
+      this.$parent.addPane({
+        label:this.label,
+        icon:this.icon,
+        active:this.active,
+        index:index,
+      });
+      index++;
     },
     methods: {}
   }

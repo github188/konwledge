@@ -9,13 +9,13 @@
           <div role="tablist" class="el-tabs__nav" style="transform: translateX(0px);" :style="currentStyle.tablist">
             <div :style="currentStyle.bar" :class="[currentClass.activeBar,`is-${tabPosition}`]" v-if="currentClass.activeBar"></div>
             <div
-              :class="['el-tabs__item',`is-${tabPosition}`,{'is-active':currentName===idx,'is-closable':closable}]"
+              :class="['el-tabs__item',`is-${tabPosition}`,{'is-active':currentName===val.index,'is-closable':closable}]"
               role="tab"
               :style="currentStyle.item"
               v-for="(val,idx) in paneList"
-              @click="switchPane(val,idx)"
-              :id="`tab-${idx}`"
-              :aria-controls="`pane-${idx}`"
+              @click="switchPane(val,val.index)"
+              :id="`tab-${val.index}`"
+              :aria-controls="`pane-${val.index}`"
               :aria-selected="val.selected"
               >
               <span :class="val.icon"></span>
@@ -51,24 +51,30 @@
     created(){
       console.log(this);
       if(this.$attrs.closable===""){
-        console.log("开启closable")
+        console.log("开启closable");
         this.closable=true
       }
     },
     mounted() {
       this._initStyle(this.type);
-      this._initItem(this.tabPosition)
-
-      this.paneList = this.$children.map((val, idx) => {
-        val.paneName = idx;
-        return {
-          icon:val.icon+" iconfont",
-          active: val.active,
-          label: val.label
-        }
-      });
+      this._initItem(this.tabPosition);
+//      this._initData();
     },
     methods: {
+      _initData(){
+        this.paneList = this.$children.map((val, idx) => {
+          val.paneName = idx;
+          return {
+            icon:val.icon+" iconfont",
+            active: val.active,
+            label: val.label
+          }
+        });
+      },
+      addPane(data){
+//        console.log(data,"data");
+        this.paneList.push(data)
+      },
       switchPane(val,idx) {
         this.currentName = idx;
         if(this.tabPosition==="top" || this.tabPosition==="bottom" ){
@@ -122,16 +128,19 @@
         }
       },
       tabRemove(val,idx){
-        let tab = document.getElementById(`tab-${idx}`);
-        let tabpanel = document.getElementById(`pane-${idx}`);
-        if(tab.className.indexOf("is-active")!==-1){
-          let next = tab.nextElementSibling ;
-          let previous = tab.previousElementSibling ;
-          next?next.className+=" is-active":previous?previous.className+=" is-active":"";
+        if(idx===(this.paneList.length-1)){
+          if(idx===0){
+            this.currentName=-1;
+          }else{
+            this.currentName=this.paneList[idx-1].index;
+          }
+        }else{
+          this.currentName=this.paneList[idx+1].index;
         }
-        tab.parentNode.removeChild(tab);
-        tabpanel.parentNode.removeChild(tabpanel);
+        let pane = document.getElementById(`pane-${this.paneList[idx].index}`);
+        pane.parentNode.removeChild(pane);
 
+        this.paneList.splice(idx,1);
         this.$emit("tab-remove",val,idx)
       }
     }
