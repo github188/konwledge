@@ -14,7 +14,7 @@
               ref="item"
               :style="currentStyle.item"
               v-for="(val,idx) in paneList"
-              @click="switchPane(val,val.paneName,idx)"
+              @click="switchPane(val,idx,$event)"
               :id="`tab-${val.paneName}`"
               :aria-controls="`pane-${val.paneName}`"
               :aria-selected="val.selected"
@@ -64,12 +64,16 @@
     },
     methods: {
       addPane(data){
+        if(this.paneList.length===0){this.currentName = data.paneName}  //若先前无列表，则设置第一个选项为当前默认选项
         this.paneList.push(data)
       },
-      switchPane(val,paneName,idx) {
-        this.currentName = paneName;
-        let flag = ["top","bottom"].indexOf(this.tabPosition)!==-1;
-        this.currentStyle.bar=`transform: translate${flag?"X":"Y"}(${idx*(flag?96:40)}px);`;
+      switchPane(val,idx,e) {
+        this.currentName = val.paneName;
+        let position = ["top","bottom"].indexOf(this.tabPosition)!==-1;
+        let bar = document.querySelector(".el-tabs__active-bar");
+        const initLeft = 20 ;//bar 初始化的位置，真实设置的位置在css中
+        let leftMove = e.target.offsetLeft+e.target.offsetWidth/2-bar.offsetWidth/2-initLeft;
+        this.currentStyle.bar=`transform: translate${position?"X":"Y"}(${position?leftMove:40}px);`;  //这种计算方式要以每个nav等宽为前提
         this.$emit("tab-click",val,idx)
       },
       _initStyle(type,tabPosition){
@@ -106,7 +110,7 @@
         ${["top","bottom"].indexOf(tabPosition)!==-1?"width:100%;height:2px;":"height:100%;width:2px;"}`;
       },
       tabRemove(val,idx){
-        this.currentName=idx===0?-1:idx===(this.paneList.length-1)?this.paneList[idx-1].paneName:this.paneList[idx+1].paneName;
+        this.currentName=idx!==(this.paneList.length-1)?this.paneList[idx+1].paneName:this.paneList[idx-1]?this.paneList[idx-1].paneName:-1;// -1为一个无意义的name
         let pane = document.getElementById(`pane-${this.paneList[idx].paneName}`);
         pane.parentNode.removeChild(pane);
 

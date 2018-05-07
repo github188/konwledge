@@ -29,7 +29,6 @@
     },
     watch: {
       '$route': function (to, from) {
-        console.log(to.path)
         this.currentPath=to.path
 
       }
@@ -42,9 +41,9 @@
   }
   header{
     display: flex;
-    border-bottom: 1px solid #333333;
+    border-bottom: 1px dashed #333333;
     margin-bottom: 20px;
-
+    background: $brown;
     span{
       padding:10px 0 ; text-align: center;
     }
@@ -52,7 +51,7 @@
       flex: 1;
       &:hover{
         cursor: pointer;
-        background: $white;
+        background: $gay;
       }
     }
     span.right{
