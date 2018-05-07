@@ -1,10 +1,10 @@
-
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from "./vuex/store"
 
 import "babel-polyfill"
+import "./assets/scss/reset.scss"
 
 import {elTabs} from "./base/index";
 import {busPlugin} from "./plugins/"

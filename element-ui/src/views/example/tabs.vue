@@ -5,9 +5,6 @@
 
       <el-tab-pane :label="val.title" v-for="(val,idx) in editableTabs2" :key="val.name">{{val.content}}</el-tab-pane>
 
-      <!--<el-tab-pane label="配置管理">配置管理text</el-tab-pane>-->
-      <!--<el-tab-pane label="角色管理">角色管理text</el-tab-pane>-->
-      <!--<el-tab-pane label="定时任务补偿"> 定时任务补偿text</el-tab-pane>-->
     </el-tabs>
   </div>
 

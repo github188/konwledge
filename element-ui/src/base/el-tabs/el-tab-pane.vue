@@ -35,7 +35,7 @@
         label:this.label,
         icon:this.icon,
         active:this.active,
-        index:index,
+        paneName:index,
       });
       index++;
     },

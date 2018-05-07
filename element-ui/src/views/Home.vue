@@ -1,43 +1,58 @@
 <template>
   <div class="home">
-    home
-    <span ref="s">asfsdfsdfsdf</span>
-    <t>
-      测试信息
-      <span slot="header">测试header</span>
-    </t>
-
-    <div>
-      <span class="iconfont icon-close box"></span>
-    </div>
+    <ul class="menu">
+      <router-link v-for="(val,idx) in menuList"
+                   tag="li"
+                   key="idx"
+                   :to="val.link"
+      >{{val.text}}
+      </router-link>
+    </ul>
   </div>
 </template>
 
 <script>
-import t from "./1.vue"
+  import t from "./1.vue"
+
   export default {
-    components:{
+    components: {
       t
     },
-    data (){
+    data() {
       return {
+        menuList: [
+          {link: "/tabs", text: "tabs标签页"}
+        ]
 
       }
     },
-    methods: {
+    methods: {},
+    created() {
 
     },
-    created(){
+    mounted() {
 
-    },
-    mounted(){
-      this.$refs.s.style.display="none"
     }
   }
 </script>
 
 <style lang="scss" scoped>
-.box{
-  width:0px;
-}
+  .menu {
+    padding: 10px;
+    border: 1px solid $borderColor;
+    li {
+      padding: 10px;
+      &:nth-of-type(2n) {
+        background: $oldlace;
+      }
+      &:nth-of-type(2n+1) {
+        background: $shallowGreen;
+      }
+      &:hover {
+        background: $gay;
+        cursor: pointer;
+      }
+    }
+  }
+
 </style>

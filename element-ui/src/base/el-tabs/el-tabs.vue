@@ -9,18 +9,19 @@
           <div role="tablist" class="el-tabs__nav" style="transform: translateX(0px);" :style="currentStyle.tablist">
             <div :style="currentStyle.bar" :class="[currentClass.activeBar,`is-${tabPosition}`]" v-if="currentClass.activeBar"></div>
             <div
-              :class="['el-tabs__item',`is-${tabPosition}`,{'is-active':currentName===val.index,'is-closable':closable}]"
+              :class="['el-tabs__item',`is-${tabPosition}`,{'is-active':currentName===val.paneName,'is-closable':closable}]"
               role="tab"
+              ref="item"
               :style="currentStyle.item"
               v-for="(val,idx) in paneList"
-              @click="switchPane(val,val.index)"
-              :id="`tab-${val.index}`"
-              :aria-controls="`pane-${val.index}`"
+              @click="switchPane(val,val.paneName,idx)"
+              :id="`tab-${val.paneName}`"
+              :aria-controls="`pane-${val.paneName}`"
               :aria-selected="val.selected"
               >
               <span :class="val.icon"></span>
               {{val.label}}
-              <span class="icon-close2 iconfont" @click.stop="tabRemove(val,idx)"></span>
+              <span class="icon-close2 iconfont" @click.stop="tabRemove(val,idx)" v-if="closable"></span>
             </div>
           </div>
         </div>
@@ -33,6 +34,10 @@
 </template>
 
 <script>
+  const initData = {
+
+  };
+
   export default {
     props:{
       type:{type:String,default:"border-card"},
@@ -49,43 +54,25 @@
       }
     },
     created(){
-      console.log(this);
       if(this.$attrs.closable===""){
-        console.log("开启closable");
         this.closable=true
       }
     },
     mounted() {
-      this._initStyle(this.type);
-      this._initItem(this.tabPosition);
-//      this._initData();
+      this._initStyle(this.type,this.tabPosition);//根据type不同调整样式
+      //this.$nextTick(this._initData());//将回调延迟到下次 DOM 更新循环之后执行  //在nav元素初始化之后，获取nav的宽度之类的数据
     },
     methods: {
-      _initData(){
-        this.paneList = this.$children.map((val, idx) => {
-          val.paneName = idx;
-          return {
-            icon:val.icon+" iconfont",
-            active: val.active,
-            label: val.label
-          }
-        });
-      },
       addPane(data){
-//        console.log(data,"data");
         this.paneList.push(data)
       },
-      switchPane(val,idx) {
-        this.currentName = idx;
-        if(this.tabPosition==="top" || this.tabPosition==="bottom" ){
-          this.currentStyle.bar=`transform: translateX(${idx*96}px);`;
-        }else{
-          this.currentStyle.bar=`transform: translateY(${idx*40}px);`;
-        }
-
+      switchPane(val,paneName,idx) {
+        this.currentName = paneName;
+        let flag = ["top","bottom"].indexOf(this.tabPosition)!==-1;
+        this.currentStyle.bar=`transform: translate${flag?"X":"Y"}(${idx*(flag?96:40)}px);`;
         this.$emit("tab-click",val,idx)
       },
-      _initStyle(type){
+      _initStyle(type,tabPosition){
         switch (type){
           case "border-card" :
             this.currentClass={
@@ -112,32 +99,15 @@
             };
             break;
         }
-      },
-      _initItem(tabPosition){
-        if(tabPosition==="left" || tabPosition==="right"){
-          this.currentStyle.item="display:block;"
-//          this.currentStyle.header=""
-        }
+        this.currentStyle.item=`display:${["left","right"].indexOf(tabPosition)!==-1?"block":"inline-block"};`
       },
       positionClass(tabPosition){
-        switch (tabPosition){
-          case "left" : return "right:0;bottom:0;height:100%;width:2px;";break;
-          case "right": return "left:0;bottom:0;height:100%;width:2px;" ;break;
-          case "top" : return "left:0;bottom:0;width:100%;height:2px;";break;
-          case "bottom":return "left:0;bottom:0;width:100%;height:2px;";break;
-        }
+        return `bottom:0;${["left"].indexOf(tabPosition)!==-1?"right":"left"}:0;
+        ${["top","bottom"].indexOf(tabPosition)!==-1?"width:100%;height:2px;":"height:100%;width:2px;"}`;
       },
       tabRemove(val,idx){
-        if(idx===(this.paneList.length-1)){
-          if(idx===0){
-            this.currentName=-1;
-          }else{
-            this.currentName=this.paneList[idx-1].index;
-          }
-        }else{
-          this.currentName=this.paneList[idx+1].index;
-        }
-        let pane = document.getElementById(`pane-${this.paneList[idx].index}`);
+        this.currentName=idx===0?-1:idx===(this.paneList.length-1)?this.paneList[idx-1].paneName:this.paneList[idx+1].paneName;
+        let pane = document.getElementById(`pane-${this.paneList[idx].paneName}`);
         pane.parentNode.removeChild(pane);
 
         this.paneList.splice(idx,1);

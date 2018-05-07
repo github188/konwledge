@@ -5,13 +5,17 @@ import Router from 'vue-router'
 const Home = resolve => require(['views/Home'], resolve);
 const test = resolve => require(['views/Test'], resolve);
 const test2 = resolve => require(['../views/test2.vue'], resolve);
-
+const tabs = resolve => require(['../views/example/tabs.vue'], resolve);
 Vue.use(Router);
 
 const router = new Router({
   routes: [
     {path: '/', redirect: 'home'},
     {path: '/home', component: Home},
+    {path: '/tabs', component: tabs},
+
+
+
     {path: '/test', component: test},
     {path: '/test2', component: test2},
   ]
