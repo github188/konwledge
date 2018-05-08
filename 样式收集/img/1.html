@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background: url("./wood.jpg");
+        }
+    </style>
+</head>
+<body>
+<h1>切换背景</h1>
+<button onclick="bg1('./wood.jpg')">背景1</button>
+<button onclick="bg1('./polaroid.png')">背景2</button>
+</body>
+<script>
+    var body = document.querySelector("body");
+    function bg1(url) {
+        body.style.background= "url("+ url+")"
+    }
+
+</script>
+</html>
