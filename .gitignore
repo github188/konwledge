@@ -2,10 +2,4 @@
 /dist
 /.idea
 //npm-debug.log
-/node/node_modules
-/webpack/node_modules
-/webpack/test/node_modules
-/webpack/test2/node_modules
-/gulp/node_modules
-/node/websocket/node_modules
-/element-ui/node_modules
+**/node_modules
