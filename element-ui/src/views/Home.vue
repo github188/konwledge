@@ -3,7 +3,7 @@
     <ul class="menu">
       <router-link v-for="(val,idx) in menuList"
                    tag="li"
-                   key="idx"
+                   :key="idx"
                    :to="val.link"
       >{{val.text}}
       </router-link>
@@ -21,7 +21,8 @@
     data() {
       return {
         menuList: [
-          {link: "/tabs", text: "tabs标签页"}
+          {link: "/test", text: "测试页面"},
+          {link: "/tabs", text: "tabs标签页"},
         ]
 
       }

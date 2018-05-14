@@ -1,59 +1,35 @@
 <template>
   <div>
-    <button @click="addTab">addTab</button>
-    <el-tabs @tab-click="tabClick" style="height:200px;" closable type="active-card" @tab-remove="tabRemove" tab-position="top">
-
-      <el-tab-pane :label="val.title" v-for="(val,idx) in editableTabs2" :key="val.name">{{val.content}}</el-tab-pane>
-
-      <!--<el-tab-pane label="配置管理">配置管理text</el-tab-pane>-->
-      <!--<el-tab-pane label="角色管理">角色管理text</el-tab-pane>-->
-      <!--<el-tab-pane label="定时任务补偿"> 定时任务补偿text</el-tab-pane>-->
+    <el-tabs type="border-card">
+      <el-tab-pane label="用户管理">用户管理</el-tab-pane>
+      <el-tab-pane label="配置管理">配置管理</el-tab-pane>
+      <el-tab-pane label="角色管理">角色管理</el-tab-pane>
+      <el-tab-pane label="定时任务补偿">定时任务补偿</el-tab-pane>
     </el-tabs>
+    <p style="height:50px;border:1px solid #000;"></p>
+    <parent></parent>
   </div>
-
 </template>
 
 <script>
-  //已开发功能
-  //  type :  active-card  border-card card   active-card
-  //  tab-position : left right top bottom
-  //   icon : 添加iconfont
-  //  closable : 可添加和关闭
+  import parent from "./test/parent.vue"
   export default {
+    components:{
+      parent
+    },
     data() {
       return {
-        editableTabs2: [{
-          title: 'Tab 1',
-          name: '1',
-          content: 'Tab 1 content'
-        }, {
-          title: 'Tab 2',
-          name: '2',
-          content: 'Tab 2 content'
-        }],
-        tabIndex:2,
-        editableTabsValue2: '2',
+
       }
+    },
+    computed:{
+
     },
     created() {
 
     },
     methods: {
-      tabClick(val,idx) {
-//        console.log(idx, "tabClick")
-      },
-      tabRemove(val,idx){
-//        console.log(val,idx)
-      },
-      addTab(val,idx){
-        let newTabName = ++this.tabIndex + '';
-        this.editableTabs2.push({
-          title: `New Tab ${newTabName}`,
-          name: newTabName,
-          content: `Tab ${newTabName} content`
-        });
-        this.editableTabsValue2 = newTabName;
-      }
+
     }
   }
 </script>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let str = "product_list_item"
+    let toHump = (str)=>{
+        return str.replace(/_[a-z]/g,val=>{
+            return val.replace("_","").toUpperCase()
+        })
+    };
+    console.log(str+"------",toHump(str))
+</script>
+</html>

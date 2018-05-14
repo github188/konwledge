@@ -5,11 +5,15 @@ import store from "./vuex/store"
 
 import "babel-polyfill"
 import "./assets/scss/reset.scss"
+import 'element-ui/lib/theme-chalk/index.css';
 
-import {elTabs} from "./base/index";
+// import {elTabs} from "./base/index";
 import {busPlugin} from "./plugins/"
+import {ElTabs} from "./packages/index"
 
-Vue.use(elTabs);
+
+// Vue.use(elTabs);
+Vue.use(ElTabs);
 Vue.use(busPlugin);
 
 new Vue({
