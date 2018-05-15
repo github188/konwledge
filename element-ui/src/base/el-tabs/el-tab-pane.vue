@@ -11,35 +11,51 @@
 </template>
 
 <script>
-  let index = 0 ;
   export default {
+    name: "ElTabPane",
+    componentName: "ElTabPane",
     props: {
-      label: {type: String, require: true},
-      icon:{type:String,default:""}
+      label: String,
+      labelContent: Function,
+      name: String,
+      closable: Boolean,
+      disabled: Boolean
     },
     data() {
       return {
-        paneName:0,
+        index: null
       }
     },
     computed:{
       active(){
-        return this.$parent.currentName===this.paneName
-      }
+        return this.$parent.currentName===(this.name || this.index)
+      },
+      paneName() {
+        return this.name || this.index;
+      },
+      isClosable() {
+        return this.closable || this.$parent.closable;
+      },
     },
     created() {
+
     },
     mounted(){
-      this.paneName=index;
-      this.$parent.addPane({
-        label:this.label,
-        icon:this.icon,
-        active:this.active,
-        paneName:index,
-      });
-      index++;
+      this.$parent.addPanes(this);
     },
-    methods: {}
+    destroyed() {
+      if (this.$el && this.$el.parentNode) {
+        this.$el.parentNode.removeChild(this.$el);
+      }
+      this.$parent.removePanes(this);
+    },
+    methods: {},
+    watch: {
+      label() {
+        this.$parent.$forceUpdate();
+      }
+    }
+
   }
 </script>
 

@@ -1,7 +1,15 @@
 <template>
   <div class="home">
-    <ul class="menu">
+    <ul class="menu fl">
       <router-link v-for="(val,idx) in menuList"
+                   tag="li"
+                   :key="idx"
+                   :to="val.link"
+      >{{val.text}}
+      </router-link>
+    </ul>
+    <ul class="menu fl">
+      <router-link v-for="(val,idx) in elementList"
                    tag="li"
                    :key="idx"
                    :to="val.link"
@@ -12,7 +20,7 @@
 </template>
 
 <script>
-  import t from "./1.vue"
+  import t from "./test/1.vue"
 
   export default {
     components: {
@@ -23,6 +31,9 @@
         menuList: [
           {link: "/test", text: "测试页面"},
           {link: "/tabs", text: "tabs标签页"},
+        ],
+        elementList: [
+          {link: "/elTabs", text: "element tabs"},
         ]
 
       }
@@ -39,6 +50,7 @@
 
 <style lang="scss" scoped>
   .menu {
+    width:40%;margin:0 2%;
     padding: 10px;
     border: 1px solid $borderColor;
     li {

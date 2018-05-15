@@ -5,16 +5,18 @@ import store from "./vuex/store"
 
 import "babel-polyfill"
 import "./assets/scss/reset.scss"
-import 'element-ui/lib/theme-chalk/index.css';
 
-// import {elTabs} from "./base/index";
 import {busPlugin} from "./plugins/"
-import {ElTabs} from "./packages/index"
-
-
-// Vue.use(elTabs);
-Vue.use(ElTabs);
 Vue.use(busPlugin);
+
+import "../element-css/icon.css"
+import "../element-css/tabs.css"
+import "../element-css/tab-pane.css"
+import "../element-css/scrollbar.css"
+import ElTabs from "../element-packages/tabs/index"
+import ElPane from "../element-packages/tab-pane/index"
+Vue.use(ElTabs);
+Vue.use(ElPane);
 
 new Vue({
   el: '#app',
