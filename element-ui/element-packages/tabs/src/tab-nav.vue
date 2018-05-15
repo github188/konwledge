@@ -1,4 +1,4 @@
-<script>
+<script type="text/jsx">
   import TabBar from './tab-bar';
   import { addResizeListener, removeResizeListener } from '../../../element-assets/resize-event';
 

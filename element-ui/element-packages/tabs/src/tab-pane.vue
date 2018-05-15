@@ -10,7 +10,7 @@
     <slot></slot>
   </div>
 </template>
-<script>
+<script type="text/jsx">
   export default {
     name: 'ElTabPane',
 

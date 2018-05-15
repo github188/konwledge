@@ -1,6 +1,7 @@
 <template>
   <div class="el-tabs__active-bar" :class="`is-${ rootTabs.tabPosition }`" :style="barStyle"></div>
 </template>
+
 <script>
   export default {
     name: 'TabBar',
@@ -10,8 +11,13 @@
     },
 
     inject: ['rootTabs'],
+    data() {
+      return {}
+    },
+    created() {
 
-    computed: {
+    },
+    computed:{
       barStyle: {
         cache: false,
         get() {
@@ -23,6 +29,7 @@
           const firstUpperCase = str => {
             return str.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
           };
+
           this.tabs.every((tab, index) => {
             if (!this.$parent.$refs.tabs) return {};
             let $el = this.$parent.$refs.tabs[index];
@@ -52,6 +59,11 @@
           return style;
         }
       }
-    }
-  };
+    },
+    methods: {}
+  }
 </script>
+
+<style lang="scss" scoped>
+
+</style>

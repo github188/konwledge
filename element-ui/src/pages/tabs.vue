@@ -1,10 +1,10 @@
 <template>
   <div class="">
-    <e-tabs type="border-card">
+    <e-tabs>
       <e-tab-pane label="用户管理">用户管理</e-tab-pane>
       <e-tab-pane label="配置管理">配置管理</e-tab-pane>
       <e-tab-pane label="角色管理">角色管理</e-tab-pane>
-      <e-tab-pane label="定时任务补偿">定时任务补偿</e-tab-pane>
+      <e-tab-pane label="定时任务补偿定时任务补偿定时任务补偿定时任务补偿">定时任务补偿</e-tab-pane>
     </e-tabs>
 
   </div>

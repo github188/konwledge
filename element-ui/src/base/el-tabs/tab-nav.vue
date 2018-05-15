@@ -1,4 +1,6 @@
 <script type="text/jsx">
+  import TabBar from "./el-tab-bar.vue"
+
   function noop() {}
   const firstUpperCase = str => {
     return str.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
@@ -7,6 +9,9 @@
   export default {
     name:"TabNav",
     inject:["rootTabs"],
+    components:{
+      TabBar
+    },
     props: {
       panes: Array,
       currentName: String,
@@ -43,7 +48,7 @@
       }
     },
     render(h){
-      let {scrollable,navStyle,panes,closable,editable,
+      let {scrollable,navStyle,panes,closable,editable,type,
         changeTab,onTabRemove,removeFocus,onTabClick}=this;
 
       const tabs =this._l(panes,(pane, index)=>{
@@ -80,6 +85,7 @@
       return (<div class={["el-tabs__nav-wrap",scrollable? 'is-scrollable':'',`is-${ this.rootTabs.tabPosition }`]}>
         <div class={["el-tabs__nav-scroll"]} ref="navScroll">
           <div class="el-tabs__nav" ref="nav" style={navStyle} role="tablist" on-keydown={ changeTab }>
+            {!type ? <tab-bar tabs={panes}></tab-bar> : null}
             {tabs}
           </div>
         </div>

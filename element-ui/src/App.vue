@@ -37,7 +37,8 @@
 </script>
 <style lang="scss" scoped>
   #app{
-    padding:0 10px;background: #f2f2f2;
+    padding:0 10px;
+    border:1px dashed #f2f2f2;
   }
   body{
     background: $f2;
