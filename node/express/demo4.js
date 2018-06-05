@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 
+<<<<<<< HEAD
 // app.use(express.static('publice'));
 app.use('/public', express.static('public'));
 
@@ -9,6 +10,14 @@ app.get('/', function (req, res) {
 })
 
 
+=======
+app.use(express.static('public'));
+
+app.get('/index.html', function (req, res) {
+    res.sendFile( __dirname + "/" + "demo4.html" );
+})
+
+>>>>>>> dev
 app.get('/process_get', function (req, res) {
     console.log(req.query,"query")
     // 输出 JSON 格式
