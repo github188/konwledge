@@ -3,10 +3,15 @@ import Router from 'vue-router'
 
 //首页和其他路由
 const Home = resolve => require(['views/Home'], resolve);
-const test = resolve => require(['../views/Test.vue'], resolve);
+const test = resolve => require(['../views/test/Test.vue'], resolve);
 
-const tabs = resolve => require(['../pages/tabs.vue'], resolve);
-const elTabs =  resolve => require(['../../element-example/tabs.vue'], resolve);
+const checkbox =  resolve => require(['../views/checkbox/checkbox.vue'], resolve);
+
+//element-ui
+const elTabs =  resolve => require(['../element/examples/tabs.vue'], resolve);
+
+//mint-ui
+const loadmore =  resolve => require(['../mint-ui/examples/loadmore.vue'], resolve);
 
 Vue.use(Router);
 
@@ -17,8 +22,12 @@ const router = new Router({
     {path: '/test', component: test},
 
 
-    {path: '/tabs', component: tabs},
+    {path: '/checkbox', component: checkbox},
+//element-ui
     {path: '/elTabs', component: elTabs},
+
+//mint-ui
+    {path: '/loadmore', component: loadmore},
   ]
 })
 router.beforeEach((to, from, next) => {

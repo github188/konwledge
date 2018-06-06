@@ -3,7 +3,7 @@
       <header>
         <router-link tag="span" to="/" class="left pointer">{{currentPath==="/home"?"":"返回"}}</router-link>
         <span class="center">头部</span>
-        <span class="right"></span>
+        <span class="right blue"></span>
       </header>
       <router-view></router-view>
   </div>
@@ -64,6 +64,9 @@
     span.center{
       flex:3;
     }
+  }
+  .blue{
+    color:blue;
   }
 
 </style>

@@ -9,14 +9,16 @@ import "./assets/scss/reset.scss"
 import {busPlugin} from "./plugins/"
 Vue.use(busPlugin);
 
-import "../element-css/icon.css"
-import "../element-css/tabs.css"
-import "../element-css/tab-pane.css"
-import "../element-css/scrollbar.css"
-import ElTabs from "../element-packages/tabs/index"
-import ElPane from "../element-packages/tab-pane/index"
-Vue.use(ElTabs);
-Vue.use(ElPane);
+//引用element-ui （包括css和js）
+import "./element/element-use"
+
+//引用mint-ui （包括css和js）
+import "./mint-ui/mint-ui-use"
+
+//引用自定义组件
+import {header,wrapper} from "./base/index"
+Vue.use(header);
+Vue.use(wrapper);
 
 new Vue({
   el: '#app',
@@ -25,28 +27,3 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
-
-
-
-
-/**
- *
- * 　　　┏┓　　　┏┓
- * 　　┏┛┻━━━┛┻┓
- * 　　┃　　　　　　　┃
- * 　　┃　　　━　　　┃
- * 　　┃　┳┛　┗┳　┃
- * 　　┃　　　　　　　┃
- * 　　┃　　　┻　　　┃
- * 　　┃　　　　　　　┃
- * 　　┗━┓　　　┏━┛Code is far away from bug with the animal protecting
- * 　　　　┃　　　┃    神兽保佑,代码无bug
- * 　　　　┃　　　┃
- * 　　　　┃　　　┗━━━┓
- * 　　　　┃　　　　　 ┣┓
- * 　　　　┃　　　　 ┏┛
- * 　　　　┗┓┓┏━┳┓┏┛
- * 　　　　　┃┫┫　┃┫┫
- * 　　　　　┗┻┛　┗┻┛
- *
- */

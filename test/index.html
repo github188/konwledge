@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
+    <title>Title</title>
+    <style>
+        html,body,p{margin:0;padding:0;}
+        header{
+            width:100%;background: yellowgreen;
+        }
+        .center{text-align: center;line-height: 50px;}
+        .box{border:1px solid #000;height:50px;margin:5px 0 ;}
+        .box1{  width:100px;  }
+        .box2{ width:200px; }
+    </style>
+</head>
+<body>
+<header>
+    <p class="center">头部</p>
+    <p class="center txt">异常！</p>
+</header>
+<div class="box box1 center">100px</div>
+<div class="box box2 center">200px</div>
+
+</body>
+<script>
+    var txt = document.querySelector(".txt");
+    var header = document.querySelector("header");
+    txt.innerHTML = "header宽度"+getComputedStyle(header)["width"]+"<br/>屏幕宽度"+document.documentElement.clientWidth+"px"
+</script>
+</html>

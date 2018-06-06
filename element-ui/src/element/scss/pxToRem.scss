@@ -1,0 +1,3 @@
+@function ElPxToRem($val) {
+  @return $val/14+rem;
+}

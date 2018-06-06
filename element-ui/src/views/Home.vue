@@ -31,6 +31,8 @@
         menuList: [
           {link: "/test", text: "测试页面"},
           {link: "/tabs", text: "tabs标签页"},
+          {link:"/checkbox",text:"checkbox三级选项"},
+          {link:"/loadmore",text:"loadmore（H5）"}
         ],
         elementList: [
           {link: "/elTabs", text: "element tabs"},

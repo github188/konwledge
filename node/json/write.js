@@ -5,7 +5,7 @@ var myData = {
     version:'1.0'
 }
 
-var outputFilename = 'D:/gaofangshang/MyGit/node/json/my.json';
+var outputFilename = 'D:/Mr.Gao/MyGit/node/json/my.json';
 
 fs.writeFile(outputFilename, JSON.stringify(myData, null, 4), function(err) {
     if(err) {

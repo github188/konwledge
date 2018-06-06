@@ -37,7 +37,12 @@ h1,h2,h3{  font-weight:normal;}
 .red {color: #f00;}
 .red_bg {background: #f00; color: #fff;}
 .hide { display: none; }
-
+//.f6就是font-size为6px
+@for $i from 6 to 40 {
+  .f#{$i} {
+    font-size: pxToRem($i);
+  }
+}
 
 body, html {
   margin: 0;
@@ -47,19 +52,7 @@ body, html {
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
 }
-//[class*=" el-icon-"], [class^=el-icon-] {
-//  font-family: element-icons!important;
-//  speak: none;
-//  font-style: normal;
-//  font-weight: 400;
-//  font-variant: normal;
-//  text-transform: none;
-//  line-height: 1;
-//  vertical-align: baseline;
-//  display: inline-block;
-//  -webkit-font-smoothing: antialiased;
-//  -moz-osx-font-smoothing: grayscale;
-//}
+
 .iconfont {
   speak: none;
   font-style: normal;
@@ -71,4 +64,52 @@ body, html {
   display: inline-block;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+// seletc 重置样式   用法: 外层套一个类名未select_reset的div
+.select_reset {
+  display: inline-block;
+  width: pxToRem(200);
+  margin: 0 auto;
+  height: pxToRem(50);
+  line-height: pxToRem(50);
+  font-size: pxToRem(28);
+  border: 1px #999 solid;
+  border-radius: pxToRem(10);
+  box-sizing: border-box;
+  cursor: pointer;
+  position: relative;
+  &:nth-of-type(2n) {
+    width: pxToRem(250);
+  }
+  &:after {
+    content: ' ';
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    margin-top: -5px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #999;
+    font-size: 0;
+    line-height: 0;
+  }
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
+    outline: none;
+    border: 0 none;
+    padding: 0 0 0 5px;
+    width: 100%;
+    color: #333;
+    font-weight: bold;
+    background: none;
+    background-color: transparent;
+    font-size: pxToRem(28);
+    z-index: 99;
+    overflow: hidden;
+  }
 }

@@ -10,6 +10,11 @@ function isArray(arg) {
     }
     return false;
 }
+function isObject(arg) {
+    if(typeof arg === 'object'){
+        return Object.prototype.toString.call(arg) === '[object Objct]';
+    }
+}
 
 //重新定义toFixed
 function redefinitionToFixed (){

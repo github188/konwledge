@@ -6,12 +6,7 @@
 @function pxToRem($val) {
   @return $val/100+rem;
 }
-//.f6就是font-size为6px
-@for $i from 6 to 40 {
-  .f#{$i} {
-    font-size: pxToRem($i);
-  }
-}
+
 
 
 

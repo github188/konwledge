@@ -1,0 +1,35 @@
+.all{
+  background: #e8e8e8;
+  position: absolute;left:0;right:0;top:pxToRem(90);bottom:0;
+  .main{
+    min-height: 100%;
+    _height: 100%;
+    box-sizing: border-box;
+    padding-bottom:pxToRem(100+20);
+    .order_list{
+      background: #e8e8e8;
+      padding-bottom: pxToRem(100+20);
+    }
+  }
+  .bottom{
+    width:100%;height:pxToRem(100);
+    margin-top: pxToRem(-100);
+    .msg_box{
+      float:left;text-align: center;
+      width:50%;height:pxToRem(100);line-height: pxToRem(100);
+      font-size:pxToRem(40)
+    }
+    .left_create{
+      color:#ff6633;
+      background: #fff;
+    }
+    .left_confirm{
+      background: #fff;
+    }
+    .right{
+      background: #06acf9;
+      color:#fff;
+    }
+  }
+}
+
