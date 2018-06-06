@@ -5,3 +5,4 @@
 **/node_modules
 **/.idea
 **/.sass-cache
+/node/node_modules
