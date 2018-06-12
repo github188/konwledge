@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
+    <title>Title</title>
+</head>
+<body>
+<a href="test/index2.html?v=2">index.3</a>
+11111
+<button onclick="getSession()">getSession3</button>
+<br><br><br><br>
+<button onclick="getlocal()">getlocal3</button>
+</body>
+<script>
+    window.localStorage.clear();
+
+    var a = "sessionStorage储存信息2";
+    var b = "localStorage储存信息2";
+    window.sessionStorage.setItem("key",a);
+    window.localStorage.setItem("key",b);
+
+    function getSession() {
+        var value = window.sessionStorage.getItem("key");
+        alert(value)
+    }
+    function getlocal() {
+        var value = window.localStorage.getItem("key");
+        alert(value)
+    }
+</script>
+</html>

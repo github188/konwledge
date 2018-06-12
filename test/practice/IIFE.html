@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    (function IIFE() {
+        console.log(1)
+    })()
+</script>
+<script>
+    (function IIFE() {
+        console.log(2)
+    }())
+</script>
+<script>
+    console.log("===============================================")
+    var a=2 ;
+    (function IIFE(global) {
+        var a=3;
+        console.log(a);
+        console.log(global.a)
+    })(window)
+    console.log(a)
+</script>
+</html>

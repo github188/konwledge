@@ -6,6 +6,8 @@ const Home = resolve => require(['views/Home'], resolve);
 const test = resolve => require(['../views/test/Test.vue'], resolve);
 
 const checkbox =  resolve => require(['../views/checkbox/checkbox.vue'], resolve);
+//copy
+const LoadmoreCopy =  resolve => require(['../views/test/loadmore-copy/testloadmore.vue'], resolve);
 
 //element-ui
 const elTabs =  resolve => require(['../element/examples/tabs.vue'], resolve);
@@ -20,7 +22,8 @@ const router = new Router({
     {path: '/', redirect: 'home'},
     {path: '/home', component: Home},
     {path: '/test', component: test},
-
+//测试
+    {path: '/LoadmoreCopy', component: LoadmoreCopy},
 
     {path: '/checkbox', component: checkbox},
 //element-ui

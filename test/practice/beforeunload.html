@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+页面加载完成
+<button onclick="getData()">获取localStorage中的信息</button>
+</body>
+<script>
+    //beforeunload
+    window.addEventListener("beforeunload",function (e) {
+        console.log("beforeunload事件触发！")
+        window.localStorage.setItem("key","beforeunload事件中储存的信息222")
+    })
+
+    function getData() {
+        var a = window.localStorage.getItem("key");
+       console.log(a,"====aaaa====")
+    }
+</script>
+</html>

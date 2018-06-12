@@ -3,40 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style>
-        ul li:not(.s){
-            height:50px;margin:10px 0;background: yellowgreen;
-        }
-    </style>
 </head>
 <body>
-<ul>
-    <li>1</li>
-    <li>2</li>
-    <li>3</li>
-    <li class="s">4</li>
-</ul>
+<!--<iframe src="https://www.baidu.com/" class="baidu" name="baidu"></iframe>-->
 </body>
 <script>
-    function foo() {
-        function bar(a) {
-            i=3;
-            console.log(a+i)
-        }
-
-        for(var i=0;i<10;i++){
-            bar(i*2)
-        }
-    }
-    foo()
+    var iframe = document.getElementsByClassName("baidu")[0]
 
 
-    (function () {
-       console.log(1111)
-    })()
+    let arr = [1,2,3,3];
+    let resultarr = [...new Set(arr)];
 
-    (function () {
-        console.log(22222)
-    })
+    console.log(resultarr)
 </script>
 </html>
