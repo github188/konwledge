@@ -20,10 +20,40 @@
     var a=2 ;
 
     bar();
+</script>
 
+<script>
+    function foo() {
+        console.log(a); //2
+    }
 
+    function bar() {
+        var a=3 ;
+        function foo() {
+            console.log(a); //2
+        }
+        foo()
+    }
 
+    var a=2 ;
 
+    bar();
+</script>
+<script>
+    function foo() {
+        console.log(a); //2
+    }
 
+    function bar() {
+        function foo() {
+            console.log(a); //2
+        }
+        var a=3 ;
+        foo()
+    }
+
+    var a=2 ;
+
+    bar();
 </script>
 </html>
