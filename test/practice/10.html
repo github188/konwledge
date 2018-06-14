@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+//    var obj = {
+//        id:"awesome",
+//        cool:function () {
+//            console.log(this.id)
+//        }
+//    }
+//
+//    var id = "not awesome";
+//    obj.cool();
+//    setTimeout(obj.cool,100)
+//    //为什么此处的this会丢失指向？
+//    // 首先，this的指向确实是会随着使用环境的变化而改变的，比如new function ，所以this的指向并不一定是定义时的指向
+
+</script>
+<script>
+    var obj = {
+        count:0,
+        cool:function () {
+            var self = this ;
+            if(self.count<1){
+                setTimeout(function () {
+                    self.count++;
+                    console.log(obj.count,"awesome")
+                },100)
+            }
+        }
+    }
+    obj.cool()
+
+
+//    var obj = {
+//        count:0,
+//        cool:function () {
+//            if(this.count<1){
+//                setTimeout(function () {
+//                    this.count++;
+//                    console.log(obj.count,"awesome")
+//                },100)
+//            }
+//        }
+//    }
+//    obj.cool()
+</script>
+</html>
