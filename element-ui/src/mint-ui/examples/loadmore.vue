@@ -1,11 +1,11 @@
 <template>
-  <div class="">
+  <!--<div class="">-->
     <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore">
       <ul>
         <li v-for="item in list">{{ item.text }}</li>
       </ul>
     </mt-loadmore>
-  </div>
+  <!--</div>-->
 </template>
 
 <script>

@@ -67,7 +67,6 @@
         this.topStatus = 'pull';
         this.bottomStatus = 'pull';
         this.topText = this.topPullText;
-        debugger;
         this.scrollEventTarget = this.getScrollEventTarget(this.$el);
         if (typeof this.bottomMethod === 'function') {
           this.fillContainer();
