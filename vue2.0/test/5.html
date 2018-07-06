@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+            <li style="height:50px;width:200px;border:1px solid #000;margin:5px 0;" v-for="(val,idx) in list" :key="idx">
+                {{val.name }}
+                <span v-for="(value,index) in val.li" :key="index">
+                    {{value.iName}}
+                </span>
+            </li>
+    </ul>
+</div>
+</body>
+<script src="../libs/vue.min.js"></script>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data(){
+            return {
+                list:[
+                    {a:1,name:"第一个",li:[{iName:"iName1"}]},
+                    {b:2,name:"第二个",li:[{iName:"iName2"}]},
+                    {c:3,name:"第三个",li:[{iName:"iName3"}]}
+                ]
+            }
+        },
+        methods:{
+            change(){
+                this.list
+            }
+        },
+        filters:{
+            trans(val){
+                return val+"aaa"
+            }
+        }
+    })
+</script>
+</html>

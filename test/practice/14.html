@@ -5,11 +5,13 @@
     <title>Title</title>
 </head>
 <body>
-
+    forEach并不会改变原来的值
 </body>
 <script>
-    function pre() {
-        console.log(1)
-    }
+    var row = [1,2,3,4];
+    row.forEach((val,idx)=>{
+        val=val+1
+    })
+    console.log(row)
 </script>
 </html>
