@@ -1,9 +1,0 @@
-{
-  "data":{
-    "update":false,  		 // type :Boolean
-    "manifest":"1",	//  type:String
-    "vendor":"2",		//  type:String
-    "app":"3"		//  type:String
-  },
-  "err_code":0
-}
