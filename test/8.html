@@ -5,12 +5,20 @@
     <title>Title</title>
     <style>
         .fl{float:left;}
+        .body { overflow: hidden}
         .card{
             width:100px;height:50px;border:1px solid #000;box-sizing: border-box;
             transform: scaleY(0.5);
         }
         .card2{
             width:100px;height:50px;border:1px solid yellowgreen;box-sizing: border-box;
+        }
+
+        .box {
+            width:50px;height:50px;border: 1px solid #000;font-size:30px;font-weight: bold;text-align: center;line-height:50px;
+        }
+        .box:hover {
+            transform: rotate(90deg);
         }
     </style>
 </head>
@@ -21,6 +29,12 @@
     </div>
     <div class="card2 fl" style="color:Red;background:#f2f2f2;">
         card
+    </div>
+
+    <br><br> <br><br> <br><br> <br><br>
+
+    <div class="box">
+            正
     </div>
 </div>
 </body>
