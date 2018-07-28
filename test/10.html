@@ -8,16 +8,72 @@
 
 </body>
 <script>
+    //功能：输入任意的时间形式，和需要转出的时间形式，即可按指定形式转出
 
-   // "use strict"
-    var myObject = {
-        a: 2
+    //case1,输入new Date()，转出yyyy-MM-dd hh:mm:ss形式
+
+    const format = {
+        1:"yyyy-MM-dd",
+        2: "HH:mm:ss ",
+
     }
-    Object.preventExtensions( myObject ); // 禁止一个对象添加新属性并且保留已有的熟悉；但是可以删除熟悉
-    myObject.c = 3
-    console.log(myObject.c)
 
-    // delete myObject.a                    // 但是可以删除熟悉
-    // console.log(myObject)
+    /**
+     * 函数分两步：1，识别time，并且统一转化为日期时间格式； 2，将日期时间格式转化为对应形式输出
+     * @param time  new Date();2018年10月20日 16时35分28秒;2018:10:20 16:35:28;
+     * @param type  yyyy代表年份; mm代表月份; dd代表天数; hh代表小时; mm代表分钟; ss代表秒数; e ee eee代表 二 周二 星期二
+     */
+    function format(time, type) {
+        let timeNew = timeToStamp(time);
+
+
+    }
+
+
+    function timeToStamp (time) {
+        if ( time instanceof Date ) { // 输入的为new Date()形式
+            return time;
+        }else if ( time instanceof Number ) {   // 输入的为时间戳形式
+            return new Date(time)
+        }else if ( time instanceof String ) {
+            time = initStringBlank(time); //将连续的空格全转化成单个空格
+            time = deleteDayAfter(time);    // 将"28日"的"28"后面的字符删除，直到遇到空格
+
+            let year = time.substring(0,4);
+            let month = time.substring(5,7);
+            let day = time.substring(8,10);
+            let hour = time.substring(11,13);
+            let minute = time.substring(14,16);
+            let second = time.substring(17,19);
+            return new Date(year, month, day, hour, minute, second)
+        }
+    }
+
+    /**
+     * 将字符串内两格以上的连续空格替换成一个格子的空格
+     * @param time  String
+     * @returns {*} String
+     */
+    function initStringBlank (time) {
+        time = time.replace(/  /g," ");
+        if (time.indexOf("  ") !== -1) {
+            time = initStringBlank(time)
+        }
+        return time
+    }
+
+    /**
+     * 将"28日"后面的"28"后面的其他字符全都删掉，直到遇到空格
+     * @param time
+     */
+    function deleteDayAfter (time) {
+        if (time.substring(10,11) !== " ") {
+            time = time.substring(0, 10) + time.substring(11)
+            time = deleteDayAfter(time)
+        }
+        return time
+    }
+
+    format(new Date(), "yyyy-MM-dd hh:mm:ss")
 </script>
 </html>

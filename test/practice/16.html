@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+   // "use strict"
+    var myObject = {
+        a: 2
+    }
+    Object.preventExtensions( myObject ); // 禁止一个对象添加新属性并且保留已有的熟悉；但是可以删除熟悉，可以修改已有属性
+    myObject.c = 3
+   myObject.a = 4
+    console.log(myObject)     // { a : 4 }
+
+    // delete myObject.a                    // 但是可以删除熟悉
+    // console.log(myObject)
+</script>
+
+
+<script>
+    // console.log("==============")
+    // var obj = {c:3}
+    //
+    // Object.seal( obj )
+
+    // obj.d = 4
+    // console.log(obj)
+    // delete obj.c
+    // console.log(obj)
+</script>
+</html>
