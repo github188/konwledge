@@ -30,6 +30,10 @@
     }
 
 
+    /**
+     * 将各种时间形式转化为日期时间形式
+     * @param time      new Date();2018年10月20日 16时35分28秒;2018年10月20日; 2018:10:20 16:35:28;
+     */
     function timeToStamp (time) {
         if ( time instanceof Date ) { // 输入的为new Date()形式
             return time;
