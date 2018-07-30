@@ -1,0 +1,50 @@
+[
+  {
+    "id": 2,
+    "name": "整车保",
+    "frequency_type": 1,
+    "disabled": false
+  },
+  {
+    "id": 4,
+    "name": "员工保",
+    "frequency_type": 2,
+    "disabled": false
+  },
+  {
+    "id": 16,
+    "name": "商铺档口火灾保",
+    "frequency_type": 2,
+    "disabled": false
+  },
+  {
+    "id": 32,
+    "name": "普货保",
+    "frequency_type": 1,
+    "disabled": false
+  },
+  {
+    "id": 8192,
+    "name": "货车重大事故保",
+    "frequency_type": 2,
+    "disabled": false
+  },
+  {
+    "id": 16384,
+    "name": "定车货运年保",
+    "frequency_type": 2,
+    "disabled": false
+  },
+  {
+    "id": 131072,
+    "name": "专线保",
+    "frequency_type": 1,
+    "disabled": false
+  },
+  {
+    "id": 131076,
+    "name": "安享一生癌症医疗险",
+    "frequency_type": 2,
+    "disabled": false
+  }
+]

@@ -16,6 +16,22 @@
         .box-enter, .box-leave-to /* .fade-leave-active in below version 2.1.8 */ {
             transform: translateX(100%);
         }
+
+
+        .rotate-enter-active, .rotate-leave-active{
+            transition:all 2s ease;
+        }
+        .rotate-enter,.rotate-leave{
+            transform:rotate(180deg)
+        }
+
+
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity 5s;
+        }
+        .fade-enter, .fade-leave-to {
+            opacity: 0;
+        }
     </style>
 </head>
 <body>
@@ -27,15 +43,36 @@
 
         </div>
     </transition>
+
+    <transition name="rotate">
+        <div class="a">
+            正
+        </div>
+    </transition>
+
+    <transition name="fade">
+        <ul class="time-number-box shadow-md" v-show="timeShow.hours">
+            <li v-for="(item,index) in hoursList" @click.stop.prevent="handleClickHours(item,index)">{{item.text | formatTime}}</li>
+        </ul>
+    </transition>
+    <button @click="timeShow.hours=!timeShow.hours">timeShow</button>
 </ul>
 </body>
 <script src="../libs/vue-2.3.js"></script>
 <script>
+
+
     var vm = new Vue({
         el:"#vue",
         data(){
             return {
-                flag:false
+                flag:false,
+                timeShow:{
+                    hours:false,
+                    minutes:false,
+                    seconds:false
+                },
+                hoursList:[1,2,3,4,5,6]
             }
         },
         methods:{
@@ -43,7 +80,15 @@
         },
         created(){
 
-        }
+        },
+        computed:{
+
+        },
+        filters:{
+            formatTime (text) {
+                return text < 10 ? '0' + text : text;
+            }
+        },
     })
 </script>
 </html>

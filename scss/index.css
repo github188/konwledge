@@ -1,0 +1,16 @@
+.border-bottom {
+  border-bottom: 1px dashed red; }
+  [data-dpr="1"] .border-bottom {
+    border-bottom: 1px dashed red; }
+  [data-dpr="2"] .border-bottom {
+    border-bottom: 0.5px dashed red; }
+  [data-dpr="2.5"] .border-bottom {
+    border-bottom: 0px dashed red; }
+  [data-dpr="2.75"] .border-bottom {
+    border-bottom: 0.3636363636px dashed red; }
+  [data-dpr="3"] .border-bottom {
+    border-bottom: 0.3333333333px dashed red; }
+  [data-dpr="4"] .border-bottom {
+    border-bottom: 0.25px dashed red; }
+
+/*# sourceMappingURL=index.css.map */
