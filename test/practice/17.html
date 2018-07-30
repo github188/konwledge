@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var myObject = {
+        get a() {
+            return 2
+        },
+        b:4
+    };
+    console.log(myObject);      //此时创建的是一个不包含值的属性，对这个属性的访问会自动调用一个隐藏函数，他的返回值会被当作属性访问的返回值
+    myObject.a = 3;             //由于我们只提交了getter，所以对a的值进行设置时，set操作会忽略赋值操作，且不会抛出错误。
+    console.log(myObject.a)     // 即便有合法的setter，由于我们自定义的getter只会返回2，所以这里肯定是返回2;
+</script>
+
+<script>
+    console.log("=======================")
+    var myObject = {
+        get a () {
+            return this._a_;
+        },
+        set a (val) {
+            // this.a = val*2         // 如果在set中给this.a赋值，则会报错 : Uncaught RangeError: Maximum call stack size exceeded;
+            this._a_ = val*2
+        }
+    };
+
+    myObject.a = 2;
+    console.log(myObject.a)
+</script>
+</html>
