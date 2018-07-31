@@ -8,7 +8,7 @@ const utils = require('./utils')
 
 const webpackConfig = merge(baseWebpackConfig, {
     plugins: [
-        new webpack.BannerPlugin('个人所有，欢迎使用'),
+        new webpack.BannerPlugin('欢迎使用 --Mr.Gao'),
         new HtmlWebpackPlugin({
             template:utils.resolve('index.html'),       // 模板html未知
             filename: "index.html",               //在目标文件中，生成的html文件名

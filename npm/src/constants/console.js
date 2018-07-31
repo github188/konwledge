@@ -1,1 +1,1 @@
-export const consoleStyle = "background:#aaa;color:#bada55";        //console.log时的输出样式
+export const consoleStyle = "color:#BA55D3";        //console.log时的输出样式
