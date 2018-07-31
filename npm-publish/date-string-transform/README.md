@@ -54,6 +54,7 @@ yyyy代表年，MM代表月，dd代表日，hh代表时，mm代表分，ss代表
     <script src="http://duolami.club/source/date-string-transform/date-string-transform.script.js"></script>
     <script>
         console.log ( timeFormat(new Date(),"yyyy-MM-dd hh-mm-ss") )    // 2018-07-31 16-16-58
+        console.log ( timeFormat("2018-02-15 12-22-11") )    // Thu Feb 15 2018 12:22:11 GMT+0800 (中国标准时间)
     </script>    
 
 
