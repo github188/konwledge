@@ -1,17 +1,12 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const config = require('../config')
+const utils = require('./utils')
 
-
-function resolve (dir) {
-    return path.join(__dirname, '..', dir)
-}
 
 module.exports = {
-    entry:  resolve('src/main.js'), // 等价格path.resolve(__dirname, "../src/main.js")
+    entry:  utils.resolve('src/main.js'), // 等价格path.resolve(__dirname, "../src/main.js")
     output: {
-        path: resolve('dist'),          //打包后的文件存放的地方
-        filename: '[name].[hash:8].js'    //打包后输出文件的文件名
+        path: utils.resolve('dist'),          //打包后的文件存放的地方
+        filename: '[name].[hash:8].js'    //打包后输出文件的文件名,因为要npm上传包时要指定对应的文件名
     },
     module: {
         rules: [
@@ -28,10 +23,6 @@ module.exports = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            template:resolve('index.html'),       // 模板html未知
-            filename: "index.html",               //在目标文件中，生成的html文件名
-            hash: true,
-        })
+
     ]
 }

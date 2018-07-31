@@ -1,0 +1,1 @@
+export const consoleStyle = "background:#aaa;color:#bada55";        //console.log时的输出样式

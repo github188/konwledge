@@ -1,8 +1,7 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.conf');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const utils = require('./utils')
+
 
 const webpackConfig = merge(baseWebpackConfig, {
     devServer: {
@@ -14,11 +13,6 @@ const webpackConfig = merge(baseWebpackConfig, {
         open: true
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            template:utils.resolve('index.html'),       // 模板html未知
-            filename: "index.html",               //在目标文件中，生成的html文件名
-            hash: true,
-        }),
         new webpack.HotModuleReplacementPlugin()        //热加载插件
     ]
 })
