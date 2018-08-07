@@ -3,4 +3,5 @@
 // import './data-binding'
 // import './computed'
 // import './directive'
-import './template/defined'
+// import './component/defined'
+import './component/extend'
