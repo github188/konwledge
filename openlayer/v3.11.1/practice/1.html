@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Accessibility example</title>
+    <script src="./source/jquery-1.11.2.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="./source/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./ol/ol.css" type="text/css">
+    <script src="./ol/ol.js"></script>
+
+    <style>
+        a.skiplink {
+            position: absolute;
+            clip: rect(1px, 1px, 1px, 1px);
+            padding: 0;
+            border: 0;
+            height: 1px;
+            width: 1px;
+            overflow: hidden;
+        }
+        a.skiplink:focus {
+            clip: auto;
+            height: auto;
+            width: auto;
+            background-color: #fff;
+            padding: 0.3em;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+
+    <div class="row-fluid">
+        <div class="span12">
+            <a class="skiplink" href="#map">Go to map</a>
+            <div id="map" class="map" tabindex="0"></div>
+            <button id="zoom-out">Zoom out</button>
+            <button id="zoom-in">Zoom in</button>
+        </div>
+    </div>
+
+</div>
+<script>
+    var map = new ol.Map({
+        layers: [
+            new ol.layer.Tile({
+                source: new ol.source.OSM()
+            })
+        ],
+        target: 'map',
+        controls: ol.control.defaults({
+            attributionOptions: /** @type {olx.control.AttributionOptions} */ ({
+                collapsible: false
+            })
+        }),
+        view: new ol.View({
+            center: [0, 0],
+            zoom: 2
+        })
+    });
+
+    document.getElementById('zoom-out').onclick = function() {
+        var view = map.getView();
+        var zoom = view.getZoom();
+        view.setZoom(zoom - 1);
+    };
+
+    document.getElementById('zoom-in').onclick = function() {
+        var view = map.getView();
+        var zoom = view.getZoom();
+        view.setZoom(zoom + 1);
+    };
+
+</script>
+</body>
+</html>
