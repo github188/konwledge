@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // var anotherObject = {
+    //     a: 2
+    // }
+    // var myObject = Object.create( anotherObject )
+    // console.log(myObject,myObject.a)
+    //
+    // var newObject = Object.create( myObject )
+    // console.log(newObject,newObject.a)
+</script>
+<script>
+    var myObject = {
+        a: 2
+    }
+    Object.getOwnPropertyDescriptor(myObject, "a")   // 获取对象的属性描述符
+    Object.defineProperty(myObject, "a", {      // 添加或修改一个新属性
+        value: 3,
+        writable: true,         // 决定属性是否可以修改
+        configurable: true,     //  决定属性是否可配置 ---false--- 除了writable和value其他配置都不可修改。
+                                // writable可以单向改为false，它决定value是否可改
+                                //  还会禁止删除这个属性
+        enumerable: false        //  决定在for...in中是否可枚举
+    })
+    console.log(myObject)
+
+    for ( var i in myObject) {
+        console.log("found :" + i)
+    }
+    console.log("a" in myObject)
+</script>
+</html>
