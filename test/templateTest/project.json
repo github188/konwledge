@@ -1,0 +1,142 @@
+{
+  "angular": {
+    "module" : {
+      "myApp": {    // module ----------------------------------------------------
+        "[]":["myServices","directives","gisControllers","gidDirectives","headModule"],
+        "controller":"function(){}"
+      },
+      "myServices": {   // module ---- 封装了各种请求模板
+        "factory":{
+          "services":"serviceAPI"   //  返回自定义好的serviceAPI对象；和$rootScope.$watch监听的serviceAPI不是同一个东西
+        },
+        "$rootScope":{
+          "serverAction":"定义请求行为",
+          "$watch":{
+            "serviceAPI":"对serviceAPI进行监听;$rootScope.serviceAPI将会在每个页面对应的controller中定义"
+          }
+        }
+      },
+      "myDirectives": {   // module ---- 封装了各类指令
+        "directive": {
+          "headControl":"头部和左侧菜单",
+          "dateTimePicker":"日历控件",
+          "myPager":"新表格分页",
+          "pagination":"8.0 版本分页",
+          "searchControl":"查询控件",
+          "searchResult":"查询结果展示",
+          "easyAutoLayout":"easyUI 控件自适应",
+          "operateModel":"查询结果集头部的操作列表",
+          "bigImg":"图片放大组件",
+          "exportControl":"导出控件",
+          "slider":"可信度",
+          "loop":"循环模式",
+          "dropDownGender":"性别下拉选项框",
+          "dropDownAge":"年龄下拉选项框",
+          "dropDownHairstyle":"发型下拉选项框",
+          "dropDownFeature":"脸型下拉选项框",
+          "dropDownRace":"人种下拉选项框",
+          "dropDownGlass":"眼镜下拉选项框",
+          "dropDownMask":"口罩下拉选项框",
+          "dropDownHat":"帽子下拉选项框",
+          "timeSlot":"时分秒选择器",
+          "vsType":"摄像机类型",
+          "vidApprover":"审批人",
+          "receiveUnits":"授权单位",
+          "scopeZtree":"简易卡口  ZTree版本",
+          "scopeZtreeSelect":"简易卡口 ZTree版本弹窗选择卡口",
+          "tipsDirective":"标签内部指令，hover时弹出提示信息"
+        },
+        // 这里的window指的是全局的window
+        "window": {
+          // jQuery.fn.extend
+          "$":{
+            "coord":""
+          },
+
+          //自定义函数
+          "arrayToDict": "array 转化为字典,加快查找",
+          "Arabia_to_Chinese":"阿拉伯数字转化为汉字",
+
+          // 一大波递归函数
+          "setSubTaskExpandStatus":"",
+          "visitScopeTree": "递归访问tree",
+          "setTreeSubExpandStatus":"",
+          "changeTreeIconCheck":"",
+          "setFolderStatusCheck":"",
+          "getFolderStatusCheck":""
+        }
+      },
+      "gisControllers": {   // module --------- 主要内容为：给$rootScope配置各种属性
+        "controller": {
+          "name": "gisController",
+          "$rootScope":{
+            "checkOffLine":"验证当前卡口是否为离线卡口，暂时保留",
+            "checkGateVisible":"根据当前卡口类型来判断是否显示当前卡口，暂时保留",
+            "getGateByID":"通过 gate id 查找对应的摄像头信息",
+            "getImage":"根据卡口类型以及是否离线来返回卡口应该使用的图标",
+            "initialMapConfig":"地图真正渲染在init方法中，必须传递地图初始化范围。此处准备需要的一些数据",
+            "readMapConfig":"处理GIS配置以及默认范围",
+            "cluserStyleFunction":"卡口聚合图标，包括图形以及文字",
+            "layerStyleFunction":"卡口图层图标，包括不同的卡口种类和卡口状态"
+          }
+        }
+      },
+      "gidDirectives": {   // module ----------------------------------------------------
+        "directive": {
+          "mapOL": "地图组件",
+          "mapOLLocation":""    //  并没有看到使用
+        }
+      },
+      "headModule": {   // module --------主要内容为：给$rootScope配置各种属性；给document绑定"mouseenter","mouseleave事件;给body绑定keydown事件（keyCode===13）；
+        "controller": {
+          "name": "headController",
+          "$rootScope":{
+            "baseData":["showParentMenu", "showChildrenMenu", "scaleWidth", "userDetailInfo", "userName", "userInfo", "confirmPassWd", "noticeNum", "logo"],
+            "getPathName":"获取当前菜单路径",
+            "getCurrentMenuId":"获取当前菜单的 ID",
+            "visitMenu":"遍历找到当前菜单",
+            "showUserInfo":"注销",
+            "logout":"登出",
+            "updatePassword":"修改密码",
+            "getCurrentUser":"判断登录装填，获取登录信息",
+            "getSystemName":"获取当前系统名称",
+            "_submitResetPassword":"修改密码表单提交",
+            "loadNoticeData":"加载notice数据",
+            "loadBlackInfo":"警告弹框相关函数"
+          }
+        }
+      }
+    },
+    // 主要内容为：给$rootScope配置各种属性；扩展jquery easyui tree的节点检索方法；给id#bayonet-search绑定postpaste事件
+    "run":{
+      "$rootScope":{
+        "services":"$rootScope.services = services",  //  将factory定义的services绑定到$rootScope.services 上
+        "ctxPath":"请求service接口定义的数据前缀",
+        "getGuid":"获取随机数guuid",
+        "stopEvent":"禁用默认事件冒泡",
+        "uuid":"随机uuid",
+        "getUnixDate":"格式转字符",
+        "getLocalDate":"字符转格式  如：1478845984999 转成 2016-11-08",
+        "vagueCheckCarNumber":"模糊车牌效验[支持模糊号牌,*替多位,?代替一位（豫*12、豫A1?3?5、?A78632)][暂时不考虑8位的新能源车牌]",
+        "getLocalDateDiff":"字符转格式",
+        "_setPager_sm":"简易分页设置",
+        "getDateStr":"将newDate形式的日期时间转化为字符串形式（如2016-11-08）",
+        "patternDate":"newDate时间形式转为为其他字符串形式",
+        "moveDiv":"div拖动公共方法",
+        "modalLoginView":"",
+        "isUserLogic":"检验是否登录",
+        "getDropDownData":"获取下拉表单的 code",
+        "resetDropDownData":"将识别下拉表单置成默认值",
+        "closeSocket":"关闭websocket",
+        "connectSocket":"获取推送服务地址；开启webSocket",
+        "focusName":"用户名input框获取焦点",
+        "focusPass":"密码input框获取焦点",
+        "checkDown":"验证用户名和密码；通过验证则调用登陆接口；不刷新页面",
+
+        "$watch":{
+          "$viewContentLoaded":"监听到数据变化时，执行layer.close()" //  但是$viewContentLoaded 并没有被定义和使用过
+        }
+      }
+    }
+  }
+}
