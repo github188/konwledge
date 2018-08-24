@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var obj = {
+        a: 1,
+        fn: function(){
+            return this.a
+        }
+    }
+
+    var o2 = Object.create( obj )
+
+    o2.a = 4
+
+    console.log( o2.fn() )
+</script>
+<script>
+    function Controller() {
+        this.a = 1;
+    }
+    Controller.prototype.showDialog = function (title, msg) {
+        console.log(title, msg)
+    }
+
+    function loginController() {
+        Controller.call(this)
+    }
+    loginController.prototype = Object.create(Controller.prototype)
+    loginController.prototype.getUser = function () {
+        this.user = "g"
+        return this.user
+    }
+
+    function AuthController(login) {
+        loginController.call(this)
+        this.login = login
+    }
+    AuthController.prototype.checkAuth = function () {
+        console.log(this.login.getUser());
+    }
+
+    var Auth = new AuthController(
+        new loginController()
+    )
+    Auth.checkAuth()
+
+    // var b = new loginController()
+    // console.log(b.getUser())
+</script>
+</html>
