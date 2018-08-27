@@ -1,0 +1,15 @@
+{
+  "angular":{
+    "run":{
+      "$rootScope":{
+        "services":"$rootScope.services = services"   //  将factory定义的services绑定到$rootScope.services 上
+        "ctxPath":"请求service接口,请求的域名地址",
+      }
+    },
+    "module":{
+      "myApp":{
+
+      }
+    }
+  }
+}

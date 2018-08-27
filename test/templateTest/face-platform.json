@@ -1,5 +1,36 @@
 {
   "angular": {
+    // 主要内容为：给$rootScope配置各种属性；扩展jquery easyui tree的节点检索方法；给id#bayonet-search绑定postpaste事件
+    "run":{
+      "$rootScope":{
+        "services":"$rootScope.services = services",  //  将factory定义的services绑定到$rootScope.services 上
+        "ctxPath":"请求service接口,请求的域名地址",
+        "getGuid":"获取随机数guuid",
+        "stopEvent":"禁用默认事件冒泡",
+        "uuid":"随机uuid",
+        "getUnixDate":"格式转字符",
+        "getLocalDate":"字符转格式  如：1478845984999 转成 2016-11-08",
+        "vagueCheckCarNumber":"模糊车牌效验[支持模糊号牌,*替多位,?代替一位（豫*12、豫A1?3?5、?A78632)][暂时不考虑8位的新能源车牌]",
+        "getLocalDateDiff":"字符转格式",
+        "_setPager_sm":"简易分页设置",
+        "getDateStr":"将newDate形式的日期时间转化为字符串形式（如2016-11-08）",
+        "patternDate":"newDate时间形式转为为其他字符串形式",
+        "moveDiv":"div拖动公共方法",
+        "modalLoginView":"打开登陆窗口",
+        "isUserLogic":"检验是否登录",
+        "getDropDownData":"获取下拉表单的 code",
+        "resetDropDownData":"将识别下拉表单置成默认值",
+        "closeSocket":"关闭websocket",
+        "connectSocket":"获取推送服务地址；开启webSocket",
+        "focusName":"用户名input框获取焦点",
+        "focusPass":"密码input框获取焦点",
+        "checkDown":"验证用户名和密码；通过验证则调用登陆接口；不刷新页面",
+
+        "$watch":{
+          "$viewContentLoaded":"监听到数据变化时，执行layer.close()" //  但是$viewContentLoaded 并没有被定义和使用过
+        }
+      }
+    },
     "module" : {
       "myApp": {    // module ----------------------------------------------------
         "[]":["myServices","directives","gisControllers","gidDirectives","headModule"],
@@ -106,37 +137,33 @@
           }
         }
       }
-    },
-    // 主要内容为：给$rootScope配置各种属性；扩展jquery easyui tree的节点检索方法；给id#bayonet-search绑定postpaste事件
-    "run":{
-      "$rootScope":{
-        "services":"$rootScope.services = services",  //  将factory定义的services绑定到$rootScope.services 上
-        "ctxPath":"请求service接口定义的数据前缀",
-        "getGuid":"获取随机数guuid",
-        "stopEvent":"禁用默认事件冒泡",
-        "uuid":"随机uuid",
-        "getUnixDate":"格式转字符",
-        "getLocalDate":"字符转格式  如：1478845984999 转成 2016-11-08",
-        "vagueCheckCarNumber":"模糊车牌效验[支持模糊号牌,*替多位,?代替一位（豫*12、豫A1?3?5、?A78632)][暂时不考虑8位的新能源车牌]",
-        "getLocalDateDiff":"字符转格式",
-        "_setPager_sm":"简易分页设置",
-        "getDateStr":"将newDate形式的日期时间转化为字符串形式（如2016-11-08）",
-        "patternDate":"newDate时间形式转为为其他字符串形式",
-        "moveDiv":"div拖动公共方法",
-        "modalLoginView":"",
-        "isUserLogic":"检验是否登录",
-        "getDropDownData":"获取下拉表单的 code",
-        "resetDropDownData":"将识别下拉表单置成默认值",
-        "closeSocket":"关闭websocket",
-        "connectSocket":"获取推送服务地址；开启webSocket",
-        "focusName":"用户名input框获取焦点",
-        "focusPass":"密码input框获取焦点",
-        "checkDown":"验证用户名和密码；通过验证则调用登陆接口；不刷新页面",
-
-        "$watch":{
-          "$viewContentLoaded":"监听到数据变化时，执行layer.close()" //  但是$viewContentLoaded 并没有被定义和使用过
-        }
-      }
     }
+  },
+
+  "layer":{
+    "open":"弹出提示层[信息，iframe,页面内的指定模块]",
+    "alert":"",
+
+    "msg":"弹出提示框",
+    "load":"弹出loading加载动画效果",
+    "tips":"智能(小)提示框：在目标元素的四周弹出提示信息",
+    "closeAll":"关闭所有层",
+
+    // 需要layer层的索引
+    "close":"关闭特定层",
+    "style":"重定义layer层样式"
+  },
+
+  //
+  "zTree":{
+
+  },
+  // 使用easyui主要是用来做表格模块
+  "easyui":{
+
+  },
+  // 地图绘制
+  "openLayer":{
+
   }
 }
