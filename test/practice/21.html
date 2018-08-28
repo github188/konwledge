@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function foo() {
+
+    }
+
+    function Bar() {
+
+    }
+    Bar.prototype = Object.create( foo.prototype)
+    var b1 = new Bar("b1")
+
+    foo.prototype.isPrototypeOf(Bar.prototype)
+</script>
+<script>
+    class C {
+        constructor() {
+            C.prototype.count++;
+            console.log("hello: "+ this.count)
+        }
+    }
+
+    C.prototype.count = 0 ;
+    var c1 = new C()
+    var c2 = new C()
+    c1.count === 2
+</script>
+<script>
+    function foo() {
+        foo.prototype.count++;
+        console.log("hellllll: " + this.count)
+    }
+    foo.prototype.count=0
+
+    var v1 = new foo(1);
+    var v2 = new foo(2);
+
+
+</script>
+</html>
