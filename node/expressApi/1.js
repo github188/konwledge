@@ -11,11 +11,9 @@ var router = express.Router();
 // 创建 application/x-www-form-urlencoded 编码解析; 为false则会返回String'或'Array'形式，为true会返回任意形式
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 app.use(multer({ dest: '/tmp/'}).array('image'));
-
 
 
 app.all('*',function (req, res, next) {
