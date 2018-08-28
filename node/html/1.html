@@ -2,9 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<button id="btn1" onclick="getAjax()">GET</button>
+<button id="btn2" onclick="postAjax()">POST</button>
+
+<form action="http://127.0.0.1:3000/file_upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="image" size="50" />
+    <br />
+    <input type="submit" value="上传文件" />
+</form>
 </body>
+<script src="js/jquery.min.js"></script>
+<script>
+    let token = "123456"
+
+    function getAjax() {
+        $.ajax({
+            type:"get",
+            url:"http://localhost:3000/",
+            beforeSend: function(request) {
+                request.setRequestHeader("Authorization", token);
+                request.setRequestHeader("Test", "123");
+            },
+            data:{
+                name:"Mr.Gao - get"
+            },
+            success(res){
+                console.log(res,"success")
+            },
+            fail(err){
+                console.log(err)
+            }
+        })
+    }
+
+    function postAjax() {
+        $.ajax({
+            type:"post",
+            url:"http://localhost:3000/save/order",
+            beforeSend: function(request) {
+                request.setRequestHeader("Authorization", token);
+                request.setRequestHeader("Test", "123");
+            },
+            data:{
+                name:"Mr.Gao - post"
+            },
+            success(res){
+                console.log(res,"success-post")
+            },
+            fail(err){
+                console.log(err)
+            }
+        })
+    }
+
+
+    function postForm() {
+
+    }
+</script>
 </html>

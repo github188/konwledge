@@ -10,12 +10,8 @@
   "license": "ISC",
   "devDependencies": {
     "express": "^4.16.2",
-<<<<<<< HEAD
     "express-ws": "^3.0.0",
     "request": "^2.85.0"
-=======
-    "express-ws": "^3.0.0"
->>>>>>> dev
   },
   "dependencies": {
     "body-parser": "^1.18.2",
