@@ -7,7 +7,7 @@ const utils = require('./utils')
 
 const webpackConfig = merge(baseWebpackConfig, {
     entry: {
-        'date-string-transform':utils.resolve('src/timeformat'),
+        'date-string-transform':utils.resolve('src/timeformat/index.js'),
         'date-string-transform.script':utils.resolve('src/timeformat/index.script.js')
     },
     output: {
