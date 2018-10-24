@@ -2,6 +2,7 @@ import http from "http"
 import https from "https"
 
 export default {
+  baseURL:'',
   //自定义的请求头
   headers:{
     // post:{
@@ -9,7 +10,6 @@ export default {
     // },
     // "X-Requested-With":"XMLHttpRequest",
     // "Content-Type": "application/json;charset=UTF-8"
-
   },
   //超时设置
   timeout:10000,

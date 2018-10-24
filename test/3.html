@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="box">
+    <div class="item">1</div>
+    <div class="item">1</div>
+    <div class="item">1</div>
+    <div class="item">1</div>
+</div>
+<button onclick="remove()">remove</button>
+</body>
+<script>
+    function remove() {
+        let box = document.querySelector('.box')
+        let items = document.getElementsByClassName('item')
+        items[0].className
+        box.removeChild(items)
+    }
+</script>
+</html>

@@ -11,6 +11,7 @@
   "devDependencies": {
     "express": "^4.16.2",
     "express-ws": "^3.0.0",
+    "mysql": "^2.16.0",
     "request": "^2.85.0"
   },
   "dependencies": {
