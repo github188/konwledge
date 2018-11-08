@@ -1,0 +1,236 @@
+{
+  "login": {
+    "success": {
+      "code": 0,
+      "data" : {
+        "username": "admin",
+        "password": "intedio",
+        "token": "100760|3NxXSzlWo3HVtRDzRmcgTQ8c19doWsY5mHZxXXe0+qVyoeqv5FnD6aWzhpED/TBuNDM2vzN3YTZ198b/rF6Zvg=="
+      }
+    },
+    "fail":{
+      "code": 1,
+      "message": "登陆失败"
+    }
+  },
+  "userlogic": {
+    "getbaseinfo":{
+      "code": "0",
+      "message": "获取基本信息成功",
+      "data": {
+        "version": "1.0.2.5-6215c35",
+        "fpgaversion": "1.1-1.2-1.0",
+        "time": "2018-3-5 9:41:21",
+        "id": "13",
+        "name": "东方小区hz1"
+      }
+    },
+    "getnetwork": {
+      "code":"0",
+      "message":"获取网络信息成功",
+      "data":{
+        "eth":"1",
+        "devname":"视频结构化分析器",
+        "ipv4ip": "192.168.201.13",
+        "ipv4mask": "255.255.255.0",
+        "ipv4gateway": "192.168.201.1",
+        "dns":"192.168.1.1"
+      }
+    },
+    "getnetwork2": {
+      "code":"0",
+      "message":"获取网络信息成功",
+      "data":{
+        "eth":"2",
+        "devname":"视频结构化分析器",
+        "ipv4ip": "192.168.201.13",
+        "ipv4mask": "255.255.255.0",
+        "ipv4gateway": "192.168.201.1",
+        "dns":"192.168.1.1"
+      }
+    },
+    "getftp":{
+      "code":"0",
+      "message":"获取ftp信息成功",
+      "data":{
+        "ftpenable":"1",
+        "ftpip":"192.168.201.38",
+        "ftpport":"21",
+        "ftpuser":"test",
+        "ftppassword":"123456",
+        "ftppath":"192.168.201.38:21/test/",
+        "httpenable":"1",
+        "httpurl":"http://192.168.201.38:8000"
+      }
+    }    ,
+    "setftp": {
+      "code": "0",
+      "message": "设置ftp成功"
+    },
+    "getroi": {
+      "code":"0",
+      "message":"获取区域信息成功",
+      "data":{
+        "width":"100",
+        "height":"100",
+        "pt":[
+          {"x1":34,"y1":34},
+          {"x2":34,"y2":34},
+          {"x3":34,"y3":34},
+          {"x4":34,"y4":34},
+          {"x5":34,"y5":34}
+        ]
+      }
+    },
+    "roiVideoData": {
+      "code": "0",
+      "message": "获取信息成功",
+      "data" : {
+        "url": "rtmp://192.168.2.41:8082/seemideo/585&playbackrate=1"
+      }
+    },
+    "setroi": {
+      "code": "0",
+      "message": "保存信息成功",
+      "data" : []
+    },
+    "userList": {
+      "code":"0",
+      "message":"获取用户信息成功",
+      "data":[
+        {
+          "id":"1",
+          "username":"admin",
+          "password":"admin",
+          "role":"管理员"
+        },
+        {
+          "id":"2",
+          "username":"sdds",
+          "password":"123456",
+          "role":"访客"
+        },
+        {
+          "id":"3",
+          "username":"admin",
+          "password":"admin",
+          "role":"管理员"
+        },
+        {
+          "id":"4",
+          "username":"sdds",
+          "password":"123456",
+          "role":"访客"
+        },
+        {
+          "id":"5",
+          "username":"admin",
+          "password":"admin",
+          "role":"管理员"
+        },
+        {
+          "id":"6",
+          "username":"sdds",
+          "password":"123456",
+          "role":"访客"
+        },
+        {
+          "id":"7",
+          "username":"admin",
+          "password":"admin",
+          "role":"管理员"
+        },
+        {
+          "id":"8",
+          "username":"sdds",
+          "password":"123456",
+          "role":"访客"
+        }
+      ]
+    }   ,
+    "userListAdd": {
+      "code": "0",
+      "message": "添加信息成功",
+      "data" : []
+    },
+    "userListUpdate": {
+      "code": "0",
+      "message": "更新信息成功",
+      "data" : []
+    },
+    "userListDelete": {
+      "code": "0",
+      "message": "删除信息成功",
+      "data" : []
+    },
+    "recordTableData": {
+      "code": "0",
+      "message": "删除信息成功",
+      "data" : [
+        {"number": "1", "time": "2018-08-09 15:23:45", "event": "保存网络设置", "user": "管理用户"},
+        {"number": "2", "time": "2018-08-10 15:23:45", "event": "网络连接断开", "user": "应用平台"},
+        {"number": "3", "time": "2018-08-10 15:33:45", "event": "/", "user": "管理用户"},
+        {"number": "1", "time": "2018-08-10 15:33:50", "event": "保存网络设置", "user": "管理用户"},
+        {"number": "2", "time": "2018-08-11 15:23:45", "event": "网络连接断开", "user": "应用平台"},
+        {"number": "3", "time": "2018-08-12 15:23:45", "event": "/", "user": "管理用户"},
+        {"number": "1", "time": "2018-08-13 15:23:45", "event": "保存网络设置", "user": "管理用户"},
+        {"number": "2", "time": "2018-08-14 15:23:45", "event": "网络连接断开", "user": "应用平台"},
+        {"number": "3", "time": "2018-08-15 15:23:45", "event": "/", "user": "管理用户"},
+        {"number": "1", "time": "2018-08-16 15:23:45", "event": "保存网络设置", "user": "管理用户"},
+        {"number": "2", "time": "2018-08-17 15:23:45", "event": "网络连接断开", "user": "应用平台"},
+        {"number": "3", "time": "2018-08-18 15:23:45", "event": "/", "user": "管理用户"},
+        {"number": "1", "time": "2018-08-19 15:23:45", "event": "保存网络设置", "user": "管理用户"},
+        {"number": "2", "time": "2018-08-20 15:23:45", "event": "网络连接断开", "user": "应用平台"},
+        {"number": "3", "time": "2018-08-21 15:23:45", "event": "/", "user": "管理用户"}
+      ]
+    },
+    "channelData":{
+      "code" : 0,
+      "message": "视频通道列表获取成功",
+      "data" :  [{
+        "id": 1,
+        "label": "一级 1",
+        "children": [{
+          "id": 4,
+          "label": "二级 1-1",
+          "children": [{
+            "id": 9,
+            "label": "三级 1-1-1"
+          }, {
+            "id": 10,
+            "label": "三级 1-1-2"
+          }, {
+            "id": 11,
+            "label": "三级 1-1-2"
+          }, {
+            "id": 12,
+            "label": "三级 1-1-2"
+          }, {
+            "id": 13,
+            "label": "三级 1-1-2"
+          }]
+        }]
+      }, {
+        "id": 2,
+        "label": "一级 2",
+        "children": [{
+          "id": 5,
+          "label": "二级 2-1"
+        }, {
+          "id": 6,
+          "label": "二级 2-2"
+        }]
+      }, {
+        "id": 3,
+        "label": "一级 3",
+        "children": [{
+          "id": 7,
+          "label": "二级 3-1"
+        }, {
+          "id": 8,
+          "label": "二级 3-2"
+        }]
+      }]
+    }
+  }
+}

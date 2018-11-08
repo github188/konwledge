@@ -1,0 +1,59 @@
+stages:
+    - preInstall
+    - checkESLint
+    - buildPro
+    - moveTo
+
+preInstall:
+    stage: preInstall
+    script:
+        - echo $NODE_HOME
+        - npm --version
+        - cnpm -v
+        - echo 'test shell'
+        - pwd
+        - cnpm install
+    only:
+        - master
+    cache:
+      paths:
+        - node_modules/
+    tags:
+        - shell
+
+checkESLint:
+    stage: checkESLint
+    script:
+        - npm run lint
+    only:
+        - master
+    cache:
+      paths:
+        - node_modules/
+    tags:
+        - shell
+
+buildPro:
+    stage: buildPro
+    script:
+        - npm run build
+    only:
+        - master
+    cache:
+      paths:
+        - dist/
+    tags:
+        - shell
+
+moveTo:
+    stage: moveTo
+    script:
+        - rm -rf ~/dist
+        - mv dist ~/dist
+    only:
+        - master
+    cache:
+      paths:
+        - dist/
+    tags:
+        - shell
