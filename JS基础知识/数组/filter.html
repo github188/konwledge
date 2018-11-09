@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+filter() 方法创建一个新的数组，新数组中的元素是通过检查指定数组中符合条件的所有元素。
+
+注意： filter() 不会对空数组进行检测。
+
+注意： filter() 不会改变原始数组。
+
+</body>
+<script>
+    let arr = ["a","b","c","d","e"];
+    let res = arr.filter((val,idx,arr)=>{
+        return val==="a"
+    });
+    console.log(res)
+</script>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>		
+		<select id="province">
+		</select>
+		<select id="city">
+			<option value=''>请选择城市</option>
+		</select>
+	</body>
+	<script>
+		var pro = document.getElementById("province")
+		var citySelect = document.getElementById("city")
+		
+		var req = new XMLHttpRequest()
+		req.open("get","js/city.json",true)	
+		req.send()
+		req.onreadystatechange = function(){
+			if(req.readyState == 4 && req.status == 200){
+				var text = req.responseText
+				var list = JSON.parse(text)
+				var str="<option value=''>选择省份</option>"
+				for(var i=0;i<list.length;i++){
+					var p = list[i]["province"]
+					str += "<option value="+p+">"+p+"</option>"
+				}
+				pro.innerHTML = str
+			}
+		}
+		//req.send()
+		
+		
+		
+		pro.onchange = function(){
+			var p = this.value
+			if(p!=""){
+				var req = new XMLHttpRequest()
+				req.open("get","js/city.json",true)	
+				//req.send()
+				req.onreadystatechange = function(){
+					if(req.readyState == 4 && req.status == 200){
+						var text = req.responseText
+						var list = JSON.parse(text)	
+						for(var i=0;i<list.length;i++){
+							var obj = list[i]
+							var pro = list[i]["province"]  //这里重新生成了省份的集合
+							var city = list[i]["city"]
+							
+							if(p == pro){    //if  点击省份的时候option自带的value值，与，第i个循环里面list[i]的pro相等。
+								//此时应该把相应的city拿进来。
+								var str = ""
+								for(var j=0;j<city.length;j++){
+									str+=" <option value=" + city[j] + ">" + city[j] + "</option>"; 
+								}
+								citySelect.innerHTML = str;
+								break
+							}
+						}
+					}	
+				}
+				req.send()
+			}else{citySelect.innerHTML = "请选择城市"}
+		}	
+			
+		
+
+	</script>
+</html>

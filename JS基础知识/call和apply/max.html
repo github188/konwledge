@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var array = [1,2,4,3,6,5];
+    var a = Math.max(1,2,4,3,6,5);
+    console.log(a);
+
+//    apply会将一个数组转换为一个参数接一个参数的方式传递给方法
+    var max=Math.max.apply(null,array);
+    console.log(max)
+</script>
+</html>

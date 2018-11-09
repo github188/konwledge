@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 200px;
+        }
+    </style>	
+	</head>
+	<body>
+		<div>千锋</div>
+	</body>
+	<script>
+		var div = document.querySelector("div")
+		
+		div.onclick = function(){
+			var input = document.createElement("input")
+			input.value = this.innerHTML
+			this.innerHTML = ""
+			this.appendChild(input)
+			
+			input.onclick = function(e){
+				var evt = window.event || e
+				evt.stopPropagation()
+			}
+			input.onblur = function(){
+				div.innerHTML = this.value  //这一步清除掉了div中的所有内容，包括input元素。
+			}
+		}
+	</script>
+</html>

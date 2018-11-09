@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+map() 方法返回一个新数组，数组中的元素为原始数组元素调用函数处理后的值。
+
+map() 方法按照原始数组元素顺序依次处理元素。
+
+注意： map() 不会对空数组进行检测。
+
+注意： map() 不会改变原始数组。
+
+</body>
+<script>
+    let arr = ["a","b","c","d","e"];
+    let res = arr.map((val,idx,arr)=>{
+        return val+"123"
+    })
+    console.log(res)
+</script>
+</html>

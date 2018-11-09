@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(val,idx) in list">
+                <label>{{val.label}}<input type="text" v-model="val.model"></label>
+            </li>
+        </ul>
+        <button @click="showData">显示数据</button>
+    </div>
+</body>
+<script src="../libs/vue-2.3.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data () {
+            return {
+                list: [
+                    {label: '1', model: ''},
+                    {label: '2', model: ''},
+                    {label: '3', model: ''}
+                ]
+            }
+        },
+        created () {
+
+        },
+        methods: {
+            showData() {
+                console.log(JSON.stringify(this.list, null, 2))
+            }
+        }
+    })
+
+</script>
+</html>

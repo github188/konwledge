@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>新增页面</title>
+	</head>
+
+	<body>
+		用户名:
+		<input id="username" type="text" />
+		<br>
+		<br> 密码:
+		<input id="pwd" type="text" />
+		<br>
+		<button id="btn">新增</button>
+	</body>
+	<script>
+		var userInput = document.getElementById("username");
+		var pwdInput = document.getElementById("pwd");
+		var btn = document.getElementById("btn");
+		var $ = {
+			ajax: function(json) {
+				var req = new XMLHttpRequest();
+				req.open(json.type, json.url, true);
+				req.send();
+				req.onreadystatechange = function() {
+					if (req.readyState == 4 && req.status == 200) {
+						json.callback(req.responseText);
+					}
+				}
+			}
+		}
+		
+		
+		btn.onclick = function(){
+        $.ajax({
+            type:"get",
+            url:"create.php?pwd="+pwdInput.value+"&username="+userInput.value,
+            callback:function(data){
+                if(data =="1"){
+                  location.href="index.html";
+                }else if(data == "2"){
+                  alert("该用户已存在")
+                }else{"新增失败"}
+            }
+        })
+    }
+
+		
+		
+	</script>
+
+</html>

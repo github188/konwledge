@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		用户名:<input id="username" type="text" /><br><br>
+    	密码:<input id="pwd" type="text"/><br>
+    	<button id="btn">登录</button>
+	</body>
+	<script>
+		var  userInput  = document.getElementById("username");
+    	var  pwdInput = document.getElementById("pwd");
+   	 	var  btn = document.getElementById("btn");
+   	 	
+   	 	$={
+   	 		ajax:function(json){
+   	 			var req = new XMLHttpRequest();
+   	 			req.open(json.type,json.url,true);
+   	 			req.onreadystatechange = function(){
+   	 				if(req.readyState == 4 && req.status == 200){
+   	 					var txt = req.responseText;
+   	 					json.callback(txt);
+   	 				}
+   	 			}
+   	 			req.send()
+   	 		}
+   	 	}
+   	 	
+   	btn.onclick = function(){ 	
+   	 	$.ajax({
+   	 		type:"get",
+   	 		//url:"login.php?pwd="+pwdInput.value+"&username="+userInput.value,
+   	 		url:"login.php?username="+userInput.value+"&pwd="+pwdInput.value,
+   	 		callback:function(data){
+   	 			switch(data){
+   	 				case "0" : alert("账号不存在");break;
+   	 				case "1" : alert("密码不正确");break;
+   	 				case "2" : location.href = "index.html";break;
+   	 			}
+   	 			
+   	 		}
+   	 	});
+   	} 	
+	</script>
+</html>

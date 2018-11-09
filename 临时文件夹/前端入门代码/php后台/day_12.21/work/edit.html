@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>编辑页面</title>
+	</head>
+	<body>
+		用户名:<input id="username" type="text" /><br><br>
+    	密码:<input id="pwd" type="text"/><br>
+    	<button id="btn">确定修改</button>
+	</body>
+	<script type="text/javascript">
+		var  userInput  = document.getElementById("username");
+    	var  pwdInput = document.getElementById("pwd");
+   	 	var  btn = document.getElementById("btn");
+	
+		//解析跳转信息
+		var content = location.search.substring(1);//"?id=3&name=cuicui&pwd=111"
+		var list = content.split("&");
+		var id = list[0].split("=")[1];
+		var username = list[1].split("=")[1];
+		var pwd = list[2].split("=")[1]
+		userInput.value = username;
+		pwdInput.value = pwd;
+		
+		var $ ={
+			ajax:function(json){
+				var req = new XMLHttpRequest();
+				req.open(json.type,json.url,true);
+				req.send();
+				req.onreadystatechange = function(){
+					if(req.readyState == 4 && req.status == 200){
+						json.callback(req.responseText);
+					}
+				}
+			}
+		}
+
+
+	btn.onclick = function(){
+		$.ajax({
+			type:"get",
+			url:"edit.php?pwd="+pwdInput.value+"&username="+userInput.value+"&id="+id,
+			callback:function(data){
+				alert(data);
+			}
+		})
+	}
+
+
+	</script>
+</html>

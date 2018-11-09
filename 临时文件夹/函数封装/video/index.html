@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="flexible/flexible.css">
+    <link rel="stylesheet" href="css/marketing.css">
+</head>
+<body>
+<div class="video_box">
+    <div class="video_wrap">
+        <div class="video_shade_box"><div class="video_start"></div></div>
+        <div class="video_cover"></div>
+        <video src="http://test.jubao56.com/res/2017/11/03/09/4958919/唯美素材27：月光和银河上升峡谷(720P).mp4" preload="auto"
+               id="laozhou_video">您的浏览器不支持 video 标签。
+        </video>
+    </div>
+    <!--http://www.w3school.com.cn/html5/html5_video.asp-->
+    <!--http://www.w3school.com.cn/jsref/dom_obj_video.asp-->
+    <div class="video_control_box">
+        <div class="video_break video_icon_break"></div>
+        <div class="video_time current_time_box">
+            <span class="video_current_time"></span>
+        </div>
+        <div class="video_progress_box">
+            <span class="video_yet_bar"></span>
+            <span class="video_control_radio"></span>
+            <span class="video_buffered_bar"></span>
+        </div>
+        <div class="video_time alltime_box"><span class="video_alltime"></span></div>
+        <div class="video_full_srceen"></div>
+    </div>
+</div>
+</body>
+<script src="flexible/flexible.js"></script>
+<!--<script src="js/jquery-1.9.1.min.js"></script>-->
+<script src="js/compatibility.js"></script>
+<script>
+    var timer,TimeRanges ;
+    var laozhouVideo=document.getElementById("laozhou_video");
+    var videoStart=document.getElementsByClassName("video_start")[0];
+    var videoRestart=document.getElementsByClassName("video_restart")[0];
+    var videoShadeBox=document.getElementsByClassName("video_shade_box")[0];
+    var videoCover=document.getElementsByClassName("video_cover")[0];
+    var videoWrap=document.getElementsByClassName("video_wrap")[0];
+
+    var videoControl=document.getElementsByClassName("video_control_box")[0];
+    var videoBreak=document.getElementsByClassName("video_break")[0];
+    var videoCurrentTime=document.getElementsByClassName("video_current_time")[0];
+    var videoAlltime=document.getElementsByClassName("video_alltime")[0];
+    var videoControlRadio=document.getElementsByClassName("video_control_radio")[0];
+    var videoProgressBox=document.getElementsByClassName("video_progress_box")[0];
+    var videoYetBar=document.getElementsByClassName("video_yet_bar")[0];
+    var videoBufferedBar=document.getElementsByClassName("video_buffered_bar")[0];
+    var videoFullScreen=document.getElementsByClassName("video_full_srceen")[0];
+
+    var videoProgressLength=videoProgressBox.clientWidth-videoControlRadio.offsetWidth;
+    //防止事件冒泡  start------------------------------------------------------------
+    //保证遮罩消失之前控制器事件不触发
+    preventBubble([videoShadeBox,videoControl,videoShadeBox]);
+    //点击开始按钮
+    videoStart.onclick=function (e) {
+        laozhouVideo.play();
+        videoShadeBox.style.display="none";
+        videoCover.style.display="none";
+        //1,显示时间
+        videoCurrentTime.innerHTML="00:00";
+        videoAlltime.innerHTML=changeTimeFormat(laozhouVideo.duration);
+        //3,实时显示当前的播放时长
+        TimeRanges=setInterval(function () {
+            videoCurrentTime.innerHTML=changeTimeFormat(laozhouVideo.currentTime);
+            //进度条跳动
+            var percentBar = laozhouVideo.currentTime/laozhouVideo.duration;
+
+            videoControlRadio.style.left=percentBar*(videoProgressLength)+'px';    //控制radio跳动
+            videoYetBar.style.right=(1-percentBar)*(videoProgressLength)+"px";     //进度条跳动
+        },1000);
+    };
+    //防止事件冒泡  end------------------------------------------------------------
+
+    //控制器start----------------------------------------------------------------------------
+    var videoControlFlag=true; // 为true时点击出现，为false时点击消失
+    //1，点击屏幕--控制器出现和消失
+    videoWrap.onclick=function(){
+        var endTop =pxToNum(getStyle(videoWrap,"height"))-pxToNum(getStyle(videoControl,"height")); // 目标地点top值
+        var endBottom=pxToNum(getStyle(videoWrap,"height"));
+        var fullTime=500; //动画的总时长
+        var distance = pxToNum(getStyle(videoControl,"height")); //总移动距离
+        var min=10; //计时器的最小间距
+        var videoTemFlag=true;  //控制计时器:在运行的时候，点击事件不再生成新的计时器
+
+        if(videoControlFlag && videoTemFlag){
+            videoTemFlag=false;
+            clearInterval(timer);
+            timer = setInterval(function () {
+                videoControl.style.top=videoControl.offsetTop-(distance/fullTime)*min+"px";
+                if(videoControl.offsetTop<=endTop){
+                    videoTemFlag=true;
+                    videoControlFlag=!videoControlFlag;
+                    videoControl.style.top=endTop+"px";
+                    clearInterval(timer);
+                }
+            },min)
+        }else if(!videoControlFlag && videoTemFlag){
+            videoTemFlag=false;
+            clearInterval(timer);
+            timer = setInterval(function () {
+                videoControl.style.top=videoControl.offsetTop+(distance/fullTime)*min+"px";
+                if(videoControl.offsetTop>=endBottom){
+                    videoTemFlag=true;
+                    videoControlFlag=!videoControlFlag;
+                    videoControl.style.top=endBottom+"px";
+                    clearInterval(timer)
+                }
+            },min)
+        }
+    };
+    //2,点击播放/暂停按钮
+    videoBreak.onclick=function () {
+        if(!laozhouVideo.paused){
+            laozhouVideo.pause();
+            this.className="video_break2"
+        }else{
+            laozhouVideo.play();
+            this.className="video_break"
+        }
+    };
+    //3,控制条拖动从而改变进度
+    videoControlRadio.addEventListener("touchstart",function (e) {
+        var touches = e.touches[0];
+        distX=touches.clientX-videoControlRadio.offsetLeft;   //获取点击的位置距离滑块左边和上边的距离 + 父元素距离左边和上边的距离
+        distY=touches.clientY-videoControlRadio.offsetTop;
+        //阻止页面的滑动默认事件
+        document.addEventListener("touchmove",defaultEvent(e),false);
+    },false)
+
+    videoControlRadio.addEventListener("touchmove",function (ev) {
+        var touches = ev.touches[0];
+        var x=touches.clientX-distX;     //滑块应该在的位置
+        var y=touches.clientY-distY;
+        if(x<0){x=0;}
+        if(y<0){y=0;}
+        if(x>videoProgressLength)
+        {
+            x=videoProgressLength;
+        }
+        videoControlRadio.style.left=x+'px';    //根据鼠标位置相对定位，得到left，top值
+//            videoControlRadio.style.top=y+'px';
+        videoYetBar.style.right=videoProgressBox.clientWidth-x+"px"; //显示拖动后的进度条状背景
+        laozhouVideo.currentTime=(x/videoProgressLength)*laozhouVideo.duration;
+        videoCurrentTime.innerHTML=changeTimeFormat(laozhouVideo.currentTime);
+
+    },false);
+
+    videoControlRadio.addEventListener("touchend",function(e) {
+        document.removeEventListener("touchmove",defaultEvent(e),false);
+    },false);
+
+    videoFullScreen.onclick=function () {
+        //一般只有在pc端才会有全屏显示功能，手机端点开视频会自动全屏
+        makeVideoFull(laozhouVideo)
+    };
+
+    //监听是否全屏
+//    document.addEventListener("fullscreenchange", function(){
+//        fullscreenState.innerHTML = (document.fullscreen)? "" : "not ";}, false);
+//    document.addEventListener("mozfullscreenchange", function () {
+//        fullscreenState.innerHTML = (document.mozFullScreen)? "" : "not ";}, false);
+//    document.addEventListener("webkitfullscreenchange", function () {
+//        fullscreenState.innerHTML = (document.webkitIsFullScreen)? "" : "not ";}, false);
+//    document.addEventListener("msfullscreenchange", function () {
+//        fullscreenState.innerHTML = (document.msFullscreenElement)? "" : "not ";}, false);
+    //控制器end----------------------------------------------------------------------------
+</script>
+</html>
