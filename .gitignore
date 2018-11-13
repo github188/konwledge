@@ -6,4 +6,4 @@
 **/.idea
 **/.sass-cache
 /node/node_modules
-/.git
+**/.git
