@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <style type="text/css">
+        body, html{width: 100%;height: 100%;margin:0;font-family:"微软雅黑";font-size:14px;}
+        #l-map{height:300px;width:100%;}
+        #r-result{
+            width:100%;
+            display: flex;
+            align-items: center;
+        }
+        #searchPos{
+            width:20%;
+            height: 35px;
+            font-size:12px;
+            line-height: 25px;
+            padding:0 10px;
+
+        }
+        /*#container > div > div > ol li > div > div > a {*/
+            /*display:none*/
+        /*}*/
+        #container div P:last-child{
+
+        }
+        #suggestId{
+            height: 35px;
+            font-size:12px;
+            width:80% !important;
+            padding: 0 10px;
+        }
+        #container a{
+            width:90%;
+            display: block;
+            text-decoration: none;
+            margin:0 auto;
+            margin-top:8px;
+            height: 44px;
+            overflow: hidden;
+            color:#444;
+            cursor: pointer;
+        }
+        #container a:link{
+            text-decoration:none;
+            color:#444;
+        }
+        #container a:active{
+            text-decoration:none;
+            color:#444;
+        }
+        #container a:visited{
+            text-decoration:none;
+            color:#444;
+        }
+        #container a:hover{
+            text-decoration:none;
+            color:#444;
+        }
+        #container a p{
+            margin:0;
+        }
+        #positionIcon{
+            position: absolute;
+            left:50%;
+            margin-left:-10px;
+            top:20%;
+            width:20px;
+            height: 20px;
+        }
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=8NXVTrjmcFWcheo36qAmFINiBYnjdQPP"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/place/v2/search?query=ATM机&tag=银行&region=北京&output=json&ak=8NXVTrjmcFWcheo36qAmFINiBYnjdQPP"></script>
+    <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+    <title>地图</title>
+</head>
+<body>
+<div id="r-result">
+    <input type="text" placeholder="请输入地名搜索" id="suggestId" class="form-control" size="20" value="百度" style="width:150px;" />
+    <button id="searchPos" class="btn btn-default">搜索</button>
+</div>
+
+<div id="l-map"></div>
+<div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+<div id="container" style="width:100%;height: auto;"></div>
+<img id="positionIcon" src="images/11.png" alt="">
+</body>
+</html>
+<script type="text/javascript">
+    // 百度地图API功能
+    function G(id) {
+        return document.getElementById(id);
+    }
+
+    var map = new BMap.Map("l-map");
+    // map.centerAndZoom("武汉",14);                   // 初始化地图,设置城市和地图级别。
+
+    var point = new BMap.Point(114.357627,30.613625);
+    map.centerAndZoom(point,14);
+    var geolocation = new BMap.Geolocation();
+    geolocation.getCurrentPosition(function(r){
+        if(this.getStatus() == BMAP_STATUS_SUCCESS){
+            var mk = new BMap.Marker(r.point);
+            map.addOverlay(mk);
+            map.panTo(r.point);
+            // zuobiao2Pixel(r.point.lng,r.point.lat)
+        }
+        else {
+            alert('failed'+this.getStatus());
+        }
+    },{enableHighAccuracy: true})
+
+
+    var ac = new BMap.Autocomplete(    //建立一个自动完成的对象
+        {"input" : "suggestId"
+            ,"location" : map
+        });
+
+    ac.addEventListener("onhighlight", function(e) {  //鼠标放在下拉列表上的事件
+        var str = "";
+        console.log(e)
+        var _value = e.fromitem.value;
+        console.log(e.fromitem.value)
+        var value = "";
+        if (e.fromitem.index > -1) {
+            value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+        }
+        str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
+
+        value = "";
+        if (e.toitem.index > -1) {
+            _value = e.toitem.value;
+            value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+        }
+        str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
+        G("searchResultPanel").innerHTML = str;
+        // document.getElementById("suggestId").blur()
+    });
+
+    var myValue;
+    ac.addEventListener("onconfirm", function(e) {    //鼠标点击下拉列表后的事件
+        var _value = e.item.value;
+        myValue = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+        G("searchResultPanel").innerHTML ="onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
+        setPlace();
+        document.getElementById("suggestId").blur()
+    });
+    //点击button按钮执行搜索功能
+    document.getElementById('searchPos').addEventListener('click',function (e) {
+        var searchVal = document.getElementById("suggestId").value;
+        var local = new BMap.LocalSearch(map, { //智能搜索
+            onSearchComplete: myFun
+        });
+        local.search(searchVal);
+        console.log(searchVal)
+        function myFun(){
+            var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
+            map.centerAndZoom(pp, 18);
+            map.addOverlay(new BMap.Marker(pp));    //添加标注
+        }
+    });
+
+    function setPlace(){
+        map.clearOverlays();    //清除地图上所有覆盖物
+        function myFun(){
+            var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
+            map.centerAndZoom(pp, 18);
+            map.addOverlay(new BMap.Marker(pp));    //添加标注
+        }
+        var local = new BMap.LocalSearch(map, { //智能搜索
+            onSearchComplete: myFun
+        });
+        local.search(myValue);
+    }
+    //将坐标转换成像素坐标，返回包含像素的数组
+    // const oldPosition = new Array;
+    // function zuobiao2Pixel(x,y){
+    //     var point = new BMap.Point(x,y);
+    //     var pixel=map.pointToPixel(point);
+    //     oldPosition[0] = pixel.x;
+    //     oldPosition[1] = pixel.y;
+    // }
+
+    function pixel2Zuobiao(){
+        var p=new  BMap.Pixel(187,150);
+        var point1=map.pixelToPoint(p);
+//返回一个数组
+        var positionArray=new Array(point1.lng,point1.lat);
+        document.getElementById('container').innerHTML = '';
+        var options = {
+            onSearchComplete: function(results){
+                // 判断状态是否正确
+                if (local.getStatus() == BMAP_STATUS_SUCCESS){
+                    // for (var i = 0; i < results.length; ++i ){
+                    //     for(var n=0 ; n<results[0].Br.length ; ++n ){
+                    //         var title = results[i].Br[n].title;
+                    //         var address = results[i].Br[n].address;
+                    //         var position = results[i].Br[n].point;
+                    //         console.log(title+' '+address+' '+position.lng);
+                    //         var insertDiv = document.createElement('div');
+                    //         insertDiv.innerHTML = "<p>"+title+"</p>"+"<p>"+address+"</p>"+"<p>"+position+"</p>";
+                    //         document.getElementById('container').appendChild(insertDiv);
+                    //     }
+                    // }
+                    var s = [];
+                    for( var item in results){
+                        // console.log(item)
+                        // console.log(results[item].Br)
+                        var arr = results[item].Ar
+                        for( var content in arr){
+                            var title = arr[content].title;
+                            var address = arr[content].address;
+                            var pLng = arr[content].point.lng;
+                            var pLat = arr[content].point.lat;
+                            var insertDiv = document.createElement('a');
+                            insertDiv.innerHTML = "<p>"+title+"</p>"+"<p>"+address+"</p>"+"<p>"+pLng+pLat+"</p>";
+                            document.getElementById('container').appendChild(insertDiv);
+                        }
+                    }
+
+                    console.log(results);
+                    // console.log(results[0].Br[0].title);
+                    // console.log(results[1].Br.length);
+                    // console.log(results[0].Br[0].point);
+                    // console.log(results[0].Br[0].address);
+                    // var strTitle = results.getPoi(i).title;
+                    // var strAddress = results.getPoi(i).address;
+                    // insertDiv.innerHTML = "<p>"+strTitle+"</p>"+"<p>"+strAddress+"</p>";
+                    // document.getElementById('container').appendChild(insertDiv);
+                }
+            },
+            // renderOptions: { panel:container,autoViewport: false}
+        };
+        var localLng = positionArray[0];
+        var localLat = positionArray[1];
+        var mPoint = new BMap.Point(localLng, localLat);
+        var local = new BMap.LocalSearch(map, options);
+        var searchCondition = new Array("小区","写字楼","餐馆");
+        local.searchNearby(searchCondition,mPoint,1000);
+        // var re = local.getResults();
+        // console.log(LocalSearch.getResults())
+    }
+    map.addEventListener('moveend',pixel2Zuobiao);
+    // $(document).click("#container div",function (e) {
+    //     console.log(e.currentTarget)
+    // })
+    // $('#container div').click(function (e) {
+    //     console.log("1");
+    //     console.log(e.currentTarget.innerText)
+    // })
+    $("body").delegate("#container a", "click", function (e) {
+        var position = e.currentTarget.childNodes[2].innerText;
+        var lng = position.substr(0,10);
+        var lat = position.substr(10);
+        var title = e.currentTarget.childNodes[0].innerHTML;
+        var addr = e.currentTarget.childNodes[1].innerHTML;
+        alert("经纬度："+lng+','+lat+','+addr+','+title);
+    });
+
+
+
+</script>

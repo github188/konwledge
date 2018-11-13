@@ -1,0 +1,46 @@
+
+@for $i from 10 through 40 {
+  .f#{$i}{
+    font-size:1px * $i
+  }
+}
+
+body{
+  background: #f6f6f6;
+}
+
+.fl{
+  float:left;
+}
+
+.fr{
+  float:right;
+}
+
+.hide { display: none; }
+
+.inline-middle{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.iconfont {
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: baseline;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+$top:76px;
+.fill-box{
+  box-sizing: border-box;
+  height:100vh;
+  margin-top:$top*-1;
+  padding-top:$top;
+}

@@ -1,0 +1,121 @@
+
+// element loading效果iconfont图标大小设置
+.el-icon-loading{
+  font-size:30px;
+}
+
+// element 弹框中，提示信息为连续的字符串[实际情况为：不同的设备名称用','拼接在一起]时的自动换号
+.el-message-box__message p{
+  word-break: break-word;
+}
+
+// element 表格文本默认居中
+.el-table .cell{
+  text-align: left;
+}
+
+// element 日期范围选择器 --- 解决左边/往回倒退日期无法点击的问题
+.el-date-range-picker__header div{
+  margin-left:20px;
+}
+
+// element 所有input框都加上背景色
+//.el-input{
+//  background: #f6f6f6;
+//}
+
+// element table表格行高调整
+.el-table td, .el-table th{
+  padding:13px 0;
+}
+// element 分页插件-- 总条数样式添加
+.el-pagination__total{
+  margin-left:10px;
+}
+
+// element的保存按钮button样式调整
+.save-box{
+  button{
+    width:100px;
+    height:36px;
+    line-height:0;
+    background: #1f84d4;
+    color:#fff;
+    border-color: #1f84d4;
+    &:hover{
+      background: #4696d5;
+      color:#fff;
+    }
+  }
+}
+
+// element的table头部栏背景色调整
+table.el-table__header{
+  thead.has-gutter{
+    tr{
+      background: #f5f8fa;
+    }
+  }
+}
+
+// element的分页样式调整
+.number-circle{
+  width:28px;
+  min-width: 28px;
+  height:28px;
+  line-height: 28px;
+  text-align: center;
+  border-radius: 50%;
+  border:1px solid #0080d1;
+}
+
+//.pagination-box{
+//  position: relative;
+//  .el-pagination{
+//    @include vc;
+//    padding-top:20px;
+//    .btn-prev,.btn-next{
+//      background: none;
+//      padding:0;
+//      @extend .number-circle;
+//      color: #0080d1;
+//    }
+//    .el-pager{
+//      margin: 0 10px;
+//      li{
+//        background: none;
+//      }
+//      li.active{
+//        @extend .number-circle;
+//        background: #0080d1;
+//        color:#fff;
+//        font-size: 12px;
+//      }
+//    }
+//  }
+//}
+.pagination-box{
+  text-align: center;
+  .el-pagination{
+    display: inline-block;
+    padding-top:20px;
+    .btn-prev,.btn-next{
+      background: none;
+      padding:0;
+      @extend .number-circle;
+      color: #0080d1;
+    }
+    .el-pager{
+      margin: 0 10px;
+      li{
+        background: none;
+      }
+      li.active{
+        @extend .number-circle;
+        background: #0080d1;
+        color:#fff;
+        font-size: 12px;
+      }
+    }
+  }
+}

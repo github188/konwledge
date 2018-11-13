@@ -1,0 +1,84 @@
+//该文件用来放局部引用的自定义通用scss文件，包括通用scss函数通用scss混合，需要用的文件自行引入
+// 不换行,...形式处理多余文字，默认单行不行 @include no-wrap;
+@mixin no-wrap ($row:1) {
+  @if $row == 1 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $row;
+    overflow: hidden;
+  }
+}
+// 扩展点击区域
+@mixin extend-click{
+  position: relative;
+  &:before{
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+  }
+}
+// 过渡居中 需父级定位 horizontal and vertical
+@mixin be-center($type:''){
+  position: absolute;
+  @if $type == 'horizontal' {
+    top:50%;
+    transform: translateY(-50%);
+  }@else if $type == 'vertical'{
+    left: 50%;
+    transform: translateX(-50%);
+  }@else {
+    top:50%;
+    left:50%;
+    transform: translate3d(-50%,-50%,0);
+  }
+}
+
+// 弹性盒布局默认居中 ---- 适用于移动端，pc端不兼容ie9
+@mixin flex($justify-content:center, $align-items:center){
+  display: flex;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+// 撑满屏幕
+@mixin fill-all () {
+  position:absolute;
+  left:0;
+  top:0;
+  right: 0;
+  bottom:0;
+}
+
+// 定位居中
+@mixin position-center (){
+  left:50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+}
+
+// 水平居中
+@mixin vc () {
+  position: absolute;
+  left:50%;
+  transform: translate(-50%);
+}
+
+// input框设置
+@mixin input-font-color ($fontColor){
+  text-fill-color: $fontColor;
+  -webkit-text-fill-color: $fontColor;
+  &:-ms-input-placeholder{
+    color: $fontColor;
+  }
+  &::-webkit-input-placeholder{
+    color: $fontColor;
+  }
+}
+
