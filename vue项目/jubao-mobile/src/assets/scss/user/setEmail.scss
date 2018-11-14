@@ -1,0 +1,40 @@
+.set_email {
+
+  .email_box {
+    width: pxToRem(520);
+    margin: pxToRem(50) auto 0;
+    * {
+      font-size: pxToRem(40);
+    }
+  }
+  .enter_box {
+    width: pxToRem(520);
+    margin: 0 auto;
+    input {
+      width: 100%;
+      height: pxToRem(80);
+      border: 1px solid #eee;
+      border-radius: pxToRem(8);
+      padding-left: pxToRem(10);
+      margin-top: pxToRem(150);
+      box-sizing: border-box;
+    }
+  }
+  .btn_box {
+    text-align: center;
+      input {
+        color: #fff;
+        width: pxToRem(520);
+        height: pxToRem(80);
+        margin: 0 auto;
+        border-radius: pxToRem(8);
+        margin-top: pxToRem(20);
+      }
+  }
+  .copyright {
+    margin-top: pxToRem(-120);
+    background: #fff;
+    //margin-bottom: pxToRem(80);
+    text-align: center;
+  }
+}

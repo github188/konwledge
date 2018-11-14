@@ -1,0 +1,31 @@
+.set_email .email_box {
+  width: pxToRem(520);
+  margin: pxToRem(50) auto 0; }
+  .set_email .email_box * {
+    font-size: pxToRem(40); }
+.set_email .enter_box {
+  width: pxToRem(520);
+  margin: 0 auto; }
+  .set_email .enter_box input {
+    width: 100%;
+    height: pxToRem(80);
+    border: 1px solid #eee;
+    border-radius: pxToRem(8);
+    padding-left: pxToRem(10);
+    margin-top: pxToRem(150);
+    box-sizing: border-box; }
+.set_email .btn_box {
+  text-align: center; }
+  .set_email .btn_box input {
+    color: #fff;
+    width: pxToRem(520);
+    height: pxToRem(80);
+    margin: 0 auto;
+    border-radius: pxToRem(8);
+    margin-top: pxToRem(20); }
+.set_email .copyright {
+  margin-top: pxToRem(-120);
+  background: #fff;
+  text-align: center; }
+
+/*# sourceMappingURL=setEmail.css.map */

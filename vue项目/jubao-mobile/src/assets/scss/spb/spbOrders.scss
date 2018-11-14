@@ -1,0 +1,68 @@
+.spb_orders {
+  background: #f5f5f5;
+  .header2 {
+    background: #00a0e9;
+    color: #fff;
+  }
+  .tab {
+    display: flex;
+    justify-content: center;
+    height: pxToRem(80);
+    line-height: pxToRem(80);
+    background: #fff;
+    margin-bottom: pxToRem(10);
+    div {
+      flex: 1;
+      font-size: pxToRem(32);
+      color: #333;
+      span {
+        display: inline-block;
+        width: pxToRem(220);
+        text-align: center;
+        @include border-1px("bottom",transparent);
+        &.tab_on {
+          color: #06acf9;
+          @include border-1px("bottom",#06acf9);
+        }
+      }
+    }
+  }
+  .order_box {
+    background: #fff;
+    margin-bottom: pxToRem(20);
+    padding: pxToRem(20) pxToRem(40);
+    p {
+      font-size: pxToRem(28);
+      color: #333;
+      &.control {
+        text-align:right;
+        margin:pxToRem(30) 0 pxToRem(10);
+        span{
+          padding: pxToRem(6) pxToRem(20);
+          border-radius: pxToRem(50);
+          &.cancel{
+            border:1px solid #5c5c5c;
+          }
+          &.pay,&.order_detail{
+            border: 1px solid #0facf7;
+            color:#0facf7;
+          }
+        }
+      }
+    }
+  }
+  .look_more{
+    margin-top:pxToRem(20);text-align: center;
+    span.more{
+      display: block;
+      width: 100%;
+      height: pxToRem(90);
+      line-height:  pxToRem(90);
+      border-radius: pxToRem(3);
+      cursor: pointer;
+      color: #3a495c;
+      font-size: pxToRem(28);
+      background: #fff;
+    }
+  }
+}

@@ -1,0 +1,46 @@
+$black: rgb(51, 51, 51);
+$white: rgb(255, 255, 255);
+body, ul, li, p, h1, h2, h3, dl, dt, dd {
+  margin: 0;
+  padding: 0;
+}
+
+ul, li, dl, dt, dd {
+  list-style: none;
+}
+
+a {
+  color: $black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: $black;
+}
+
+body {
+  background: #fff;
+}
+.all{
+  background: #fff;
+  width: 100%;
+  font-family: PingFang-SC-Medium;
+  color: $black;
+  font-size: 0;
+  .pic{
+    font-size: 0;
+    img{
+      width: 100%;
+      height: auto;
+    }
+  }
+  .section{
+    padding: 0 pxToRem(36) pxToRem(35) pxToRem(30);
+    font-size: pxToRem(36);
+    line-height: pxToRem(66);
+    letter-spacing: 0;
+    color: #333;
+    text-align: justify;
+    text-indent: 2em;
+  }
+}

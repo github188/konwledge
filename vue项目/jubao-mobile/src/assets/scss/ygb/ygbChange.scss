@@ -1,0 +1,120 @@
+.YgbChange{
+  .content{
+    background: #eee;
+  }
+  .select1,.select2{
+    margin-top:pxToRem(20);
+  }
+  .select1{
+    margin-bottom: pxToRem(110);
+  }
+  .select2{
+    margin-bottom: pxToRem(220);
+  }
+  .cell_title{
+    //display: flex;align-items: center;  解决谷歌手机模拟器上的问题
+    height: pxToRem(80);
+    line-height: pxToRem(80);
+    padding-left: pxToRem(40);
+    font-size: pxToRem(32);
+    background: #fff;
+    margin: pxToRem(10) 0;
+    .iconfont{
+      float: right;
+      margin-right: pxToRem(20);
+      transition: all .3s ease;
+    }
+    &.step2{
+      background: #fff;
+    }
+  }
+  .table{
+    background: #fff;
+    .table_line{
+      height: pxToRem(70);
+      line-height: pxToRem(70);
+      font-size: pxToRem(28);
+      @include border-1px("bottom");
+      span{
+        display: inline-block;
+        text-align: center;
+      }
+      .table_name{
+        width: pxToRem(200);
+      }
+      .table_idcard{
+        width: pxToRem(400);
+      }
+      .table_sel{
+        width: pxToRem(80);
+      }
+      .out_name,.in_name{
+        margin-left: pxToRem(40);
+        width: pxToRem(200);
+      }
+      .out_idcard,.in_idcard{
+        width: pxToRem(400);
+      }
+      .sel_button{
+        color: $blue;
+        border: 1px solid $blue;
+        font-size: pxToRem(26);
+        padding: 0 pxToRem(5);
+      }
+    }
+  }
+  .input{
+    height: pxToRem(50);
+    border: 1px solid $blue;
+    border-radius: pxToRem(20);
+    text-align: center;
+    &.input_name{
+      width: pxToRem(200);
+    }
+    &.input_idcard{
+      width: pxToRem(320);
+    }
+    &.checked_false{
+      border: 1px solid red;
+    }
+  }
+  .button_area{
+    width: 100%;
+    a{
+      display: block;
+      height: pxToRem(100);
+      background: $blue;
+      line-height: pxToRem(100);
+      color: #fff;
+      font-size: pxToRem(36);
+      text-align: center;
+    }
+  }
+  .yzm{
+    padding: pxToRem(60) pxToRem(20);
+    font-size: pxToRem(28);
+    line-height: pxToRem(60);
+    &>p{
+      span{
+        color: red;
+      }
+    }
+    .get_yzm{
+      input{
+        width: pxToRem(360);
+        height: pxToRem(60);
+        border: 1px solid $blue;
+        text-align: center;
+      }
+      .btn{
+        width: pxToRem(250);
+        position: relative;
+        top:0;
+        border: none;
+      }
+    }
+  }
+  .rotate{
+    transform: rotate(90deg);
+  }
+}

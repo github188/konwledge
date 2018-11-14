@@ -1,0 +1,51 @@
+.hcbConfirm{
+  .content_box{
+    width: 100%;
+    background: #eee;
+    bottom:pxToRem(190);
+  }
+  .header{
+    @include border-1px('bottom');
+    position: fixed !important;
+  }
+  .order_list{
+    li{
+      height: pxToRem(90);
+      line-height: pxToRem(90);
+      input{margin-left: pxToRem(10)}
+    }
+    .car{
+      margin-top: pxToRem(20);
+    }
+  }
+  .confirm_bottom {
+    width: 100%;
+    .money {
+      display: flex;
+      width: auto;
+      height: pxToRem(90);
+      padding: 0 pxToRem(30);
+      line-height: pxToRem(90);
+      justify-content: space-between;
+      background: #fff;
+      font-size: pxToRem(36);
+      color: #333;
+    }
+    .next {
+      display: flex;
+      height: pxToRem(100);
+      line-height: pxToRem(100);
+      text-align: center;
+      background: #fff;
+      @include border-1px("top",#eee);
+      a {
+        flex: 1;
+        font-size: pxToRem(40);
+        color: #333;
+        &:last-child {
+          color: #fff;
+        }
+      }
+    }
+  }
+}

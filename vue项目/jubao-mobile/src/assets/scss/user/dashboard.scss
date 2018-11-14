@@ -1,0 +1,90 @@
+.user {
+  background: #f5f5f5;
+  .user_head {
+    position: relative;
+    .message,.setting {
+      position: absolute;
+      top: pxToRem(30);
+      i {
+        font-size: pxToRem(36);
+        color: #fff;
+      }
+      &.message {
+        left: pxToRem(30);
+      }
+      &.setting {
+        right: pxToRem(30);
+      }
+    }
+    .ziliao {
+      @include vc-hc(pxToRem(230));
+      align-items: center;
+      flex-direction: column;
+      line-height: normal;
+      img {
+        width: pxToRem(120);
+      }
+      p {
+        font-size: pxToRem(26);
+        color: #fff;
+        width: pxToRem(450);
+        text-align: center;
+      }
+    }
+
+  }
+  .user_pro {
+    margin-bottom: pxToRem(20);
+    background: #fff;
+    .u_sub_top {
+      @include vc-hc(pxToRem(70),space-between);
+      @include border-1px('bottom');
+      padding: 0 pxToRem(20) 0 pxToRem(40);
+      * {
+        font-size: pxToRem(28);
+      }
+      i {
+        font-size: pxToRem(40);
+      }
+    }
+    .u_sub_bot {
+      @include vc-hc(pxToRem(100),space-around);
+      line-height: pxToRem(100);
+      a,span {
+        color: #333;
+        font-size: pxToRem(26);
+        flex: 1;
+        text-align: center;
+        &+a {
+          @include border-1px('left');
+        }
+      }
+      span {
+        @include border-1px('left');
+        &:first-child{
+          @include border-1px('left',transparent)
+        }
+      }
+    }
+    &.user_zcb .u_sub_top .right_txt {
+      justify-content: flex-end;
+    }
+    &.user_zxb .u_sub_top .right_txt {
+      justify-content: flex-end;
+    }
+  }
+  .user_tel {
+    @include vc-hc(pxToRem(80));
+    background: #fff;
+    margin-bottom:pxToRem(20);
+    * {
+      color: #009966;
+      font-size: pxToRem(28);
+    }
+    i {
+      font-size: pxToRem(40) !important;
+      font-weight: bold;
+      line-height:pxToRem(50);
+    }
+  }
+}

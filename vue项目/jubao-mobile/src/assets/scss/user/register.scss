@@ -1,0 +1,76 @@
+$white: rgb(255, 255, 255);
+.register {
+  background: $white;
+  .header{
+    position: relative;
+    height: pxToRem(90);
+    padding: 0 pxToRem(20);
+    text-align: center;
+    font-size: pxToRem(40);
+    line-height: pxToRem(90);
+    background: $white;
+    .back{
+      position: absolute;
+      left: pxToRem(20);
+      .icon-fanhui{
+        height: pxToRem(90);
+        font-size: pxToRem(40);
+        line-height: pxToRem(90);
+      }
+    }
+  }
+  .enter_box {
+    padding: pxToRem(30);
+    p {
+      position: relative;
+      .enter_input_box {
+        display: flex;
+        height: pxToRem(90);
+        line-height: pxToRem(90);
+        border-bottom: 1px solid #eee;
+        span{
+          font-size: pxToRem(32);
+          flex: 2;
+        }
+        .enter_input {
+          font-size: pxToRem(32);
+          flex: 4;
+        }
+      }
+      img {
+        position: absolute;
+        top: pxToRem(10);
+        right: 0;
+        width: pxToRem(175);
+        height: pxToRem(70);
+      }
+      .get_smm {
+        position: absolute;
+        top: pxToRem(10);
+        right: 0;
+        width: pxToRem(200);
+        height: pxToRem(70);
+      }
+    }
+    .agree {
+      display: block;
+      font-size: pxToRem(26);
+      padding: pxToRem(50) 0;
+    }
+    .login_btn input{
+      width: 100%;
+      height: pxToRem(98);
+      border-radius: pxToRem(8);
+      font-size: pxToRem(40);
+      color: #fff;
+    }
+  }
+  &.recovery {
+    .login_btn {
+      margin-top: pxToRem(70);
+    }
+  }
+}
+
+
+

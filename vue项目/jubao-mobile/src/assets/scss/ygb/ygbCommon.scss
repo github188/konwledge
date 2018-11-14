@@ -1,0 +1,49 @@
+.order_list{
+  li{
+    font-size:pxToRem(30);
+    color:#333333;
+    height:pxToRem(80);
+    line-height: pxToRem(80);
+    @include border-1px('bottom');
+    padding:0 pxToRem(20) 0 pxToRem(30);
+    background: #fff;
+    position: relative;
+    .label{
+      display: inline-block;
+      width:pxToRem(135);
+    }
+    input{
+      width: pxToRem(500);
+    }
+    .lr{
+      float: right;
+    }
+    .center{
+      @include be-center();
+    }
+  }
+}
+.foot{
+  height: pxToRem(100);
+  font-size: 0;
+  .btn{
+    display: inline-block;
+    width: 50%;
+    font-size:pxToRem(40);
+    line-height: pxToRem(100);
+    text-align: center;
+    color: $yellow;
+    background: #fff;
+    &.bg_blue{
+      color: #fff;
+      background: $blue;
+    }
+  }
+}
+
+.mar_top_20{
+  margin-top: pxToRem(20);
+}
+.yellow{
+  color: $yellow;
+}

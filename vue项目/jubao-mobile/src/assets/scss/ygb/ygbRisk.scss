@@ -1,0 +1,27 @@
+.YgbNotification{
+  .header{
+    @include border-1px('bottom');
+  }
+  .section{
+    padding: pxToRem(25) pxToRem(20) pxToRem(25) pxToRem(30);
+    font-family: PingFang-SC-Medium;
+    line-height: pxToRem(36);
+    letter-spacing: 0;
+    font-size: pxToRem(26);
+    color: #666;
+    text-align: justify;
+    .title{
+      color: #333;
+    }
+  }
+  .button{
+    background: $blue;
+    text-align: center;
+    width: 100%;
+    height: pxToRem(98);
+    line-height: pxToRem(98);
+    color: #fff;
+    font-size: pxToRem(40);
+    margin-top: pxToRem(75);
+  }
+}

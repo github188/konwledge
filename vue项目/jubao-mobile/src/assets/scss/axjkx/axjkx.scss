@@ -1,0 +1,108 @@
+.title{
+  font-weight: bold;
+}
+.header{
+  background: #424348;
+  color: #fff;
+  position: fixed;
+  z-index: 0 !important;
+}
+.fb{
+  font-weight: bold;
+}
+.axjkx_create,.axjkx_confirm{
+  .list{
+    margin-top: 0;
+    li.item{
+      .flex{
+        height: 100%;
+        .sm_btn:last-child{
+          margin-left: pxToRem(50);
+          margin-right: pxToRem(30);
+        }
+      }
+    }
+    li.mt20{
+      margin-top: pxToRem(20);
+    }
+    li.mt40{
+      margin-top: pxToRem(40);
+    }
+    li.agree{
+      background: #fff;
+      margin-top: pxToRem(20);
+      padding-left: pxToRem(20);
+      font-size: pxToRem(28);
+      line-height: pxToRem(34);
+      margin-bottom:pxToRem(40);
+      display: flex;
+      align-items: center;
+      .icon-danxuan{
+        color: $blue;
+      }
+      .msg{
+        margin-left: pxToRem(20);
+        padding: pxToRem(16) 0 pxToRem(9);
+      }
+    }
+  }
+  .right{
+    float: right;
+  }
+  .flex{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .sm_btn{
+    display: flex;
+    width: pxToRem(90);
+    height: pxToRem(60);
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    border: 1px solid #999;
+    border-radius: 3px;
+    &.active{
+      color: #fff;
+      background: $blue;
+      border: none;
+    }
+  }
+}
+.w300{
+  width: pxToRem(300) !important;
+}
+.all_content{
+  background: #e8e8e8;
+  position: absolute;left:0;right:0;top:pxToRem(90);bottom:0;
+  overflow-y:scroll ;
+}
+.main{
+  min-height: 100%;
+  _height: 100%;
+  .order{
+    background: #e8e8e8;
+    padding-bottom: pxToRem(100+20);
+  }
+}
+.bottom_content{
+  width:100%;height:pxToRem(100);
+  margin-top: pxToRem(-100);
+  .msg_box{
+    float:left;text-align: center;
+    width:50%;height:pxToRem(100);line-height: pxToRem(100);
+    font-size:pxToRem(40)
+  }
+  .left_create{
+    color:$blue;
+    background: #fff;
+  }
+  .left_confirm{
+    background: #fff;
+  }
+  .right_bottom{
+    background: #06acf9;
+    color:#fff;
+  }
+}

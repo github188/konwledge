@@ -1,0 +1,45 @@
+.addr_box {
+
+  .addr_top {
+    padding-bottom: pxToRem(80);
+    .addr_item {
+      padding: pxToRem(20) pxToRem(30) pxToRem(10);
+      box-sizing: border-box;
+      &+div {
+        border-top: pxToRem(20) solid #f5f5f5;
+      }
+      &>div {
+        height: pxToRem(50);
+      }
+      .addr_detail{
+        height: auto;
+      }
+      .addr_tel,.addr_icon {
+        display: flex;
+        justify-content: space-between;
+        a {
+          color: #333;
+        }
+      }
+    }
+    .noData {
+      margin-top: pxToRem(100);
+      text-align: center;
+      color: #333;
+      font-size: pxToRem(28);
+    }
+  }
+  .addr_box {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    input {
+      width: 100%;
+      height: pxToRem(80);
+      color: #fff;
+      font-size: pxToRem(30);
+    }
+  }
+}

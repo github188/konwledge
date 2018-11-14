@@ -1,0 +1,32 @@
+.list{
+  overflow: hidden;
+  margin-top: pxToRem(20);
+  li.item{
+    clear: both;
+    height: pxToRem(80);
+    line-height: pxToRem(80);
+    @include border-1px('bottom');
+    font-size:pxToRem(30);
+    color:#333333;
+    background: #fff;
+    padding-left: pxToRem(30);
+  }
+  .label{
+    display: inline-block;
+    width:pxToRem(135);
+    margin-right:pxToRem(10)
+  }
+  .it-btn{
+    font-size: pxToRem(30);
+    display: inline-block;
+    line-height: pxToRem(30);
+    padding: pxToRem(13) pxToRem(7) pxToRem(7);
+    border-radius: pxToRem(8);
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    &.active{
+      color: $blue;
+      border: 1px solid $blue;
+    }
+  }
+}

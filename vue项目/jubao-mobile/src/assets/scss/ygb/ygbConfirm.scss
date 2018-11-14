@@ -1,0 +1,35 @@
+.YgbConfirm{
+  .content_box{
+    width: 100%;
+    background: #eee;
+  }
+  .header{
+    @include border-1px('bottom');
+    position: fixed !important;
+  }
+  .order_list{
+    .iconfont{
+      display: inline-block;
+      transition: all .3s ease;
+    }
+    .rotate{
+      transform: rotate(90deg);
+    }
+    .bao{
+      height: pxToRem(100);
+      line-height: pxToRem(100);
+      font-size: pxToRem(40);
+      .label{
+        width: pxToRem(200);
+      }
+    }
+  }
+  .foot{
+    @include border-1px('top');
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+

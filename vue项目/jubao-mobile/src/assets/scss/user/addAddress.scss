@@ -1,0 +1,59 @@
+.header{
+  position: relative;
+  display: flex;
+  width: auto;
+  height: pxToRem(90);
+  span {
+    font-size: pxToRem(40);
+    &:first-child,&:last-child {
+      flex: 1;
+    }
+    &:nth-child(2) {
+      flex: 4;
+    }
+    .icon-fanhui {
+      height: pxToRem(90);
+      line-height: pxToRem(90);
+      font-size: pxToRem(38);
+      min-width: pxToRem(80);
+      text-align: left;
+    }
+  }
+}
+.addr_box {
+  padding: 0 pxToRem(30);
+  .enter_input {
+    display: flex;
+    width: auto;
+    height: pxToRem(100);
+    line-height: pxToRem(100);
+    @include border-1px("bottom");
+    label {
+      flex: 1;
+      font-size: pxToRem(36);
+    }
+    input,div {
+      flex: 3;
+      height: pxToRem(100);
+      font-size: pxToRem(36);
+    }
+  }
+  .enter_txtArea {
+    textarea {
+      width: 100%;
+      height: pxToRem(200);
+      overflow: auto;
+      border: 1px solid #eee;
+      border-radius: pxToRem(10);
+      margin-top: pxToRem(30);
+      resize:none;
+      padding: pxToRem(10);
+      box-sizing: border-box;
+      font-size: pxToRem(30);
+      outline: none;
+    }
+    div {
+      text-align: right;
+    }
+  }
+}

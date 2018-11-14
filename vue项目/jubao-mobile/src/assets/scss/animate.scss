@@ -1,0 +1,18 @@
+/*转圈动画*/
+@keyframes loading {
+  from {
+    transform-origin: 50% 50%;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform-origin: 50% 50%;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.loading_more {
+  display: inline-block;
+  animation: loading 1s infinite linear;
+}

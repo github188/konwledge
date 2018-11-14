@@ -1,0 +1,45 @@
+.YgbClause{
+  .section{
+    padding: pxToRem(20) pxToRem(20) pxToRem(30) pxToRem(30);
+    font-size: pxToRem(20);
+    font-family: PingFang-SC-Medium;
+    color: #666;
+    line-height: pxToRem(36);
+    .title{
+      text-align: center;
+      color: #000;
+    }
+    .black{
+      color: #000;
+    }
+    .tab{
+      color: #000;
+      position: relative;
+      .tab_body{
+        box-sizing: border-box;
+        width: pxToRem(306);
+        margin: 0 auto pxToRem(30);
+        .tab_title{
+          text-align: center;
+        }
+        .tab_con{
+          box-sizing: border-box;
+          border-right: 1px solid #000;
+          border-bottom: 1px solid #000;
+          span{
+            display: inline-block;
+            width: pxToRem(150);
+            height: pxToRem(40);
+            text-align: center;
+            line-height: pxToRem(40);
+            border-left: 1px solid #000;
+            border-top: 1px solid #000;
+          }
+        }
+        .tab_foot{
+          color: #666;
+        }
+      }
+    }
+  }
+}

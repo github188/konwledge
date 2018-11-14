@@ -1,0 +1,79 @@
+$white: rgb(255, 255, 255);
+.login {
+  background: $white;
+  .header{
+    //position: relative;
+    //width: auto;
+    //height: pxToRem(90);
+    //padding: 0 pxToRem(20);
+    //text-align: right;
+    //font-size: pxToRem(40);
+    //line-height: pxToRem(90);
+    //background: $white;
+    .back{
+      position: absolute;
+      left: pxToRem(20);
+      .icon-fanhui{
+        height: pxToRem(90);
+        font-size: pxToRem(40);
+        line-height: pxToRem(90);
+      }
+    }
+  }
+  .login_title {
+    font-size: pxToRem(48);
+    text-align: center;
+    padding: pxToRem(80);
+  }
+  .enter_box {
+    padding: pxToRem(30);
+    &>.enter_input {
+      display: block;
+      width: 100%;
+      height: pxToRem(90);
+      border-bottom: 1px solid #eee;
+      font-size: pxToRem(30);
+    }
+    &>label {
+      position: relative;
+      display: flex;
+      height: pxToRem(90);
+      line-height: pxToRem(90);
+      border-bottom: 1px solid #eee;
+      span {
+        flex: 1;
+        font-size: pxToRem(30);
+      }
+      input {
+        flex: 4;
+        font-size: pxToRem(30);
+      }
+      &:nth-of-type(2) {
+        margin-bottom: pxToRem(90);
+        &+p+p {
+          justify-content: center;
+          span {font-size: pxToRem(30);}
+        }
+      }
+    }
+    .remember {
+      height: pxToRem(90);
+      line-height: pxToRem(90);
+    }
+    .login_btn input{
+      width: 100%;;
+      height: pxToRem(98);
+      border-radius: pxToRem(8);
+      font-size: pxToRem(40);
+      color: #fff;
+    }
+    .other_way {
+      display: flex;
+      justify-content: space-between;
+      padding: pxToRem(30) 0;
+    }
+  }
+}
+
+
+

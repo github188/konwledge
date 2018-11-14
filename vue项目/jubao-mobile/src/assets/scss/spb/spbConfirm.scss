@@ -1,0 +1,108 @@
+.spb_confirm {
+  background: #f5f5f5;
+  .header {
+    border-bottom: 1px solid #eee;
+  }
+  .spb_cell {
+    display: flex;
+    height: pxToRem(90);
+    line-height: pxToRem(90);
+    background: #fff;
+    padding: 0 pxToRem(30);
+    @include border-1px("bottom",#eee);
+    .enter_title {
+      flex: 3;
+      font-size: pxToRem(36);
+    }
+    .enter_input {
+      flex: 6;
+      font-size: pxToRem(30);
+      input {
+        width: 100%;
+        height: pxToRem(90);
+        &.only_input {
+          font-size: pxToRem(30);
+        }
+      }
+    }
+    .icon {
+      flex: 1;
+      text-align: right;
+    }
+    &.spb_order_case {
+      display: flex;
+      div {
+        display: flex;
+        flex: 2;
+        font-size: pxToRem(36);
+      }
+      ul {
+        display: flex;
+        flex: 5;
+        justify-content: space-around;
+        align-items: center;
+        li {
+          font-size: pxToRem(30);
+          line-height: normal;
+          height: pxToRem(80);
+          color: #666;
+          padding: 0 pxToRem(20);
+          border: 1px solid #ccc;
+          border-radius: pxToRem(8);
+          &.on {
+            border-color: #06acf9;
+            color: #06acf9;
+          }
+        }
+      }
+    }
+    &.spb_order_title {
+      font-size: pxToRem(36);
+    }
+  }
+  .spb_orders {
+    margin-bottom: pxToRem(200);
+    .spb_order_box {
+      margin: pxToRem(20) 0;
+      .spb_order {
+        background: #fff;
+        &+div {
+          margin-top: pxToRem(10);
+        }
+      }
+    }
+  }
+  .confirm_bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    .money {
+      display: flex;
+      width: auto;
+      height: pxToRem(90);
+      padding: 0 pxToRem(30);
+      line-height: pxToRem(90);
+      justify-content: space-between;
+      background: #fff;
+      font-size: pxToRem(36);
+      color: #333;
+    }
+    .next {
+      display: flex;
+      height: pxToRem(100);
+      line-height: pxToRem(100);
+      text-align: center;
+      background: #fff;
+      @include border-1px("top",#eee);
+      a {
+        flex: 1;
+        font-size: pxToRem(40);
+        color: #333;
+        &:last-child {
+          color: #fff;
+        }
+      }
+    }
+  }
+}

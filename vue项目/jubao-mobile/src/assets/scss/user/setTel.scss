@@ -1,0 +1,55 @@
+.setTel {
+
+  .tel_box {
+    width: pxToRem(520);
+    margin: pxToRem(50) auto;
+    * {
+      font-size: pxToRem(32);
+    }
+    .enter_box {
+      padding: pxToRem(10) 0;
+      input {
+        width: 100%;
+        height: pxToRem(80);
+        border: 1px solid #eee;
+        border-radius: pxToRem(8);
+        padding-left: pxToRem(10);
+        box-sizing: border-box;
+      }
+      &.sms_code {
+        position: relative;
+        display: flex;
+        input:first-child {
+          flex: 3;
+        }
+        input:last-child {
+          flex: 2;
+          position: static;
+        }
+      }
+    }
+    .btn_box {
+      margin: pxToRem(50) auto;
+      border-radius: pxToRem(8);
+      input {
+        width: pxToRem(500);
+        height: pxToRem(80);
+        text-align: center;
+        color: #fff;
+      }
+    }
+    &.hasCompanyName {
+      p {
+        font-size: pxToRem(40);
+        padding: pxToRem(20) 0;
+      }
+      .btn_box {
+        margin-top: pxToRem(200);
+      }
+    }
+  }
+  .copyright {
+    margin-top: pxToRem(-120);
+    text-align: center;
+  }
+}

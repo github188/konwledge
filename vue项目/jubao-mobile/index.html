@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
+    <!--<meta name="viewport" content="initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no">-->
+    <!--开发阶段缩放一倍，方便调试-->
+    <script>
+      function pxToRem(){
+        var html = document.documentElement;
+        var windowWidth = html.clientWidth;
+        html.style.fontSize = windowWidth / 7.5+ 'px';
+      }
+      pxToRem();
+      window.addEventListener('resize',pxToRem)
+    </script>
+    <!--<link rel="shortcut icon" type="image/x-icon" href="vueStatic/favicon.ico" media="screen">-->
+    <title>保险服务平台</title>
+    <meta name="keywords" content="聚保,物流保险,聚保物流,聚保物流保险,货运保险,员工保险,普货保">
+    <meta name="description" content="聚保让您投保不上当,理赔有人帮！让物流人买到放心的保险，让物流平台放心卖保险！提供货运保险,员工保险,普货保,零担保，城配保等众多物流保险服务！">
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
