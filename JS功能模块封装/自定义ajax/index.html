@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="file" id="file" onchange="upload(this)">
+</body>
+<script src="ajax.js"></script>
+<script>
+    // GET方法
+    // ajax({
+    //     type: 'get',
+    //     url: 'http://localhost:3000/',
+    //     headers: {
+    //         'Authorization': 'Bearer'
+    //     },
+    //     data: {
+    //         username: 'admin',
+    //         password: '123456'
+    //     },
+    //     success: function (res) {
+    //         console.log(res)
+    //     }
+    // })
+
+    // POST方法
+    // ajax({
+    //     type: 'post',
+    //     url: 'http://localhost:3000/test',
+    //     headers: {
+    //         'Authorization': 'Bearer'
+    //     },
+    //     data: {
+    //         username: 'admin',
+    //         password: '123456'
+    //     },
+    //     success: function (res) {
+    //         console.log(res)
+    //     }
+    // })
+
+    // post file上传文件
+    function upload(e) {
+        var file = document.querySelector('#file').files
+        debugger
+        ajax({
+            type: 'post',
+            url: 'http://localhost:3000/test',
+            headers: {
+                'Authorization': 'Bearer'
+            },
+            data: {
+                username: 'admin',
+                password: '123456'
+            },
+            success: function (res) {
+                console.log(res)
+            }
+        })
+    }
+</script>
+</html>

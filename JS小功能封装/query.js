@@ -20,11 +20,11 @@ function getStrQuery(str) {
  * @param data  {productType:"zcb"}
  * @returns {string|*}      www.baidu.com?productType=zcb /  www.baidu.com?status=1&productType=zcb   / www.baidu.com?status=1&orderId=2&productType=zcb
  */
-function addStrQuery(str,data) {
-    var str=str.indexOf("?")===-1?"?":"&";
+function addStrQuery(url,data) {
+    var str=url.indexOf("?")===-1?"?":"&";
     for(var k in data){
         str += k+"="+data[k]+"&"
     }
-    href+= str.substring(0,str.length-1);
-    return str
+    url += str.substring(0,str.length-1);
+    return url
 }
