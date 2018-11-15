@@ -43,13 +43,19 @@
 
     // post file上传文件
     function upload(e) {
-        var file = document.querySelector('#file').files
-        debugger
+        var el = document.querySelector('#file');
+        var files = el.files;
+        let { name, size, type, lastModified} = files[0]
+
         ajax({
             type: 'post',
-            url: 'http://localhost:3000/test',
+            url: 'http://localhost:3000/file_upload',
             headers: {
                 'Authorization': 'Bearer'
+            },
+            formData: {
+                name: 'file',
+                files: files,
             },
             data: {
                 username: 'admin',
@@ -57,6 +63,9 @@
             },
             success: function (res) {
                 console.log(res)
+            },
+            complete: function (xhr) {
+                el.value = ''
             }
         })
     }

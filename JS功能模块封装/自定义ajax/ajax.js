@@ -38,9 +38,13 @@ function ajax(params) {
         url: '',
         headers: {},
         data:{},
-        file: null, // 文件上传时的文件对象
+        formData: {
+            name: '',
+            files: [], // 文件上传时的文件对象
+        },
         success: function () {},
-        fail: function () {}
+        fail: function () {},
+        complete: function () {}
     },params)
 
 
@@ -55,6 +59,15 @@ function ajax(params) {
     } else if (props.type.toUpperCase() === 'POST') {
         url = props.url
         sendInfo = JSON.stringify(props.data)
+
+        if (props.formData.name !== '' && (props.formData.files.length > 0)){
+            var formData = new FormData()
+            // for (var i=0; i<props.formData.files.length; i++) {
+            //     formData.append(props.formData.name,props.formData.files[i]);
+            // }
+            formData.append(props.formData.name,props.formData.files);
+            sendInfo = formData
+        }
     }
 
     xhr.open(props.type,url,true);
@@ -70,5 +83,6 @@ function ajax(params) {
         }else{
             props.fail(xhr.status)
         }
+        props.complete(xhr)
     };
 }
