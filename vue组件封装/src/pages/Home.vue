@@ -9,6 +9,7 @@
   </el-container>
 </template>
 
+
 <script>
   export default {
     name: 'Home',
@@ -37,9 +38,13 @@
   }
   .home-aside{
     background: #1F6B75;
+    .box{   
+      color:red;
+    }
   }
   .home-main{
     background: #4a4a4a;
   }
 }
+
 </style>

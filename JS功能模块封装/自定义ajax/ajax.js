@@ -42,6 +42,8 @@ function ajax(params) {
             name: '',
             files: [], // 文件上传时的文件对象
         },
+        onProgress:function () {},
+        onError:function () {},
         success: function () {},
         fail: function () {},
         complete: function () {}

@@ -2,9 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
 </body>
+<script>
+    var Point = function() {}
+    var arr = [ new Point(), new Point(), new Point() ]
+
+    console.log(arr.length)
+    console.log('数组arr', JSON.stringify(arr, null, 2))
+    setTimeout(function() {
+        arr.push(new Point())
+    }, 1000 * 5)
+</script>
 </html>

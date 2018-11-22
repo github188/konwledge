@@ -1,3 +1,4 @@
 import Dialog from './dialog'
 import CompBox from './CompBox'
-export {Dialog, CompBox}
+import Progress from './progress/index.js'
+export {Dialog, CompBox, Progress}

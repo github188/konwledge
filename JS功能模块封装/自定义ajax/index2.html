@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="file" id="file" onchange="upload2(this)">
+</body>
+<script src="./ajax-element.js"></script>
+<script>
+    // post file上传文件
+    function upload2(e) {
+        var el = document.querySelector('#file');
+        var file = el.files[0];
+        upload({
+        	action: 'http://127.0.0.1:8081/file_upload',
+        	data: {
+
+        	},
+        	filename: 'filename',
+        	file: file,
+        	onProgress(e){
+        		console.log(e, 'e')
+
+        	},
+        	onSuccess(res){
+						console.log(res, 'res')
+        	},
+        	onError (e){
+
+        	}
+        })
+    }
+</script>
+</html>
