@@ -2,7 +2,7 @@ import axios from '../axios'
 
 // let testPath = 'http://' + (location.host === 'localhost:8088' ? 'localhost:3000' : location.host)
 // let testPath = 'http://' + 'localhost:3001'
-let testPath = 'http://47.105.123.22:3001'
+let testPath = 'http://duolami.club:3001'
 // let agsAPI = new Service().agsAPI()
 // let netPath = 'http://47.105.123.22:3001'
 // export const comUserInfo = axios('url', {})

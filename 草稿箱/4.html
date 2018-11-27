@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .img-full-bg{
+            position: absolute;
+            left:0;right:0;top:0;bottom:0;
+            background: rgba(0,0,0,.5);
+            text-align: center;
+        }
+        .img-center{
+            vertical-align: middle
+        }
+        .img-full-bg:after{
+            content: ' ';
+            position: absolute;
+            display: inline;
+            vertical-align: middle;
+            right:0;
+            width:0;
+            height:100%;
+        }
+        .img-center{
+            width:100px;
+            height:100px;
+            background: yellowgreen;
+            display: inline-block
+        }
+    </style>
+</head>
+<body>
+    <div class="img-full-bg">
+        <div src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2608382548,659077296&fm=173&app=25&f=JPEG?w=218&h=146&s=99206697681317C2D2B2E0B50300704A" :alt="alt" class="img-center">
+    </div>
+</body>
+<script>
+
+</script>
+</html>

@@ -17,6 +17,7 @@
     </div>
     <div class="title">
         <span class="logo"></span>
+        <img src="~assets/images/logo2.png" alt="" v-imglarge>
         <span>{{ $t('login.title') }}</span>
     </div>
     

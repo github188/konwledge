@@ -11,6 +11,7 @@ let seed = 1;
 const Message = function(options) {
   if (Vue.prototype.$isServer) return;
   options = options || {};
+  // 如果输入的参数是string，就直接options
   if (typeof options === 'string') {
     options = {
       message: options
