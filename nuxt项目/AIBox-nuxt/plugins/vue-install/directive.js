@@ -46,7 +46,13 @@ export default {
 
             // 生成一个容器，和遮罩
             console.log(1)
+            let originElement = e.target
+            let {left, top, width, height} = originElement.getBoundingClientRect()
             FullBg({
+              // originWidth: width,
+              // originHeight: height,
+              // originLeft: left,
+              // originTop: top,
               src: 'https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2608382548,659077296&fm=173&app=25&f=JPEG?w=218&h=146&s=99206697681317C2D2B2E0B50300704A'
             })
             console.log(2)
