@@ -15,8 +15,8 @@
             </div>
             <div class="list">
               <router-link to="/postman">接口调试</router-link>
-              <router-link to="/project">项目</router-link >
-              <a href="javascript:void (0)" class="">实践</a>
+              <router-link to="/project">项目</router-link>
+              <router-link to="/novel">小说</router-link>
               <a href="javascript:void (0)" class="">概览</a>
               <a href="javascript:void (0)" class="">iViewCli</a>
               <a href="javascript:void (0)" ><i class="ivu-icon ivu-icon-social-github"></i>GitHub</a>
