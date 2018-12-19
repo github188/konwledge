@@ -1,0 +1,17 @@
+<template>
+    <div>
+        novel
+    </div>
+</template>
+
+<script>
+    export default {
+        data() {
+            return {}
+        }
+    }
+</script>
+
+<style lang="scss" scope>
+
+</style>
