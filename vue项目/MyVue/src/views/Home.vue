@@ -28,6 +28,7 @@
       >{{val.text}}
       </router-link>
     </ul>
+    <img src="../assets/img/reset-procedure.png" alt="" v-enlarge>
   </div>
 </template>
 

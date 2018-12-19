@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import bg from './fullbg.vue'
+import bg from './imgEnlarge.vue'
 
 let FullBgConstructor = Vue.extend(bg)
 

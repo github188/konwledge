@@ -11,18 +11,29 @@
   },
   "author": "gaofangshang",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "vue": "^2.5.2",
+    "vue-clipboard2": "^0.0.8"
+  },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
-    "date-string-transform": "^1.0.0",
+    "date-string-transform": "^1.1.9",
     "html-webpack-plugin": "^3.2.0",
     "webpack": "^4.16.3",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.5",
-    "webpack-merge": "^4.1.3"
+    "webpack-merge": "^4.1.3",
+    "vue": "^2.2.4",
+    "vue-loader": "^13.3.0",
+    "vue-router": "^2.3.0",
+    "vue-style-loader": "^3.0.1",
+    "vue-template-compiler": "^2.5.2",
+    "vuex": "^2.2.1",
+    "babel-plugin-transform-vue-jsx": "^3.7.0",
+    "babel-helper-vue-jsx-merge-props": "^2.0.3"
   }
 }

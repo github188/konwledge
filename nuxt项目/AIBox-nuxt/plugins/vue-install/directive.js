@@ -1,6 +1,6 @@
 import {getStyle} from '../../assets/js/common'
 import {Message} from 'element-ui'
-import FullBg from '../../components/common/fullbg/fullbg.js'
+import FullBg from '../../components/common/imglarge/index.js'
 
 export default {
   install (Vue, options) {
@@ -37,12 +37,9 @@ export default {
     Vue.directive('imglarge', {
       bind: function (el, binding, vnode) {
         if (el.nodeType == 1 && el.tagName === 'IMG') {
-          console.log('img标签')
           let {src} = el
           el.addEventListener('click', (e)=>{
-
             // 生成一个容器，和遮罩
-            console.log(1)
             let originElement = e.target
             let {left, top, width, height} = originElement.getBoundingClientRect()
             FullBg({
@@ -52,7 +49,6 @@ export default {
               originTop: top,
               src
             })
-            console.log(2)
           })
         }
       }

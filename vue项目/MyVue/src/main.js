@@ -5,9 +5,12 @@ import store from "./vuex/store"
 
 import "babel-polyfill"
 import "./assets/scss/reset.scss"
+import imgEnlarge from 'img-enlarge'
+Vue.use(imgEnlarge)
 
 import {busPlugin} from "./plugins/"
 Vue.use(busPlugin);
+
 
 //引用element-ui （包括css和js）
 import "./element/element-use"

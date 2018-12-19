@@ -19,9 +19,10 @@ export default {
         }
     },
     mounted () {
-        this.$nextTick(()=>{
-            this._initStyle()
-        })
+      let img = this.$refs.img;
+      img.onload = ()=>{
+        this._initStyle()
+      }
     },
     methods: {
         _initStyle() {
@@ -45,10 +46,10 @@ export default {
 
             // 确定动画的范围和时长
             this.$refs.img.style.transition = 'all .5s ease'
-            
+            this.$refs.imgBoxBg.style.transition = `all .5s ease`
             // 手动触发页面重绘
             let f = document.body.offsetHeight;
-            
+
             // 设置图片最终的宽高和位置
             this.$refs.img.style.width = `${width}px`;
             this.$refs.img.style.height = `${height}px`;
@@ -75,7 +76,7 @@ export default {
         width:0;
         height:100%;
         display: inline-block;
-        vertical-align: middle            
+        vertical-align: middle
     }
     .img-center{
         vertical-align: middle;
