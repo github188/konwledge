@@ -29,6 +29,9 @@
       </router-link>
     </ul>
     <img src="../assets/img/reset-procedure.png" alt="" v-enlarge>
+    <div style="height:300px;background: #0ED1C1">
+
+    </div>
   </div>
 </template>
 
