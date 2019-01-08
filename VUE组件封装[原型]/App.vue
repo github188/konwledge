@@ -6,6 +6,8 @@
                 <!--<num-cell :num="val" v-for="(val,idx) in numList" :key="`num-${ idx }`"></num-cell>-->
             <!--</transition-group>-->
             <num-roll :num="num"></num-roll>
+            <br>
+            <num-roll :num="num" type="title"></num-roll>
             <button @click="addNum">addNum</button>
             <button @click="removeNum">removeNum</button>
         </div>
@@ -33,7 +35,7 @@
         methods: {
             addNum(){
                 // this.num = '8'
-                this.num = this.num + 13
+                this.num = this.num + 1234567
             },
             removeNum(){
                 this.num--;

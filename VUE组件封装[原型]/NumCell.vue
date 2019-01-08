@@ -1,6 +1,9 @@
 <template>
     <div class="numbers">
-        <div class="cell-10" :style="{marginTop: `${ num*(-40) }px`}">
+        <div v-if="num === ','">
+            <div class="cell">,</div>
+        </div>
+        <div class="cell-10" :style="{marginTop: `${ num *(-40) }px`}" v-else>
             <div class="cell" v-for="val in num10">{{val}}</div>
         </div>
     </div>
@@ -14,7 +17,7 @@
                 type: Number | String,
                 require: true,
                 validator(val){
-                    return !isNaN(val) && val>=0 && val<=9
+                    return val===',' || ( !isNaN(val) && val>=0 && val<=9 )
                 }
             },
         },

@@ -20,12 +20,20 @@
                 validator(val){
                     return !isNaN(val)
                 }
+            },
+            type: {
+                type: String,
+                default: 'common',
+                validator(val){
+                    return ~['common', 'title'].indexOf(val)
+                }
             }
         },
         computed: {
             numList(){
-                let {num} = this
-                return String(num).split('')
+                let {num, type, formatNumber} = this
+                console.log(type === 'common' ?  String(num).split('') : String( formatNumber(num) ).split(''))
+                return type === 'common' ?  String(num).split('') : String( formatNumber(num) ).split('')
             }
         },
         methods: {
