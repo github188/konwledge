@@ -4,7 +4,7 @@
             <el-input
                     v-model.trim="username"
                     v-reg="[{req:Reg.username, failCallback: usernameCallback}]"
-                    :placeholder="$t('login.usernameHolder')"
+                    :placeholder="请输入用户名"
                     class="f20"
                     suffix-icon="iconfont icon-yonghuming"
                     maxlength="30"></el-input>
