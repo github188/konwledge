@@ -1,10 +1,6 @@
 <template>
     <div class="template">
-        快速原型开发 <span>好牛逼</span>
         <div class="num-rolling">
-            <!--<transition-group name="carry" tag="div">-->
-                <!--<num-cell :num="val" v-for="(val,idx) in numList" :key="`num-${ idx }`"></num-cell>-->
-            <!--</transition-group>-->
             <num-roll :num="num"></num-roll>
             <br>
             <num-roll :num="num" type="title"></num-roll>
@@ -15,7 +11,7 @@
 </template>
 
 <script>
-    import NumRoll from './components/NumRoll/NumRoll'
+    import NumRoll from './NumRoll'
     export default {
         name: "appMain",
         components: {
@@ -23,7 +19,7 @@
         },
         data() {
             return {
-                num: 0,
+                num: 3252,
             }
         },
         computed: {
@@ -40,17 +36,24 @@
             removeNum(){
                 this.num--;
             }
+        },
+        mounted () {
+            var i=1000;
+            setInterval(()=>{
+                i=i*2;
+                this.num=i;
+            }, 2000);
         }
     }
 </script>
 
 <style scoped>
-.template{
-    color:red;
-}
+    .template{
+        color:red;
+    }
 
-.num-rolling{
-    width:500px;height:300px;border:1px solid #000;
-}
+    .num-rolling{
+        width:500px;height:300px;border:1px solid #000;
+    }
 
 </style>

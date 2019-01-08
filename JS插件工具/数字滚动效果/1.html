@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./themes/odometer-theme-default.css" />
+    <style>
+        .odometer {
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+<div class="odometer">3252</div>
+</body>
+<script>
+    window.odometerOptions = {
+        format: '(ddd).dd'
+    };
+</script>
+<script src="./odometer.js"></script>
+
+<script>
+    let  el = document.getElementsByClassName("odometer")[0]
+    var i=1000;
+    setInterval(function(){
+        i=i*2;
+        el.innerHTML=i;
+    }, 5000);
+</script>
+</html>
