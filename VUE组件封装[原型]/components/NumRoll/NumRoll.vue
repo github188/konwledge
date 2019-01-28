@@ -1,7 +1,7 @@
 <template>
     <div class="num-roll">
         <transition-group name="carry" tag="div">
-            <num-cell :num="val" v-for="(val,idx) in numList" :key="`num-${ idx }`"></num-cell>
+            <num-cell :num="val" v-for="(val,idx) in numList" :key="`num-${ idx }`" :use-img="useImg"></num-cell>
         </transition-group>
     </div>
 </template>
@@ -27,6 +27,10 @@
                 validator(val){
                     return ~['common', 'title'].indexOf(val)
                 }
+            },
+            useImg: {
+                type: Boolean,
+                default: false
             }
         },
         computed: {

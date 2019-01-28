@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>datetimepicker</title>
+    <link rel="stylesheet" href="./datetimepicker/jquery.datetimepicker.min.css">
+    <style>
+
+    </style>
+</head>
+<body>
+<div>
+    <input id="datetimepicker" type="text" >
+    <input id="start" type="text" >
+
+    <div class="angular-box" ng-app="myApp" ng-controller="myCtrl">
+        <h1>{{ carname }}</h1>
+        <input id="angular-datetimepicker" type="text" ng-model="time">
+        <p>  {{ time }} </p>
+    </div>
+</div>
+</body>
+<script src="datetimepicker/jquery.min.js"></script>
+<script src="datetimepicker/jquery.datetimepicker.min.js"></script>
+<script src="datetimepicker/angular.min.js"></script>
+<script>
+    $('#datetimepicker').datetimepicker();
+    $("#start").datetimepicker({ format: 'Y/m/d', timepicker: false });
+</script>
+<script>
+
+    var app = angular.module('myApp', [])
+
+    app.controller('myCtrl', function ($scope) {
+        $scope.carname = 'volvo'
+        $scope.time = getDateStr(new Date(), 'datetime')
+        $('#angular-datetimepicker').datetimepicker();
+    })
+
+
+
+
+    function getDateStr (t, datetime) {
+        var tm = t.getMonth() + 1;
+        if (tm < 10) {
+            tm = "0" + tm.toString();
+        }
+        var day = t.getDate();
+        if (day < 10) {
+            day = "0" + day.toString();
+        }
+        var t_hour = t.getHours();
+        if (t_hour < 10) {
+            t_hour = "0" + t_hour.toString();
+        }
+        var t_Minutes = t.getMinutes();
+        if (t_Minutes < 10) {
+            t_Minutes = "0" + t_Minutes.toString();
+        }
+        var t_Seconds = t.getSeconds();
+        if (t_Seconds < 10) {
+            t_Seconds = "0" + t_Seconds.toString();
+        }
+        if(datetime)
+            return t.getFullYear() + "-" + tm + "-" + day +" "+t_hour+":"+t_Minutes+":"+t_Seconds;
+        else
+            return t.getFullYear() + "-" + tm + "-" + day;
+    };
+</script>
+</html>

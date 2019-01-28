@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Grind Player</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style>
+    #GrindPlayer{
+      width:600px;
+      height:450px;
+      border:1px solid #000;
+    }
+  </style>
+</head>
+<body>
+<div id="GrindPlayer"></div>
+</body>
+<script src="GrindPlayer/swfobject.js"></script>
+<script type="text/javascript">
+  let url = 'rtmp://10.10.19.220:1935/live/1'
+
+  setTimeout(()=>{
+    let url = 'rtmp://10.10.19.220:1935/live/1'
+    _initGrindPlayer(url)
+  },200)
+
+  function _initGrindPlayer (videoUrl) {
+    window.player = null;
+    window.jsbridge = function jsbridge(playerId, event, data) {
+      if (window.player == null) {
+        window.player = document.getElementById(playerId);
+      }
+      switch(event) {
+        case "onJavaScriptBridgeCreated":
+          listStreams(teststreams,"streamlist");
+          break;
+        case "timeChange":
+        case "timeupdate":
+        case "progress":
+          break;
+        default:
+          console.log(event, data);
+      }
+    }
+    var parameters = {
+      src: videoUrl,
+      autoPlay: "true",
+      verbose: true,
+      controlBarAutoHide: "true",
+      controlBarPosition: "bottom",
+      poster: "images/poster.png",
+      javascriptCallbackFunction: "jsbridge",
+      plugin_hls: "./static/plugin/GrindPlayer/flashlsOSMF.swf",
+      hls_minbufferlength: -1,
+      hls_maxbufferlength: 30,
+      hls_lowbufferlength: 3,
+      hls_seekmode: "KEYFRAME",
+      hls_startfromlevel: -1,
+      hls_seekfromlevel: -1,
+      hls_live_flushurlcache: false,
+      hls_info: true,
+      hls_debug: false,
+      hls_debug2: false,
+      hls_warn: true,
+      hls_error: true,
+      hls_fragmentloadmaxretry : -1,
+      hls_manifestloadmaxretry : -1,
+      hls_capleveltostage : false,
+      hls_maxlevelcappingmode : "downscale"
+    };
+    function getwmodeValue (wmodeValue, parameters) {
+      var wmodeOptions = ["direct", "opaque", "transparent", "window"];
+      if (parameters.hasOwnProperty("wmode")) {
+        if (wmodeOptions.indexOf(parameters.wmode) >= 0) {
+          return parameters.wmode
+        } else {
+          return wmodeValue
+        }
+        delete parameters.wmode;
+      } else {
+        return wmodeValue
+      }
+    }
+    swfobject.embedSWF(
+      "./static/plugin/GrindPlayer/GrindPlayer.swf"
+      , "GrindPlayer"
+      , parseInt(this.width)
+      , parseInt(this.height)
+      , "10.1.0"
+      , "expressInstall.swf"
+      , parameters
+      , {
+        allowFullScreen: "true",
+        wmode: getwmodeValue ("direct", parameters),
+        autostart: "true"
+      }
+      , {
+        name: "GrindPlayer"
+      }
+    );
+  }
+</script>
+</html>

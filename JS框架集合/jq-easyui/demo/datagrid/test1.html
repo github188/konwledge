@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>datagrid</title>
+    <link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../demo.css">
+    <script type="text/javascript" src="../../jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+</head>
+<body>
+<div id="dg" class="easyui-datagrid" title="Basic DataGrid" style="width:700px;height:250px">
+
+</div>
+<div id="tb">
+    <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true"></a>
+    <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-help',plain:true"></a>
+</div>
+<script>
+    $('#dg').datagrid({
+        url:'datagrid_data1.json',
+        pagination: true,
+        toolbar: '#tb',
+        columns:[[
+            {field:'productid',title:'Code',width:100},
+            {field:'productname',title:'Name',width:100},
+            {field:'listprice',title:'Price',width:100,align:'right'},
+        ]]
+    });
+</script>
+</body>
+</html>

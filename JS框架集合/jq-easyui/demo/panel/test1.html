@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel</title>
+    <link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../demo.css">
+    <script type="text/javascript" src="../../jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+</head>
+<body>
+<button onclick="javascript:$('#p').panel('open')">open</button>
+<button onclick="javascript:$('#p').panel('close')">close</button>
+<button onclick="javascript:$('#p').panel('move', {left:100, top:100})">move</button>
+
+<div id="p" class="easyui-panel" title="Basic Panel" style="width:700px;height:200px;padding:10px;">
+    <div region="north" style="height:50px;background: #0bb20c"></div>
+    <div region="center" style="height:50px;background: #1E9FFF"></div>
+    <div region="south" style="height:50px;background: #1eebfc"></div>
+33333 <br>
+    1231231 <br>
+    1231231 <br>1231231 <br>1231231 <br>1231231 <br>1231231 <br>1231231 <br>1231231 <br>1231231 <br>1231231 <br>
+    1231231 <br>1231231 <br>1231231 <br>1231231 <br>1231231 <br>1231231 <br>1231231 <br>1231231 <br>1231231 <br>
+    1231231 <br>1231231 <br>1231231 <br>1231231 <br>1231231 <br>1231231 <br>1231231 <br>1231231 <br>1231231 <br>
+</div>
+<div id="p2" style="padding:10px;">
+    <p>panel content.</p>
+    <p>panel content.</p>
+</div>
+<script>
+    $('#p2').panel({
+        width:500,
+        height:150,
+        title:'My Panel',
+        tools:[{
+            iconCls:'icon-add',
+            handler:function(){alert('new')}
+        },{
+            iconCls:'icon-save',
+            handler:function(){alert('save')}
+        }],
+    });
+
+</script>
+</body>
+</html>

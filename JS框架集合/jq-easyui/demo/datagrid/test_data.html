@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>datagrid</title>
+    <link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../demo.css">
+    <script type="text/javascript" src="../../jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+</head>
+<body>
+<div id="dg" class="easyui-datagrid" title="Basic DataGrid" style="width:700px;height:250px">
+
+</div>
+<div id="tb">
+    头部工具栏地址
+</div>
+
+</body>
+<script>
+    $('#dg').datagrid({
+        // url:'datagrid_data1.json',
+        data: {
+          code: 0,
+          message: 'success',
+          data:[
+            {"productid":"FI-SW-01","productname":"Koi","unitcost":"10.00","status":"P","listprice":"36.50","attr1":"Large","itemid":"EST-1"},
+            {"productid":"K9-DL-01","productname":"Dalmation","unitcost":"12.00","status":"P","listprice":"18.50","attr1":"Spotted Adult Female","itemid":"EST-10"},
+            {"productid":"RP-SN-01","productname":"Rattlesnake","unitcost":"12.00","status":"P","listprice":"38.50","attr1":"Venomless","itemid":"EST-11"},
+            {"productid":"RP-SN-01","productname":"Rattlesnake","unitcost":"12.00","status":"P","listprice":"26.50","attr1":"Rattleless","itemid":"EST-12"},
+            {"productid":"RP-LI-02","productname":"Iguana","unitcost":"12.00","status":"P","listprice":"35.50","attr1":"Green Adult","itemid":"EST-13"},
+            {"productid":"FL-DSH-01","productname":"Manx","unitcost":"12.00","status":"P","listprice":"158.50","attr1":"Tailless","itemid":"EST-14"},
+            {"productid":"FL-DSH-01","productname":"Manx","unitcost":"12.00","status":"P","listprice":"83.50","attr1":"With tail","itemid":"EST-15"},
+            {"productid":"FL-DLH-02","productname":"Persian","unitcost":"12.00","status":"P","listprice":"23.50","attr1":"Adult Female","itemid":"EST-16"},
+            {"productid":"FL-DLH-02","productname":"Persian","unitcost":"12.00","status":"P","listprice":"89.50","attr1":"Adult Male","itemid":"EST-17"},
+            {"productid":"AV-CB-01","productname":"Amazon Parrot","unitcost":"92.00","status":"P","listprice":"63.50","attr1":"Adult Male","itemid":"EST-18"}
+        ]},
+        loadFilter: function(res){
+          if (res.code === 0) {
+            return res.data
+          } else {
+            alert(res.message)
+          }
+        },  // 数据过滤，接收后台返回数据，返回指定格式的数据
+        pagination: true,   // 显示分页
+        toolbar: [{
+            iconCls: 'icon-edit',
+            handler: function(){alert('edit')}
+        },'-',{
+            iconCls: 'icon-help',
+            handler: function(){alert('help')}
+        }], // 头部工具栏, 可以使用easyui提供的现成图标
+        // toolbar: '#tb',
+        tools:[{
+            iconCls:'icon-add',
+            handler:function(){alert('new')}
+        },{
+            iconCls:'icon-save',
+            handler:function(){alert('save')}
+        }],
+        columns:[[
+            {field:'productid',title:'Code',width:100},
+            {field:'productname',title:'Name',width:100},
+            {field:'listprice',title:'Price',width:100,align:'right'}
+        ]]
+    });
+</script>
+</html>

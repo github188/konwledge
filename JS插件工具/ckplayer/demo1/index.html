@@ -6,7 +6,7 @@
     <style>
         .box{
             width:600px;
-            height:400px;
+            height:450px;
             margin:100px auto;
             background: #a1a1a1;
         }
@@ -24,6 +24,8 @@
     let rtmpVideoUrl2 = 'rtmp://202.69.69.180:443/webcast/bshdlive-pc'; //来自本地
     let ads2= 'rtmp://192.168.201.157/live/stream1';
     let url = 'rtmp://192.168.201.222/live/stream1'
+    let url2 = 'rtmp://192.168.2.19:8082/seemideo/1002'
+    let url3 = 'rtmp://10.10.19.220:1935/live/1'
 
     var ckPlayerService = null;
     ckPlayerService = function (id, url, live) {
@@ -40,7 +42,30 @@
         };
         var player = new ckplayer(videoObject);
     }
-    ckPlayerService('player', url, true)
+
+    // ckPlayerService = function (id, url, live) {
+    //     var videoObject = {
+    //         container: ('#' + id), //容器的ID或className
+    //         variable: 'player',//播放函数名称
+    //         loaded: 'loadedHandler',
+    //         flashplayer: true,
+    //         autoplay: true,
+    //         poster: 'material/poster.jpg',//封面图片
+    //         video: url,
+    //         live: live,
+    //         config: 'config'
+    //     };
+    //     var player = new ckplayer(videoObject);
+    //     window.loadedHandler = function () {
+    //         player.addListener('error', errorHandler); //监听元数据
+    //         player.addListener('play', playHandler)
+    //     }
+    // }
+    ckPlayerService('player', url3, true)
+
+
+
+
 
     function config() {
         return {

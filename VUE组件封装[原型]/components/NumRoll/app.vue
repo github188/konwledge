@@ -4,6 +4,8 @@
             <num-roll :num="num"></num-roll>
             <br>
             <num-roll :num="num" type="title"></num-roll>
+            <br>
+            <num-roll :num="num" :use-img="true"></num-roll>
             <button @click="addNum">addNum</button>
             <button @click="removeNum">removeNum</button>
         </div>
@@ -38,11 +40,11 @@
             }
         },
         mounted () {
-            var i=1000;
-            setInterval(()=>{
-                i=i*2;
-                this.num=i;
-            }, 2000);
+            // var i=1000;
+            // setInterval(()=>{
+            //     i=i*2;
+            //     this.num=i;
+            // }, 2000);
         }
     }
 </script>

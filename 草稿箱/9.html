@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div>111</div>
+</body>
+<script>
+  let one = {
+    a: [
+      {name: [
+          {d: '222'}
+        ]}
+    ],
+    b: {
+      c: 1
+    }
+  };
+
+
+  let two = JSON.parse(JSON.stringify(one))
+
+  // two.b.c = 2
+  // two.a[0].name = 'g'
+  two.a[0].name[0].d =333
+  console.log(one.a[0].name[0].d)
+  console.log(two.a[0].name[0].d)
+</script>
+</html>

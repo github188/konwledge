@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>datetimepicker</title>
+  <style>
+
+  </style>
+</head>
+<body>
+<div>
+  <div class="angular-box" ng-app="myApp" ng-controller="myCtrl">
+    {{flag}}
+    <input type="checkbox" ng-checked="a==='true'" ng-model="flag">Volvo<br>
+  </div>
+</div>
+</body>
+<script src="./js/angular.min.js"></script>
+<script>
+
+  var app = angular.module('myApp', [])
+
+  app.controller('myCtrl', function ($scope) {
+    $scope.carname = 'volvo'
+    $scope.a = 'true'
+    $scope.flag = false
+  })
+
+</script>
+</html>
