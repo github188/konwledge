@@ -1,0 +1,142 @@
+
+<!DOCTYPE html ">
+<html>
+    <head>
+        <title>Rtmp Video Stream</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+<body>
+<script type="text/javascript" src="/swfobject.js"></script>
+<script type="text/javascript" src="/ParsedQueryString.js"></script>
+<script type="text/javascript">
+
+var player = null;
+
+//function loadStream(url) {
+//  player.setMediaResourceURL(url);
+//}
+
+function getlink(url) {
+  return "/vod.html?src=" + encodeURIComponent(url);
+}
+
+function jsbridge(playerId, event, data) {
+  if (player == null) {
+	player = document.getElementById(playerId);
+  }
+  switch(event) {
+	case "onJavaScriptBridgeCreated":
+	  listStreams(teststreams,"streamlist");
+	  break;
+	 case "timeChange":
+	 case "timeupdate":
+	 case "progress":
+	   break;
+	 default:
+	  console.log(event, data);
+	}
+}
+
+	// Collect query parameters in an object that we can
+	// forward to SWFObject:
+	var test = window.location.hostname;
+	//document.write("rtmp://"+test+"/hls/stream");
+	
+	var pqs = new ParsedQueryString();
+	var parameterNames = pqs.params(false);
+	var parameters = {
+	//    src: "rtmp://192.168.0.10/live/demo",
+		autoPlay: "true",
+		verbose: true,
+		controlBarAutoHide: "true",
+		controlBarPosition: "bottom",
+		poster: "images/poster.png",
+		javascriptCallbackFunction: "jsbridge",
+		plugin_hls: "/flashlsOSMF.swf",
+		hls_minbufferlength: -1,
+		hls_maxbufferlength: 30,
+		hls_lowbufferlength: 3,
+		hls_seekmode: "KEYFRAME",
+		hls_startfromlevel: -1,
+		hls_seekfromlevel: -1,
+		hls_live_flushurlcache: false,
+		hls_info: true,
+		hls_debug: false,
+		hls_debug2: false,
+		hls_warn: true,
+		hls_error: true,
+		hls_fragmentloadmaxretry : -1,
+		hls_manifestloadmaxretry : -1,
+		hls_capleveltostage : false,
+		hls_maxlevelcappingmode : "downscale"
+	};
+
+	for (var i = 0; i < parameterNames.length; i++) {
+		var parameterName = parameterNames[i];
+		parameters[parameterName] = pqs.param(parameterName) ||
+		parameters[parameterName];
+	}
+
+	var wmodeValue = "direct";
+	var wmodeOptions = ["direct", "opaque", "transparent", "window"];
+	if (parameters.hasOwnProperty("wmode"))
+	{
+		if (wmodeOptions.indexOf(parameters.wmode) >= 0)
+		{
+			wmodeValue = parameters.wmode;
+		}
+		delete parameters.wmode;
+	}
+	// "rtmp://192.168.201.21/hls/stream"
+	// Embed the player SWF:
+	swfobject.embedSWF(
+		"GrindPlayer.swf"
+		, "GrindPlayer"
+		, 640
+		, 480
+		, "10.1.0"
+		, "expressInstall.swf"
+		, parameters
+		, {
+			allowFullScreen: "true",
+			wmode: wmodeValue,
+			autostart: "true"
+		}
+		, {
+			name: "GrindPlayer"
+		}
+	);
+
+</script>
+
+<p>
+
+</p>
+<div id="GrindPlayer">
+	<p>
+		Alternative content
+	</p>
+</div>
+
+<br>
+<input id="userInput" size="90"> <button id="enter" onclick="userSubmit()">Play Video</button><br>
+<p>
+<script type="text/javascript">
+document.getElementById('userInput').value = "rtmp://"+test+"/live/stream1";
+//window.location = getlink(document.getElementById('userInput').value);
+
+function userSubmit() {
+  window.location = getlink(document.getElementById('userInput').value);
+}
+//setTimeout("userSubmit()",5*10000);
+//document.getElementById("enter").click();
+</script>
+
+<script>
+//
+//<embed src="GrindPlayer.swf " type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="opaque" width="640" height="480" loop="true" autostart="true">
+//</embed>
+</script>
+
+    </body>
+</html>

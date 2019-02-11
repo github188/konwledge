@@ -14,13 +14,13 @@
 <body>
 <div id="GrindPlayer"></div>
 </body>
-<script src="GrindPlayer/swfobject.js"></script>
+<script src="plugin/swfobject.js"></script>
 <script type="text/javascript">
   let url = 'rtmp://10.10.19.220:1935/live/1'
+  let url5 = `rtmp://10.10.19.239:1935/live/1`    // ckplayer会卡顿
 
   setTimeout(()=>{
-    let url = 'rtmp://10.10.19.220:1935/live/1'
-    _initGrindPlayer(url)
+    _initGrindPlayer(url5)
   },200)
 
   function _initGrindPlayer (videoUrl) {

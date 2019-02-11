@@ -6,9 +6,10 @@
   </div>
 </template>
 <script>
-  import Draw from './Draw'
+  import Draw from './Draw.js'
 
   export default {
+    name: 'Draw',
     props: {
       warningType: {type: Number, default: 2},
       regionType: {type: Number, default: 1},

@@ -1,0 +1,27 @@
+<html>
+ 
+<head>
+<script type="text/javascript" src="scripts/swfobject.js"></script> 
+<script type="text/javascript">
+var flashvars = {
+    src: "rtmp://10.10.19.239:1935/live/1",
+    streamType: "live",
+    autoHideControlBar: "true",
+    autoPlay: "true",
+    controlBarMode: "none",
+}
+// 'src=rtmp://192.168.201.94:1935/live/2&autoHideControlBar=true&streamType=live&autoPlay=true&verbose=true&controlBarMode=none'
+
+swfobject.embedSWF("swfs/StrobeMediaPlayback.swf", "swfid", "800", "450", "11.0.0", "swfs/playerProductInstall.swf", flashvars);
+
+</script>
+
+</head>
+
+<body>
+ 
+<div id="swfid"></div> 
+
+</body>
+
+</html>

@@ -1,1 +1,3 @@
-import NumRoll from './NumRoll'
+export {NumRoll} from './NumRoll'
+export {Draw} from './Draw'
+

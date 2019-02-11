@@ -26,6 +26,8 @@
     let url = 'rtmp://192.168.201.222/live/stream1'
     let url2 = 'rtmp://192.168.2.19:8082/seemideo/1002'
     let url3 = 'rtmp://10.10.19.220:1935/live/1'
+    let url4 = 'rtmp://192.168.2.41:8082/seemideo/683'
+    let url5 = `rtmp://10.10.19.239:1935/live/1`    // ckplayer会卡顿
 
     var ckPlayerService = null;
     ckPlayerService = function (id, url, live) {
@@ -61,7 +63,7 @@
     //         player.addListener('play', playHandler)
     //     }
     // }
-    ckPlayerService('player', url3, true)
+    ckPlayerService('player', url5, true)
 
 
 

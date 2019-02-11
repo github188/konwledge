@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Grind Player</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script type="text/javascript" src="http://yandex.st/swfobject/2.2/swfobject.min.js"></script>
+  <script type="text/javascript">
+    // 使用js代码播放, GrindPlayer.swf
+      let url = 'rtmp://10.10.19.220:1935/live/1'
+      let url2 = `rtmp://10.10.19.239:1935/live/1`    // ckplayer会卡顿
+      var flashvars = {
+          src: url
+      };
+      var params = {
+          allowFullScreen: true
+          , allowScriptAccess: "always"
+          , bgcolor: "#000000"
+      };
+      var attrs = {
+          name: "player"
+      };
+
+      swfobject.embedSWF("GrindPlayer.swf", "player", "854", "480", "10.2", null, flashvars, params, attrs);
+  </script>
+</head>
+<body>
+<div id="player"></div>
+</body>
+</html>
