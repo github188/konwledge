@@ -1,10 +1,17 @@
 <template>
   <div class="app">
     <draw ref="draw"></draw>
+    <div>
+      <select v-model="regionSize">
+        <option :value="{width: 1920, height: 1080}">宽1920高1080</option>
+      </select>
+      {{regionSize}}
+    </div>
     <button @click="getRegion">getRegion</button>
     <button @click="clearRegion">clearRegion</button>
     <button @click="setRegion">setRegion</button>
-    <p>区域Region: {{region}}</p>
+    <p>页面区域Region: {{region}}</p>
+    <p>原始区域Region: {{originRegion}}</p>
     <p>区域数量： {{region.length}}</p>
   </div>
 </template>
@@ -19,7 +26,9 @@
     },
     data() {
       return {
-        region: []
+        region: [],
+        originRegion: [],
+        regionSize: {width: 1920, height: 1080}
       }
     },
     mounted() {
@@ -29,6 +38,7 @@
       getRegion() {
         let region = this.$refs.draw.getRegion()
         this.region = region
+        this.originRegion = this.$refs.draw.getRegion(this.regionSize)
       },
       clearRegion() {
         this.$refs.draw.clearRegion()
